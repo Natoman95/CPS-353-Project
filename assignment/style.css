@@ -1,0 +1,167 @@
+/* General styling - colors, borders, etc. */
+
+button {
+  border-radius: .35em;
+  border: none;
+  font-size: 1em;
+  margin: .25em;
+  padding: .25em;
+  text-align: center;
+}
+
+form {
+  margin: 0;
+}
+
+h1 {
+  font-weight: normal;
+  margin-left: .25em;
+  margin-right: .25em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+h3 {
+  margin-left: .25em;
+  margin-right: .25em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+input {
+  border: .01em solid;
+  border-radius: .35em;
+  line-height: 1.5em;
+  margin: .25em;
+  padding: .25em;
+}
+
+.negative-button {
+  background-color: #E63B2E;
+  color: white;
+}
+
+.positive-button {
+  background-color: #FF7733;
+  color: white;
+}
+
+.neutral-button {
+  background-color: #66C7F4;
+  color: white;
+}
+
+.block-header {
+  background-color: #66C7F4;
+  color: white;
+  margin: 0;
+}
+
+.block-footer {
+  background-color: #66C7F4;
+  bottom: 0;
+  color: white;
+  height: 3em;
+  margin-top: 108%;
+  width: 100%;
+}
+
+.wrapper {
+  font-family: Arial;
+}
+
+
+/* Layout */
+
+
+/* mobile first */
+
+body {
+  line-height: 1.6;
+}
+
+button {
+  width: 100%;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1em;
+}
+
+input {
+  width: 100%;
+}
+
+
+/* set images for full-width flexibility */
+
+img {
+  max-width: 100%;
+}
+
+
+/* tablet-ish */
+
+@media only screen and (min-width: 768px) {
+  button {
+    width: 30%;
+  }
+  h1 {
+    font-size: 3em;
+  }
+  h3 {
+    font-size: 1em;
+  }
+  input {
+    width: 30%;
+  }
+  .dynamic-center {
+    text-align: center;
+  }
+}
+
+
+/* desktop-ish */
+
+@media only screen and (min-width: 992px) {
+  button {
+    width: 30%;
+  }
+  h1 {
+    font-size: 4em;
+  }
+  h3 {
+    font-size: 1.5em;
+  }
+  input {
+    width: 30%;
+  }
+  .dynamic-center {
+    text-align: center;
+  }
+}
+
+
+/* super screen-ish */
+
+@media only screen and (min-width: 1200px) {
+  button {
+    width: 30%;
+  }
+  h1 {
+    font-size: 5em;
+  }
+  h3 {
+    font-size: 2em;
+  }
+  input {
+    width: 30%;
+  }
+  .dynamic-center {
+    text-align: center;
+  }
+}

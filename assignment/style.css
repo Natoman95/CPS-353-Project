@@ -4,7 +4,18 @@ h1 {
   margin: .25em;
 }
 
+h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 h3 {
+  margin: .25em;
+}
+
+.basic-list {
+  font-size: 1.5em;
+  list-style-type: none;
   margin: .25em;
 }
 
@@ -48,7 +59,7 @@ h3 {
   color: white;
 }
 
-.btn-warning:hover, .btn-warning:focus, .btn-warning:active, .btn-warning.active, .open>.dropdown-toggle.btn-warning {
+.btn-warning:hover, .btn-warning:focus, .btn-warning:active, .open>.dropdown-toggle.btn-warning {
   background-color: #B5B5B5;
 }
 
@@ -57,7 +68,7 @@ h3 {
   color: white;
 }
 
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .open>.dropdown-toggle.btn-primary {
   background-color: #B5B5B5;
 }
 
@@ -66,8 +77,15 @@ h3 {
   color: white;
 }
 
-.btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active, .btn-secondary.active, .open>.dropdown-toggle.btn-secondary {
+.btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active, .open>.dropdown-toggle.btn-secondary {
   background-color: #B5B5B5;
+}
+
+.basic-content-wrapper {
+  margin-bottom: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5%;
 }
 
 
@@ -80,23 +98,7 @@ h3 {
   width: 100%;
 }
 
-h1 {
-  font-size: 2em;
-}
-
-h3 {
-  font-size: 1em;
-}
-
-.header {
-  font-size: 2em;
-}
-
-.footer {
-  font-size: 2em;
-}
-
-.form-control {
+.form-scale {
   width: 100%;
 }
 
@@ -114,19 +116,7 @@ img {
   .btn {
     width: 30%;
   }
-  h1 {
-    font-size: 3em;
-  }
-  h3 {
-    font-size: 1em;
-  }
-  .header {
-    font-size: 3em;
-  }
-  .footer {
-    font-size: 3em;
-  }
-  .form-control {
+  .form-scale {
     width: 30%;
   }
 }
@@ -138,19 +128,7 @@ img {
   .btn {
     width: 30%;
   }
-  h1 {
-    font-size: 4em;
-  }
-  h3 {
-    font-size: 1.5em;
-  }
-  .header {
-    font-size: 4em;
-  }
-  .footer {
-    font-size: 4em;
-  }
-  .form-control {
+  .form-scale {
     width: 30%;
   }
 }
@@ -162,19 +140,7 @@ img {
   button {
     width: 30%;
   }
-  h1 {
-    font-size: 5em;
-  }
-  h3 {
-    font-size: 2em;
-  }
-  .header {
-    font-size: 5em;
-  }
-  .footer {
-    font-size: 5em;
-  }
-  .form-control {
+  .form-scale {
     width: 30%;
   }
 }

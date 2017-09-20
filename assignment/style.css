@@ -52,6 +52,7 @@ h3 {
 .btn {
   border: none;
   margin: .25em;
+  width: 100%;
 }
 
 .btn-warning {
@@ -94,7 +95,7 @@ h3 {
 
 /* mobile first */
 
-.btn {
+.btn-scale {
   width: 100%;
 }
 
@@ -113,7 +114,7 @@ img {
 /* tablet-ish */
 
 @media only screen and (min-width: 768px) {
-  .btn {
+  .btn-scale {
     width: 30%;
   }
   .form-scale {
@@ -125,7 +126,7 @@ img {
 /* desktop-ish */
 
 @media only screen and (min-width: 992px) {
-  .btn {
+  .btn-scale {
     width: 30%;
   }
   .form-scale {
@@ -137,7 +138,7 @@ img {
 /* super screen-ish */
 
 @media only screen and (min-width: 1200px) {
-  button {
+  .btn-scale {
     width: 30%;
   }
   .form-scale {

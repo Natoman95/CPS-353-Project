@@ -1,36 +1,36 @@
-<div class="wrapper">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="Bootstrap" content="http://getbootstrap.com/">
+</head>
 
-  <div class="dynamic-center">
-    <header class="block-header">
-      <i class="fa fa-check" style="font-size:3em; float:right; padding-bottom:.25em; padding-right:.25em;"></i>
-      <h1>Profile</h1>
-    </header>
-
-    <form>
-      <h3>Username</h3>
-      <input type="text" placeholder="username">
-      <br>
-      <h3>Email</h3>
-      <input type="text" placeholder="email">
-      <br>
-      <h3>First Name</h3>
-      <input type="text" placeholder="first name">
-      <br>
-      <h3>Last Name</h3>
-      <input type="text" placeholder="last name">
-    </form>
-
-    <div>
-      <button class="neutral-button">Websites</button>
-    </div>
-    <div>
-      <button class="negative-button">Logout</button>
-    </div>
-
-    <footer class="block-footer">
-      <i class="fa fa-user" style="font-size:3em; float:right;  padding-bottom:.25em; padding-right:.25em;"></i>
-    </footer>
+<nav class="navbar navbar-default header" role="navigation">
+  <div class="container">
+    <span class="header-title">Profile</span>
+    <span class="right-align glyphicon glyphicon-ok"></span>
   </div>
+</nav>
+
+<form class="form-group">
+  <h3>Username</h3>
+  <input class="form-control" type="text" placeholder="username">
+  <h3>Email</h3>
+  <input class="form-control" type="text" placeholder="email">
+  <h3>First Name</h3>
+  <input class="form-control" type="text" placeholder="first name">
+  <h3>Last Name</h3>
+  <input class="form-control" type="text" placeholder="last name">
+</form>
+
+<div>
+  <button class="btn btn-primary">Websites</button>
 </div>
+<div>
+  <button class="btn btn-warning">Logout</button>
+</div>
+
+<nav class="navbar navbar-default footer" role="navigation">
+  <div class="container">
+    <span class="right-align glyphicon glyphicon-user"></span>
+  </div>
+</nav>

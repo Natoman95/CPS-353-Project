@@ -1,0 +1,186 @@
+/* General styling - colors, borders, etc. */
+
+body {
+  height: 100%;
+}
+
+html {
+  height: 100%;
+}
+
+h1 {
+  margin: .25em;
+}
+
+h2 {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+h3 {
+  margin: .25em;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.table, .table th, .table td {
+  border: none !important;
+}
+
+.basic-list {
+  font-size: 1.25em;
+  list-style-type: none;
+  margin: .25em;
+}
+
+.right-align {
+  float: right;
+}
+
+.form-control {
+  margin: .5em;
+}
+
+.form-group {
+  margin: .25em;
+}
+
+.btn {
+  border: none;
+  margin: .25em;
+  width: 100%;
+}
+
+.btn-warning {
+  background-color: #E63B2E;
+  color: white;
+}
+
+.btn-warning:hover, .btn-warning:focus, .btn-warning:active, .open>.dropdown-toggle.btn-warning {
+  background-color: #c4c4c4;
+}
+
+.btn-primary {
+  background-color: #FF7733;
+  color: white;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .open>.dropdown-toggle.btn-primary {
+  background-color: #c4c4c4;
+}
+
+.btn-secondary {
+  background-color: #3866b5;
+  color: white;
+}
+
+.btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active, .open>.dropdown-toggle.btn-secondary {
+  background-color: #c4c4c4;
+}
+
+.glyph-link {
+  color: inherit;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-wrapper {
+  flex-grow: 1;
+}
+
+.basic-content-wrapper {
+  margin: 5%;
+}
+
+.primary-header {
+  background-color: #3866b5;
+  color: white;
+  font-size: 2em;
+  padding: .25em;
+}
+
+.secondary-header {
+  background-color: #c4c4c4;
+  color: #777777;
+  font-size: 2em;
+  padding: .25em;
+}
+
+.primary-footer {
+  background-color: #3866b5;
+  color: white;
+  font-size: 2em;
+  margin: 0;
+  padding: .25em;
+  width: 100%;
+}
+
+.secondary-footer {
+  background-color: #c4c4c4;
+  color: #777777;
+  font-size: 2em;
+  margin: 0;
+  padding: .25em;
+  width: 100%;
+}
+
+.embed-responsive {
+  min-width: 0;
+  min-height: 0;
+}
+
+
+/* Layout */
+
+
+/* mobile first */
+
+.btn-scale {
+  width: 100%;
+}
+
+.form-scale {
+  width: 100%;
+}
+
+
+/* tablet-ish */
+
+@media only screen and (min-width: 768px) {
+  .btn-scale {
+    width: 30%;
+  }
+  .form-scale {
+    width: 30%;
+  }
+}
+
+
+/* desktop-ish */
+
+@media only screen and (min-width: 992px) {
+  .btn-scale {
+    width: 30%;
+  }
+  .form-scale {
+    width: 30%;
+  }
+}
+
+
+/* super screen-ish */
+
+@media only screen and (min-width: 1200px) {
+  .btn-scale {
+    width: 30%;
+  }
+  .form-scale {
+    width: 30%;
+  }
+}

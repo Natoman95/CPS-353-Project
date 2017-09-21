@@ -1,5 +1,13 @@
 /* General styling - colors, borders, etc. */
 
+body {
+  height: 100%;
+}
+
+html {
+  height: 100%;
+}
+
 h1 {
   margin: .25em;
 }
@@ -13,46 +21,16 @@ h3 {
   margin: .25em;
 }
 
+img {
+  margin-bottom: .5em;
+  margin-top: .5em;
+  max-width: 100%;
+}
+
 .basic-list {
   font-size: 1.5em;
   list-style-type: none;
   margin: .25em;
-}
-
-.primary-header {
-  background-color: #3866b5;
-  color: white;
-  font-size: 2em;
-  padding: .25em;
-}
-
-.secondary-header {
-  background-color: #c4c4c4;
-  color: #777777;
-  font-size: 2em;
-  padding: .25em;
-}
-
-.primary-footer {
-  background-color: #3866b5;
-  bottom: 0;
-  color: white;
-  font-size: 2em;
-  margin: 0;
-  padding: .25em;
-  position: absolute;
-  width: 100%;
-}
-
-.secondary-footer {
-  background-color: #c4c4c4;
-  bottom: 0;
-  color: #777777;
-  font-size: 2em;
-  margin: 0;
-  padding: .25em;
-  position: absolute;
-  width: 100%;
 }
 
 .right-align {
@@ -100,11 +78,50 @@ h3 {
   background-color: #c4c4c4;
 }
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-wrapper {
+  flex-grow: 1;
+}
+
 .basic-content-wrapper {
-  margin-bottom: 5%;
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-top: 5%;
+  margin: 5%;
+}
+
+.primary-header {
+  background-color: #3866b5;
+  color: white;
+  font-size: 2em;
+  padding: .25em;
+}
+
+.secondary-header {
+  background-color: #c4c4c4;
+  color: #777777;
+  font-size: 2em;
+  padding: .25em;
+}
+
+.primary-footer {
+  background-color: #3866b5;
+  color: white;
+  font-size: 2em;
+  margin: 0;
+  padding: .25em;
+  width: 100%;
+}
+
+.secondary-footer {
+  background-color: #c4c4c4;
+  color: #777777;
+  font-size: 2em;
+  margin: 0;
+  padding: .25em;
+  width: 100%;
 }
 
 
@@ -119,13 +136,6 @@ h3 {
 
 .form-scale {
   width: 100%;
-}
-
-
-/* set images for full-width flexibility */
-
-img {
-  max-width: 100%;
 }
 
 

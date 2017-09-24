@@ -25,6 +25,10 @@ a:hover {
   text-decoration: none;
 }
 
+span {
+  vertical-align: middle;
+}
+
 .table, .table th, .table td {
   border: none !important;
 }
@@ -33,6 +37,10 @@ a:hover {
   font-size: 1.25em;
   list-style-type: none;
   margin: .25em;
+}
+
+.left-align {
+  float: left;
 }
 
 .right-align {
@@ -118,7 +126,8 @@ a:hover {
   background-color: #3866b5;
   color: white;
   font-size: 2em;
-  margin: 0;
+  margin-top: .75em;
+  margin-bottom: 0;
   padding: .25em;
   width: 100%;
 }
@@ -127,7 +136,8 @@ a:hover {
   background-color: #c4c4c4;
   color: #777777;
   font-size: 2em;
-  margin: 0;
+  margin-top: .75em;
+  margin-bottom: 0em;
   padding: .25em;
   width: 100%;
 }

@@ -2,7 +2,6 @@
 
 * Couldn't get widget-list to scale down all the way
 * Couldn't get hamburgers and cogs next to each other widget-list
-* Some input boxes and buttons are slightly skewed to the right
 * The header text and glyphs aren't perfectly aligned
 * Couldn't get the vertical line on website-new and website-edit
 * Haven't commented anything yet

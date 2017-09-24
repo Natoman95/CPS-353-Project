@@ -40,7 +40,8 @@ a:hover {
 }
 
 .form-control {
-  margin: .5em;
+  margin-bottom: .5em;
+  margin-top: .5em;
 }
 
 .form-group {
@@ -49,7 +50,8 @@ a:hover {
 
 .btn {
   border: none;
-  margin: .25em;
+  margin-bottom: .25em;
+  margin-top: .25em;
   width: 100%;
 }
 

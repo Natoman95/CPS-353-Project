@@ -29,8 +29,9 @@ span {
   vertical-align: middle;
 }
 
-.table, .table th, .table td {
-  border: none !important;
+p {
+  font-size: 1.25em;
+  margin: .25em;
 }
 
 .basic-list {
@@ -66,6 +67,11 @@ span {
 .btn-warning {
   background-color: #E63B2E;
   color: white;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .btn-warning:hover, .btn-warning:focus, .btn-warning:active, .open>.dropdown-toggle.btn-warning {
@@ -106,6 +112,10 @@ span {
 
 .basic-content-wrapper {
   margin: 5%;
+}
+
+.container {
+  max-width: 100%;
 }
 
 .primary-header {
@@ -153,6 +163,15 @@ span {
 
 /* mobile first */
 
+h1 {
+  font-size: 2em;
+  word-wrap: break-word;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
 .btn-scale {
   width: 100%;
 }
@@ -165,11 +184,18 @@ span {
 /* tablet-ish */
 
 @media only screen and (min-width: 768px) {
+  h1 {
+    font-size: 3em;
+    word-wrap: normal;
+  }
+  h3 {
+    font-size: 2.5em;
+  }
   .btn-scale {
-    width: 30%;
+    width: 40%;
   }
   .form-scale {
-    width: 30%;
+    width: 40%;
   }
 }
 
@@ -178,10 +204,10 @@ span {
 
 @media only screen and (min-width: 992px) {
   .btn-scale {
-    width: 30%;
+    width: 40%;
   }
   .form-scale {
-    width: 30%;
+    width: 40%;
   }
 }
 
@@ -190,9 +216,9 @@ span {
 
 @media only screen and (min-width: 1200px) {
   .btn-scale {
-    width: 30%;
+    width: 40%;
   }
   .form-scale {
-    width: 30%;
+    width: 40%;
   }
 }

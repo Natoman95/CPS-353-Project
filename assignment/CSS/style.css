@@ -1,0 +1,265 @@
+/* -------------- General styling - colors, borders, etc. -------------- */
+
+body {
+  /* Used for sticky footer */
+  height: 100%;
+}
+
+html {
+  /* Used for sticky footer */
+  height: 100%;
+}
+
+h1 {
+  margin: .25em;
+}
+
+
+/* Used for Nav-bar lettering */
+
+h2 {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+h3 {
+  margin: .25em;
+}
+
+
+/* Links shouldn't be underlined when hovered over */
+
+a:hover {
+  text-decoration: none;
+}
+
+
+/* This way they're vertically centered in the nav bar */
+
+span {
+  vertical-align: middle;
+}
+
+p {
+  font-size: 1.25em;
+  margin: .25em;
+}
+
+
+/* Images and video previews should have some extra spacing */
+
+img {
+  margin-bottom: .5em;
+  margin-top: .5em;
+}
+
+iframe {
+  margin-bottom: .5em;
+  margin-top: .5em;
+}
+
+
+/* -------------- My custom classes -------------- */
+
+.basic-list {
+  font-size: 1.25em;
+  /* No bullet points */
+  list-style-type: none;
+  margin: .25em;
+}
+
+.left-align {
+  float: left;
+}
+
+.right-align {
+  float: right;
+}
+
+
+/* Wrappers used for sticky footer */
+
+.file-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header-body-wrapper {
+  flex-grow: 1;
+}
+
+.body-wrapper {
+  margin: 5%;
+}
+
+.header {
+  font-size: 2em;
+  padding: .25em;
+}
+
+.primary-header {
+  background-color: #3866b5;
+  color: white;
+}
+
+.secondary-header {
+  background-color: #c4c4c4;
+  color: #777777;
+}
+
+.footer {
+  font-size: 2em;
+  margin-top: .75em;
+  margin-bottom: 0em;
+  padding: .25em;
+  width: 100%;
+}
+
+.primary-footer {
+  background-color: #3866b5;
+  color: white;
+}
+
+.secondary-footer {
+  background-color: #c4c4c4;
+  color: #777777;
+}
+
+
+/* -------------- Overridden Bootstrap classes -------------- */
+
+.form-control {
+  margin-bottom: .5em;
+  margin-top: .5em;
+}
+
+.form-group {
+  margin: .25em;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+
+/* A glyph that is also a link receives its color from the glyph rather than being blue */
+
+.glyph-link {
+  color: inherit;
+}
+
+.container {
+  max-width: 100%;
+}
+
+.embed-responsive {
+  min-width: 0;
+  min-height: 0;
+}
+
+.btn {
+  border: none;
+  margin-bottom: .25em;
+  margin-top: .25em;
+  width: 100%;
+}
+
+.btn-warning {
+  background-color: #E63B2E;
+  color: white;
+}
+
+.btn-warning:hover, .btn-warning:focus, .btn-warning:active, .open>.dropdown-toggle.btn-warning {
+  background-color: #c4c4c4;
+}
+
+.btn-primary {
+  background-color: #FF7733;
+  color: white;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .open>.dropdown-toggle.btn-primary {
+  background-color: #c4c4c4;
+}
+
+.btn-secondary {
+  background-color: #3866b5;
+  color: white;
+}
+
+.btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active, .open>.dropdown-toggle.btn-secondary {
+  background-color: #c4c4c4;
+}
+
+
+/* -------------- Layout -------------- */
+
+
+/* mobile first */
+
+h1 {
+  font-size: 2em;
+  word-wrap: break-word;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+
+/* When the page is small, buttons and forms span the width of the screen */
+
+.btn-scale {
+  width: 100%;
+}
+
+.form-scale {
+  width: 100%;
+}
+
+
+/* tablet-ish */
+
+@media only screen and (min-width: 768px) {
+  h1 {
+    font-size: 3em;
+    word-wrap: normal;
+  }
+  h3 {
+    font-size: 2.5em;
+  }
+  /* When the page gets larger, buttons and forms no longer span the width of
+  the screen */
+  .btn-scale {
+    width: 40%;
+  }
+  .form-scale {
+    width: 40%;
+  }
+}
+
+
+/* desktop-ish */
+
+@media only screen and (min-width: 992px) {
+  .btn-scale {
+    width: 40%;
+  }
+  .form-scale {
+    width: 40%;
+  }
+}
+
+
+/* super screen-ish */
+
+@media only screen and (min-width: 1200px) {
+  .btn-scale {
+    width: 40%;
+  }
+  .form-scale {
+    width: 40%;
+  }
+}

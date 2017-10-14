@@ -21,6 +21,12 @@ var AuthService = (function () {
             userName: "jsmith",
         };
     };
+    AuthService.prototype.logoutUser = function () {
+        this.currentUser = null;
+    };
+    AuthService.prototype.verifyPassword = function (password, duplicate) {
+        return password === duplicate;
+    };
     AuthService.prototype.isAuthenticated = function () {
         return !!this.currentUser;
     };

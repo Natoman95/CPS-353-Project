@@ -7,14 +7,15 @@ import { AuthService } from './auth.service'
 })
 
 export class LoginComponent {
-    constructor(private auth: AuthService, private router:Router) { }
+
+    constructor(private auth: AuthService, private router: Router) { }
 
     login(formValues) {
         this.auth.loginUser(formValues.userName, formValues.password)
-        this.router.navigate(["/websites"])
+        this.router.navigate(["/profile"])
     }
 
-    cancel() {
-        this.router.navigate(["/websites"])
+    register() {
+        this.router.navigate(["/register"])
     }
 }

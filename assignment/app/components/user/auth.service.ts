@@ -14,6 +14,14 @@ export class AuthService {
         }
     }
 
+    logoutUser() {
+        this.currentUser = null;
+    }
+
+    verifyPassword(password, duplicate) :boolean {
+        return password === duplicate;
+    }
+
     isAuthenticated() {
         return !!this.currentUser;
     }

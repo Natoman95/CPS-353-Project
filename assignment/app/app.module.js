@@ -13,8 +13,10 @@ var router_1 = require("@angular/router");
 var platform_browser_1 = require("@angular/platform-browser");
 var websites_app_component_1 = require("./websites-app.component");
 var navbar_component_1 = require("./nav/navbar.component");
-var routes_1 = require("./routes");
 var login_component_1 = require("./components/user/login.component");
+var profile_component_1 = require("./components/user/profile.component");
+var register_component_1 = require("./components/user/register.component");
+var routes_1 = require("./routes");
 var forms_1 = require("@angular/forms");
 var auth_service_1 = require("./components/user/auth.service");
 var user_service_1 = require("./services/user.service");
@@ -28,7 +30,9 @@ AppModule = __decorate([
         imports: [platform_browser_1.BrowserModule, router_1.RouterModule.forRoot(routes_1.appRoutes), forms_1.FormsModule],
         declarations: [websites_app_component_1.WebsitesAppComponent,
             navbar_component_1.NavbarComponent,
-            login_component_1.LoginComponent],
+            login_component_1.LoginComponent,
+            profile_component_1.ProfileComponent,
+            register_component_1.RegisterComponent],
         providers: [auth_service_1.AuthService,
             user_service_1.UserService],
         bootstrap: [websites_app_component_1.WebsitesAppComponent]

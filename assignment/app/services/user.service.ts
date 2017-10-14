@@ -9,10 +9,10 @@ const USERS: Array<IUser> = [
 ];
 
 @Injectable()
-export class UserService
-{
+export class UserService {
+    
     // Adds the user parameter instance to the local users array
-    createUser(user) :void {
+    createUser(user) {
         USERS.push(user);
     }
 
@@ -32,7 +32,7 @@ export class UserService
     }
     
     // updates the user in local users array whose id matches the userId parameter
-    updateUser(id, user) :void {
+    updateUser(id, user) {
         var index = USERS.findIndex(user => user.id === id);
         USERS[index] = user;
     }

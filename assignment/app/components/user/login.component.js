@@ -18,10 +18,10 @@ var LoginComponent = (function () {
     }
     LoginComponent.prototype.login = function (formValues) {
         this.auth.loginUser(formValues.userName, formValues.password);
-        this.router.navigate(["/websites"]);
+        this.router.navigate(["/profile"]);
     };
-    LoginComponent.prototype.cancel = function () {
-        this.router.navigate(["/websites"]);
+    LoginComponent.prototype.register = function () {
+        this.router.navigate(["/register"]);
     };
     return LoginComponent;
 }());

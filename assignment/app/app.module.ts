@@ -14,7 +14,8 @@ import { UserService } from './services/user.service'
     declarations: [WebsitesAppComponent,
         NavbarComponent,
         LoginComponent],
-    providers: [AuthService],
+    providers: [AuthService,
+        UserService],
     bootstrap: [WebsitesAppComponent]
 })
 

@@ -15,9 +15,10 @@ var AuthService = (function () {
     AuthService.prototype.loginUser = function (userName, password) {
         this.currentUser = {
             id: 1,
+            password: "Joe",
             firstName: "Joe",
             lastName: "Smith",
-            userName: "jsmith"
+            userName: "jsmith",
         };
     };
     AuthService.prototype.isAuthenticated = function () {

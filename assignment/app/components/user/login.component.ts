@@ -1,9 +1,9 @@
 ﻿import { Component } from '@angular/core'
-import {Router} from '@angular/router'
-import {AuthService} from './auth.service'
+import { Router } from '@angular/router'
+import { AuthService } from './auth.service'
+
 @Component({
-    templateUrl: 'app/user/login.component.html'
-    
+    templateUrl: 'app/components/user/login.component.html'
 })
 
 export class LoginComponent {

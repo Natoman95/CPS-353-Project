@@ -17,6 +17,7 @@ var routes_1 = require("./routes");
 var login_component_1 = require("./components/user/login.component");
 var forms_1 = require("@angular/forms");
 var auth_service_1 = require("./components/user/auth.service");
+var user_service_1 = require("./services/user.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -28,7 +29,8 @@ AppModule = __decorate([
         declarations: [websites_app_component_1.WebsitesAppComponent,
             navbar_component_1.NavbarComponent,
             login_component_1.LoginComponent],
-        providers: [auth_service_1.AuthService],
+        providers: [auth_service_1.AuthService,
+            user_service_1.UserService],
         bootstrap: [websites_app_component_1.WebsitesAppComponent]
     }),
     __metadata("design:paramtypes", [])

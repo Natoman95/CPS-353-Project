@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var auth_service_1 = require("../user/auth.service");
+var auth_service_1 = require("../components/user/auth.service");
 var NavbarComponent = (function () {
     function NavbarComponent(auth) {
         this.auth = auth;
@@ -22,8 +22,7 @@ NavbarComponent = __decorate([
         templateUrl: 'app/nav/navbar.component.html',
         styles: ["\n        .nav.navbar-nav {font-size:15px;}\n        #searchForm {margin-right:100px;}\n        @media (max-width: 1200px){ #searchForm {display:none}}\n        li > a.active {color: #F97924;}\n        "]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof auth_service_1.AuthService !== "undefined" && auth_service_1.AuthService) === "function" && _a || Object])
+    __metadata("design:paramtypes", [auth_service_1.AuthService])
 ], NavbarComponent);
 exports.NavbarComponent = NavbarComponent;
-var _a;
 //# sourceMappingURL=navbar.component.js.map

@@ -9,32 +9,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var users = [
-    { id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder" },
-    { id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley" },
-    { id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia" },
-    { id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose", lastName: "Annunzi" }
+var USERS = [
+    { id: 123, userName: "alice", password: "alice", firstName: "Alice", lastName: "Wonder" },
+    { id: 234, userName: "bob", password: "bob", firstName: "Bob", lastName: "Marley" },
+    { id: 345, userName: "charly", password: "charly", firstName: "Charly", lastName: "Garcia" },
+    { id: 456, userName: "jannunzi", password: "jannunzi", firstName: "Jose", lastName: "Annunzi" }
 ];
 var UserService = (function () {
     function UserService() {
     }
     // Adds the user parameter instance to the local users array
     UserService.prototype.createUser = function (user) {
+        USERS.push(user);
     };
     // Returns the user in local users array whose id matches the userId parameter
-    UserService.prototype.findUserById = function (userId) {
+    UserService.prototype.findUserById = function (id) {
+        return USERS.find(function (user) { return user.id === id; });
     };
     // Returns the user in local users array whose username matches the parameter username
-    UserService.prototype.findUserByUsername = function (username) {
+    UserService.prototype.findUserByUsername = function (userName) {
+        return USERS.find(function (user) { return user.userName === userName; });
     };
     // returns the user whose username and password match the username and password parameters
-    UserService.prototype.findUserByCredentials = function (username, password) {
+    UserService.prototype.findUserByCredentials = function (userName, password) {
+        return USERS.find(function (user) { return user.userName === userName; }, function (user) { return user.password === password; });
     };
     // updates the user in local users array whose id matches the userId parameter
-    UserService.prototype.updateUser = function (userId, user) {
+    UserService.prototype.updateUser = function (id, user) {
+        var index = USERS.findIndex(function (user) { return user.id === id; });
+        USERS[index] = user;
     };
     // removes the user whose id matches the userId parameter
-    UserService.prototype.deleteUser = function (userId) {
+    UserService.prototype.deleteUser = function (id) {
+        var index = USERS.findIndex(function (user) { return user.id === id; });
+        USERS.splice(index, 1);
     };
     return UserService;
 }());

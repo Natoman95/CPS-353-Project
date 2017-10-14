@@ -6,7 +6,9 @@ import { NavbarComponent } from './nav/navbar.component'
 import { appRoutes } from './routes'
 import { LoginComponent } from './user/login.component'
 import { FormsModule } from '@angular/forms'
-import { AuthService} from './user/auth.service'
+import { AuthService } from './user/auth.service'
+import { UserService } from './services/user.service'
+
 @NgModule({
     imports: [BrowserModule, RouterModule.forRoot(appRoutes), FormsModule],
     declarations: [WebsitesAppComponent,

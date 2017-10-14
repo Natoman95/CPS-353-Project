@@ -1,6 +1,13 @@
 import { Injectable } from '@angular/core'
-@Injectable()
 
+var users = [
+    {id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
+    {id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
+    {id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
+    {id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
+];
+
+@Injectable()
 export class UserService
 {
     // Adds the user parameter instance to the local users array
@@ -32,11 +39,4 @@ export class UserService
     deleteUser(userId) {
 
     }
-}
-
-const USERS = [
-    {id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
-    {id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-    {id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-    {id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
-];    
+}    

@@ -22,7 +22,8 @@ NavbarComponent = __decorate([
         templateUrl: 'app/nav/navbar.component.html',
         styles: ["\n        .nav.navbar-nav {font-size:15px;}\n        #searchForm {margin-right:100px;}\n        @media (max-width: 1200px){ #searchForm {display:none}}\n        li > a.active {color: #F97924;}\n        "]
     }),
-    __metadata("design:paramtypes", [auth_service_1.AuthService])
+    __metadata("design:paramtypes", [typeof (_a = typeof auth_service_1.AuthService !== "undefined" && auth_service_1.AuthService) === "function" && _a || Object])
 ], NavbarComponent);
 exports.NavbarComponent = NavbarComponent;
+var _a;
 //# sourceMappingURL=navbar.component.js.map

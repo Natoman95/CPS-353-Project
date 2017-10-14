@@ -1,5 +1,5 @@
 ﻿import { Routes } from '@angular/router'
-import {LoginComponent} from './user/login.component'
+import {LoginComponent} from './components/user/login.component'
 
 export const appRoutes:Routes = [
     { path: 'user/login', component: LoginComponent },

@@ -4,9 +4,9 @@ import { BrowserModule } from '@angular/platform-browser'
 import { WebsitesAppComponent } from './websites-app.component'
 import { NavbarComponent } from './nav/navbar.component' 
 import { appRoutes } from './routes'
-import { LoginComponent } from './user/login.component'
+import { LoginComponent } from './components/user/login.component'
 import { FormsModule } from '@angular/forms'
-import { AuthService } from './user/auth.service'
+import { AuthService } from './components/user/auth.service'
 import { UserService } from './services/user.service'
 
 @NgModule({

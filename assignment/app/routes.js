@@ -1,5 +1,5 @@
 "use strict";
-var login_component_1 = require("./user/login.component");
+var login_component_1 = require("./components/user/login.component");
 exports.appRoutes = [
     { path: 'user/login', component: login_component_1.LoginComponent },
     { path: '', redirectTo: '/websites', pathMatch: 'full' }

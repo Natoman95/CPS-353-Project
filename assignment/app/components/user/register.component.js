@@ -22,9 +22,7 @@ var RegisterComponent = (function () {
         return this.authService.verifyPassword(password, duplicate);
     };
     RegisterComponent.prototype.register = function (userName, password) {
-        // I get the feeling that the user service should be doing this, but the assignment doesn't design it this way
-        var id = Math.floor(Math.random() * 900) + 100;
-        var user = { id: id, userName: userName, password: password, firstName: null, lastName: null };
+        this.userService.createUser(userName, password);
         this.router.navigate(["/websites"]);
     };
     RegisterComponent.prototype.cancel = function () {

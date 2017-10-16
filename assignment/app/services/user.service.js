@@ -19,7 +19,10 @@ var UserService = (function () {
     function UserService() {
     }
     // Adds the user parameter instance to the local users array
-    UserService.prototype.createUser = function (user) {
+    UserService.prototype.createUser = function (userName, password) {
+        // generate a random id between 0 and 999 - should probably be next sequentially in some index of existing id's
+        var id = Math.floor(Math.random() * 900) + 100;
+        var user = { id: id, userName: userName, password: password, firstName: null, lastName: null };
         USERS.push(user);
     };
     // Returns the user in local users array whose id matches the userId parameter

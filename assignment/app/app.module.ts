@@ -2,7 +2,6 @@
 import { RouterModule } from '@angular/router'
 import { BrowserModule } from '@angular/platform-browser'
 import { WebsitesAppComponent } from './websites-app.component'
-import { NavbarComponent } from './nav/navbar.component' 
 import { LoginComponent } from './components/user/login.component'
 import { ProfileComponent } from './components/user/profile.component'
 import { RegisterComponent } from './components/user/register.component'
@@ -12,15 +11,14 @@ import { AuthService } from './components/user/auth.service'
 import { UserService } from './services/user.service'
 
 @NgModule({
-    imports: [BrowserModule, RouterModule.forRoot(appRoutes), FormsModule],
-    declarations: [WebsitesAppComponent,
-        NavbarComponent,
-        LoginComponent,
-        ProfileComponent,
-        RegisterComponent],
-    providers: [AuthService,
-        UserService],
-    bootstrap: [WebsitesAppComponent]
+  imports: [BrowserModule, RouterModule.forRoot(appRoutes), FormsModule],
+  declarations: [WebsitesAppComponent,
+    LoginComponent,
+    ProfileComponent,
+    RegisterComponent],
+  providers: [AuthService,
+    UserService],
+  bootstrap: [WebsitesAppComponent]
 })
 
 export class AppModule {

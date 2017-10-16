@@ -1,9 +1,8 @@
 ﻿import { Component } from '@angular/core'
 
 @Component({
-    selector: 'websites-app',
-    template: `
-    <nav-bar></nav-bar>
+  selector: 'websites-app',
+  template: `
     <router-outlet></router-outlet>
    `
 })

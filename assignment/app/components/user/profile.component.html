@@ -6,7 +6,7 @@
       <h2>
         <!-- Linked header icons and words -->
         <span>Profile
-          <a href="profile.html" class="glyph-link">
+          <a [routerLink]="['/user', userId]" class="glyph-link">
             <span class="right-align glyphicon glyphicon-ok"></span>
           </a>
         </span>
@@ -26,10 +26,10 @@
       </form>
 
       <div>
-        <a href="website-list.html" class="btn btn-primary btn-scale">Websites</a>
+        <a href="" class="btn btn-primary btn-scale">Websites</a>
       </div>
       <div>
-        <a href="login.html" class="btn btn-warning btn-scale">Logout</a>
+        <a href="/user/login" class="btn btn-warning btn-scale">Logout</a>
       </div>
     </div>
   </div>

@@ -21,7 +21,7 @@ export class UserService {
 
   // Returns the user in local users array whose id matches the userId parameter
   findUserById(id): IUser {
-    return USERS.find(user => user.id === id);
+    return USERS.find(user => user.id === 1 * id);
   }
 
   // Returns the user in local users array whose username matches the parameter username

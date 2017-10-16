@@ -27,7 +27,7 @@ var UserService = (function () {
     };
     // Returns the user in local users array whose id matches the userId parameter
     UserService.prototype.findUserById = function (id) {
-        return USERS.find(function (user) { return user.id === id; });
+        return USERS.find(function (user) { return user.id === 1 * id; });
     };
     // Returns the user in local users array whose username matches the parameter username
     UserService.prototype.findUserByUsername = function (userName) {

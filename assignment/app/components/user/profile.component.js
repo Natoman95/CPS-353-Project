@@ -10,14 +10,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
+var router_2 = require("@angular/router");
 var user_service_1 = require("../../services/user.service");
 var auth_service_1 = require("./auth.service");
 var ProfileComponent = (function () {
-    function ProfileComponent(userService, authService, router) {
+    function ProfileComponent(userService, authService, router, activatedRoute) {
         this.userService = userService;
         this.authService = authService;
         this.router = router;
+        this.activatedRoute = activatedRoute;
     }
+    ProfileComponent.prototype.ngOnInit = function () {
+        this.authService.currentUser = this.userService.findUserById(this.activatedRoute.snapshot.params['uid']);
+    };
     ProfileComponent.prototype.update = function (userName, email, firstName, lastName) {
         var user = this.authService.currentUser;
         this.userService.updateUser(user.id, user);
@@ -35,7 +40,8 @@ ProfileComponent = __decorate([
     core_1.Component({
         templateUrl: 'app/components/user/profile.component.html'
     }),
-    __metadata("design:paramtypes", [user_service_1.UserService, auth_service_1.AuthService, router_1.Router])
+    __metadata("design:paramtypes", [user_service_1.UserService, auth_service_1.AuthService,
+        router_1.Router, router_2.ActivatedRoute])
 ], ProfileComponent);
 exports.ProfileComponent = ProfileComponent;
 //# sourceMappingURL=profile.component.js.map

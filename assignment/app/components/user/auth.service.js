@@ -9,17 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var user_service_1 = require("../../services/user.service");
 var AuthService = (function () {
-    function AuthService() {
+    function AuthService(userService) {
+        this.userService = userService;
     }
     AuthService.prototype.loginUser = function (userName, password) {
-        this.currentUser = {
-            id: 1,
-            password: "Joe",
-            firstName: "Joe",
-            lastName: "Smith",
-            userName: "jsmith",
-        };
+        this.currentUser = this.userService.findUserByCredentials(userName, password);
     };
     AuthService.prototype.logoutUser = function () {
         this.currentUser = null;
@@ -34,7 +30,7 @@ var AuthService = (function () {
 }());
 AuthService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [user_service_1.UserService])
 ], AuthService);
 exports.AuthService = AuthService;
 //# sourceMappingURL=auth.service.js.map

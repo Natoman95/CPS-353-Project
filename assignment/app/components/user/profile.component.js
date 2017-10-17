@@ -22,6 +22,7 @@ var ProfileComponent = (function () {
     }
     ProfileComponent.prototype.ngOnInit = function () {
         this.authService.currentUser = this.userService.findUserById(this.activatedRoute.snapshot.params['uid']);
+        this.user = this.authService.currentUser;
     };
     ProfileComponent.prototype.update = function (userName, email, firstName, lastName) {
         var user = this.authService.currentUser;

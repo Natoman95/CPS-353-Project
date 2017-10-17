@@ -3,6 +3,7 @@ import { Router } from '@angular/router'
 import { ActivatedRoute } from '@angular/router'
 import { UserService } from '../../services/user.service'
 import { AuthService } from './auth.service'
+import { IUser } from './user.model'
 
 @Component({
   templateUrl: 'app/components/user/profile.component.html'
@@ -10,13 +11,15 @@ import { AuthService } from './auth.service'
 
 export class ProfileComponent {
 
+  user;
+
   constructor(private userService: UserService, private authService: AuthService,
     private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.authService.currentUser = this.userService.findUserById(this.activatedRoute.snapshot.params['uid'])
+    this.user = this.authService.currentUser;
   }
-
 
   update(userName, email, firstName, lastName) {
     var user = this.authService.currentUser;

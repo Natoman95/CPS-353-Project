@@ -10,10 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var USERS = [
-    { id: 123, userName: "alice", password: "alice", firstName: "Alice", lastName: "Wonder" },
-    { id: 234, userName: "bob", password: "bob", firstName: "Bob", lastName: "Marley" },
-    { id: 345, userName: "charly", password: "charly", firstName: "Charly", lastName: "Garcia" },
-    { id: 456, userName: "jannunzi", password: "jannunzi", firstName: "Jose", lastName: "Annunzi" }
+    { id: 123, userName: "alice", password: "alice", firstName: "Alice", lastName: "Wonder", email: "alice.wonder@gordon.edu" },
+    { id: 234, userName: "bob", password: "bob", firstName: "Bob", lastName: "Marley", email: "bob.marley@gordon.edu" },
+    { id: 345, userName: "charly", password: "charly", firstName: "Charly", lastName: "Garcia", email: "charly.garcia@gordon.edu" },
+    { id: 456, userName: "jannunzi", password: "jannunzi", firstName: "Jose", lastName: "Annunzi", email: "jose.annunzi@gordon.edu" }
 ];
 var UserService = (function () {
     function UserService() {
@@ -22,7 +22,7 @@ var UserService = (function () {
     UserService.prototype.createUser = function (userName, password) {
         // generate a random id between 0 and 999 - should probably be next sequentially in some index of existing id's
         var id = Math.floor(Math.random() * 900) + 100;
-        var user = { id: id, userName: userName, password: password, firstName: null, lastName: null };
+        var user = { id: id, userName: userName, password: password, firstName: null, lastName: null, email: null };
         USERS.push(user);
     };
     // Returns the user in local users array whose id matches the userId parameter

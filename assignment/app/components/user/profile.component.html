@@ -16,13 +16,13 @@
     <div class="body-wrapper">
       <form class="form-group">
         <h3>Username</h3>
-        <input class="form-control form-scale" type="text" placeholder="username">
+        <input (ngModule)="userName" name="userName" class="form-control form-scale" type="text" [(value)]="user.userName">
         <h3>Email</h3>
-        <input class="form-control form-scale" type="text" placeholder="email">
+        <input (ngModule)="email" name="email" class="form-control form-scale" [(value)]="user.email">
         <h3>First Name</h3>
-        <input class="form-control form-scale" type="text" placeholder="first name">
+        <input (ngModule)="firstName" name="firstName" class="form-control form-scale" type="text" [(value)]="user.firstName">
         <h3>Last Name</h3>
-        <input class="form-control form-scale" type="text" placeholder="last name">
+        <input (ngModule)="lastName" name="lastName" class="form-control form-scale" type="text" [(value)]="user.lastName">
       </form>
 
       <div>

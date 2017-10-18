@@ -10,8 +10,17 @@ export class AuthService {
 
   currentUser: IUser;
 
-  loginUser(userName: string, password: string) {
-    this.currentUser = this.userService.findUserByCredentials(userName, password);
+  loginUser(userName: string, password: string): boolean {
+    var loggedInUser = this.userService.findUserByCredentials(userName, password);
+    var isSuccessful = false;
+    if (loggedInUser != null) {
+      this.currentUser = loggedInUser;
+      isSuccessful = true;
+    }
+    else {
+      isSuccessful = false;
+    }
+    return isSuccessful;
   }
 
   logoutUser() {

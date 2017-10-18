@@ -15,7 +15,16 @@ var AuthService = (function () {
         this.userService = userService;
     }
     AuthService.prototype.loginUser = function (userName, password) {
-        this.currentUser = this.userService.findUserByCredentials(userName, password);
+        var loggedInUser = this.userService.findUserByCredentials(userName, password);
+        var isSuccessful = false;
+        if (loggedInUser != null) {
+            this.currentUser = loggedInUser;
+            isSuccessful = true;
+        }
+        else {
+            isSuccessful = false;
+        }
+        return isSuccessful;
     };
     AuthService.prototype.logoutUser = function () {
         this.currentUser = null;

@@ -11,10 +11,10 @@
       </form>
 
       <div>
-        <a [routerLink]="['/user', user.id]" (click)="login(user.userName, user.password)" class="btn btn-primary btn-scale">Login</a>
+        <a (click)="login(user.userName, user.password)" class="btn btn-primary btn-scale">Login</a>
       </div>
       <div>
-        <a [routerLink]="['/user/register']" (click)="register()" class="btn btn-secondary btn-scale">Register</a>
+        <a (click)="register()" class="btn btn-secondary btn-scale">Register</a>
       </div>
     </div>
   </div>

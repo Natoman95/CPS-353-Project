@@ -13,10 +13,10 @@
       </form>
 
       <div>
-        <a [routerLink]="['/user', user.id]" (click)="register(user.userName, user.password)" class="btn btn-primary btn-scale">Register</a>
+        <a (click)="register(user.userName, user.password)" class="btn btn-primary btn-scale">Register</a>
       </div>
       <div>
-        <a [routerLink]="['/user/login']" (click)="cancel()" class="btn btn-warning btn-scale">Cancel</a>
+        <a (click)="cancel()" class="btn btn-warning btn-scale">Cancel</a>
       </div>
     </div>
   </div>

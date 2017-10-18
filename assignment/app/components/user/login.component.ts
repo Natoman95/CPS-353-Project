@@ -17,9 +17,11 @@ export class LoginComponent {
     private activatedRoute: ActivatedRoute) { }
 
   login(userName, password) {
-    this.authService.loginUser(userName, password);
-    this.user = this.authService.currentUser; // Set HTML data
-    this.router.navigate(["/user", this.user.id]);
+    var loginSuccessful = this.authService.loginUser(userName, password);
+    if (loginSuccessful) {
+      this.user = this.authService.currentUser; // Set HTML data
+      this.router.navigate(["/user", this.user.id]);
+    }
   }
 
   register() {

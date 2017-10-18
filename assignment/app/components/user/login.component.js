@@ -21,9 +21,11 @@ var LoginComponent = (function () {
         this.user = { id: 0, userName: null, password: null, email: null, firstName: null, lastName: null };
     }
     LoginComponent.prototype.login = function (userName, password) {
-        this.authService.loginUser(userName, password);
-        this.user = this.authService.currentUser; // Set HTML data
-        this.router.navigate(["/user", this.user.id]);
+        var loginSuccessful = this.authService.loginUser(userName, password);
+        if (loginSuccessful) {
+            this.user = this.authService.currentUser; // Set HTML data
+            this.router.navigate(["/user", this.user.id]);
+        }
     };
     LoginComponent.prototype.register = function () {
         this.router.navigate(["/user/register"]);

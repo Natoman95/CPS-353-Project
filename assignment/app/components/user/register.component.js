@@ -26,8 +26,10 @@ var RegisterComponent = (function () {
     RegisterComponent.prototype.register = function (userName, password) {
         this.user = this.userService.createUser(this.user.userName, this.user.password);
         // authenticate the user just created
-        this.authService.loginUser(this.user.userName, this.user.password);
-        this.router.navigate(["/user", this.user.id]);
+        var loginSuccessful = this.authService.loginUser(this.user.userName, this.user.password);
+        if (loginSuccessful) {
+            this.router.navigate(["/user", this.user.id]);
+        }
     };
     RegisterComponent.prototype.cancel = function () {
         this.router.navigate(["/user/login"]);

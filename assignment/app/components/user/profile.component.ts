@@ -23,16 +23,19 @@ export class ProfileComponent {
   }
 
   update(userName, email, firstName, lastName) {
-    var user = this.authService.currentUser;
+    // Unfortunately right now we have to find some of the current values and combine them with values that
+    // have been passed to the function to avoid overwriting some of the values in the user array that
+    // shouldn't be overwritten. I believe the userService should be comparing old and new values, but
+    // that's a little more complex than this assignment requires.
+    var id = this.authService.currentUser.id;
+    var password = this.authService.currentUser.password;
+    var user: IUser = { id: id, userName: userName, password: password, email: email, firstName: firstName, lastName: lastName };
     this.userService.updateUser(user.id, user);
+    this.router.navigate(["/user", this.user.id]);
   }
 
   websites() {
     this.router.navigate(["/websites"]);
-  }
-
-  profile() {
-    this.router.navigate(["/user", this.user.id]);
   }
 
   logout() {

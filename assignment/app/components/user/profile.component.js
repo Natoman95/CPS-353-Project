@@ -27,14 +27,18 @@ var ProfileComponent = (function () {
         this.user = this.authService.currentUser; // Set HTML data
     };
     ProfileComponent.prototype.update = function (userName, email, firstName, lastName) {
-        var user = this.authService.currentUser;
+        // Unfortunately right now we have to find some of the current values and combine them with values that
+        // have been passed to the function to avoid overwriting some of the values in the user array that
+        // shouldn't be overwritten. I believe the userService should be comparing old and new values, but
+        // that's a little more complex than this assignment requires.
+        var id = this.authService.currentUser.id;
+        var password = this.authService.currentUser.password;
+        var user = { id: id, userName: userName, password: password, email: email, firstName: firstName, lastName: lastName };
         this.userService.updateUser(user.id, user);
+        this.router.navigate(["/user", this.user.id]);
     };
     ProfileComponent.prototype.websites = function () {
         this.router.navigate(["/websites"]);
-    };
-    ProfileComponent.prototype.profile = function () {
-        this.router.navigate(["/user", this.user.id]);
     };
     ProfileComponent.prototype.logout = function () {
         this.authService.logoutUser;

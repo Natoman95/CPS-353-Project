@@ -11,7 +11,7 @@ import { IUser } from './user.model'
 export class RegisterComponent {
 
   // HTML binding data to display
-  user: IUser = { id: 0, userName: null, password: null, email: null, firstName: null, lastName: null };
+  user: IUser = { id: null, userName: null, password: null, email: null, firstName: null, lastName: null };
 
   constructor(private userService: UserService, private authService: AuthService, private router: Router) { }
 
@@ -19,10 +19,14 @@ export class RegisterComponent {
     return this.authService.verifyPassword(password, duplicate);
   }
 
-  register(userName, password) {
-    this.user = this.userService.createUser(this.user.userName, this.user.password);
-    // authenticate the user just created
-    var loginSuccessful = this.authService.loginUser(this.user.userName, this.user.password);
+  register(userName, password, email) {
+    var user: IUser = { id: null, userName: userName, password: password, email: email, firstName: null, lastName: null };
+    this.user = this.userService.createUser(user);
+    // authenticate the user just created if it was created successfully
+    var loginSuccessful = false;
+    if (this.user != null) {
+      loginSuccessful = this.authService.loginUser(this.user.userName, this.user.password);
+    }
     if (loginSuccessful) {
       this.router.navigate(["/user", this.user.id]);
     }

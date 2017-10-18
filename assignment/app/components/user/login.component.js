@@ -11,14 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var auth_service_1 = require("./auth.service");
-var router_2 = require("@angular/router");
 var LoginComponent = (function () {
-    function LoginComponent(authService, router, activatedRoute) {
+    function LoginComponent(authService, router) {
         this.authService = authService;
         this.router = router;
-        this.activatedRoute = activatedRoute;
         // HTML binding data to display
-        this.user = { id: 0, userName: null, password: null, email: null, firstName: null, lastName: null };
+        this.user = { id: null, userName: null, password: null, email: null, firstName: null, lastName: null };
     }
     LoginComponent.prototype.login = function (userName, password) {
         var loginSuccessful = this.authService.loginUser(userName, password);
@@ -36,8 +34,7 @@ LoginComponent = __decorate([
     core_1.Component({
         templateUrl: 'app/components/user/login.component.html'
     }),
-    __metadata("design:paramtypes", [auth_service_1.AuthService, router_1.Router,
-        router_2.ActivatedRoute])
+    __metadata("design:paramtypes", [auth_service_1.AuthService, router_1.Router])
 ], LoginComponent);
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map

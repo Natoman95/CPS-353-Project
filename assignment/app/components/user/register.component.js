@@ -18,15 +18,19 @@ var RegisterComponent = (function () {
         this.authService = authService;
         this.router = router;
         // HTML binding data to display
-        this.user = { id: 0, userName: null, password: null, email: null, firstName: null, lastName: null };
+        this.user = { id: null, userName: null, password: null, email: null, firstName: null, lastName: null };
     }
     RegisterComponent.prototype.verifyPassword = function (password, duplicate) {
         return this.authService.verifyPassword(password, duplicate);
     };
-    RegisterComponent.prototype.register = function (userName, password) {
-        this.user = this.userService.createUser(this.user.userName, this.user.password);
-        // authenticate the user just created
-        var loginSuccessful = this.authService.loginUser(this.user.userName, this.user.password);
+    RegisterComponent.prototype.register = function (userName, password, email) {
+        var user = { id: null, userName: userName, password: password, email: email, firstName: null, lastName: null };
+        this.user = this.userService.createUser(user);
+        // authenticate the user just created if it was created successfully
+        var loginSuccessful = false;
+        if (this.user != null) {
+            loginSuccessful = this.authService.loginUser(this.user.userName, this.user.password);
+        }
         if (loginSuccessful) {
             this.router.navigate(["/user", this.user.id]);
         }

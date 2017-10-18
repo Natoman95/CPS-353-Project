@@ -12,11 +12,13 @@ var USERS: Array<IUser> = [
 export class UserService {
 
   // Adds the user parameter instance to the local users array
-  createUser(userName, password): IUser {
-    // generate a random id between 0 and 999 - should probably be next sequentially in some index of existing id's
-    var id = Math.floor(Math.random() * 900) + 100;
-    var user: IUser = { id: id, userName: userName, password: password, firstName: null, lastName: null, email: null };
-    USERS.push(user);
+  createUser(user): IUser {
+    if (user.userName != null && user.password != null) {
+      // generate a random id between 0 and 999 - should probably be next sequentially in some index of existing id's
+      var id = Math.floor(Math.random() * 900) + 100;
+      user.id = id;
+      USERS.push(user);
+    }
     return user;
   }
 

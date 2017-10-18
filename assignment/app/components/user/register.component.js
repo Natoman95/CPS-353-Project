@@ -17,16 +17,20 @@ var RegisterComponent = (function () {
         this.userService = userService;
         this.authService = authService;
         this.router = router;
+        // HTML binding data to display
+        this.user = { id: 0, userName: null, password: null, email: null, firstName: null, lastName: null };
     }
     RegisterComponent.prototype.verifyPassword = function (password, duplicate) {
         return this.authService.verifyPassword(password, duplicate);
     };
     RegisterComponent.prototype.register = function (userName, password) {
-        this.userService.createUser(userName, password);
-        this.router.navigate(["/websites"]);
+        this.user = this.userService.createUser(this.user.userName, this.user.password);
+        // authenticate the user just created
+        this.authService.loginUser(this.user.userName, this.user.password);
+        this.router.navigate(["/user", this.user.id]);
     };
     RegisterComponent.prototype.cancel = function () {
-        this.router.navigate(["/login"]);
+        this.router.navigate(["/user/login"]);
     };
     return RegisterComponent;
 }());

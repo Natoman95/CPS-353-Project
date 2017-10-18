@@ -11,14 +11,15 @@ import { IUser } from './user.model'
 
 export class ProfileComponent {
 
-  user;
+  // HTML binding data to display
+  user: IUser = { id: null, userName: null, password: null, email: null, firstName: null, lastName: null };
 
   constructor(private userService: UserService, private authService: AuthService,
     private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.authService.currentUser = this.userService.findUserById(this.activatedRoute.snapshot.params['uid'])
-    this.user = this.authService.currentUser;
+    this.user = this.authService.currentUser; // Set HTML data
   }
 
   update(userName, email, firstName, lastName) {
@@ -30,9 +31,13 @@ export class ProfileComponent {
     this.router.navigate(["/websites"]);
   }
 
+  profile() {
+    this.router.navigate(["/user", this.user.id]);
+  }
+
   logout() {
     this.authService.logoutUser;
-    this.router.navigate(["/login"]);
+    this.router.navigate(["/user/login"]);
   }
 
 }

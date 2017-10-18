@@ -11,17 +11,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var auth_service_1 = require("./auth.service");
+var router_2 = require("@angular/router");
 var LoginComponent = (function () {
-    function LoginComponent(auth, router) {
-        this.auth = auth;
+    function LoginComponent(authService, router, activatedRoute) {
+        this.authService = authService;
         this.router = router;
+        this.activatedRoute = activatedRoute;
+        // HTML binding data to display
+        this.user = { id: 0, userName: null, password: null, email: null, firstName: null, lastName: null };
     }
-    LoginComponent.prototype.login = function (formValues) {
-        this.auth.loginUser(formValues.userName, formValues.password);
-        this.router.navigate(["/profile"]);
+    LoginComponent.prototype.login = function (userName, password) {
+        this.authService.loginUser(userName, password);
+        this.user = this.authService.currentUser; // Set HTML data
+        this.router.navigate(["/user", this.user.id]);
     };
     LoginComponent.prototype.register = function () {
-        this.router.navigate(["/register"]);
+        this.router.navigate(["/user/register"]);
     };
     return LoginComponent;
 }());
@@ -29,7 +34,8 @@ LoginComponent = __decorate([
     core_1.Component({
         templateUrl: 'app/components/user/login.component.html'
     }),
-    __metadata("design:paramtypes", [auth_service_1.AuthService, router_1.Router])
+    __metadata("design:paramtypes", [auth_service_1.AuthService, router_1.Router,
+        router_2.ActivatedRoute])
 ], LoginComponent);
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map

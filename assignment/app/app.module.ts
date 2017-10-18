@@ -11,7 +11,9 @@ import { AuthService } from './components/user/auth.service'
 import { UserService } from './services/user.service'
 
 @NgModule({
-  imports: [BrowserModule, RouterModule.forRoot(appRoutes), FormsModule],
+  imports: [BrowserModule,
+    RouterModule.forRoot(appRoutes),
+    FormsModule],
   declarations: [WebsitesAppComponent,
     LoginComponent,
     ProfileComponent,

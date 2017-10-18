@@ -5,7 +5,7 @@ import { RegisterComponent } from './components/user/register.component'
 
 export const appRoutes: Routes = [
   { path: 'user/login', component: LoginComponent },
-  { path: 'user/:uid', component: ProfileComponent },
   { path: 'user/register', component: RegisterComponent },
+  { path: 'user/:uid', component: ProfileComponent },
   { path: '', redirectTo: 'user/login', pathMatch: 'full' }
 ]

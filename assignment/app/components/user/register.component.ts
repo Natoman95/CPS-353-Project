@@ -10,6 +10,9 @@ import { IUser } from './user.model'
 
 export class RegisterComponent {
 
+  // HTML binding data to display
+  user: IUser = { id: 0, userName: null, password: null, email: null, firstName: null, lastName: null };
+
   constructor(private userService: UserService, private authService: AuthService, private router: Router) { }
 
   verifyPassword(password, duplicate): boolean {
@@ -17,12 +20,14 @@ export class RegisterComponent {
   }
 
   register(userName, password) {
-    this.userService.createUser(userName, password);
-    this.router.navigate(["/websites"]);
+    this.user = this.userService.createUser(this.user.userName, this.user.password);
+    // authenticate the user just created
+    this.authService.loginUser(this.user.userName, this.user.password);
+    this.router.navigate(["/user", this.user.id]);
   }
 
   cancel() {
-    this.router.navigate(["/login"]);
+    this.router.navigate(["/user/login"]);
   }
 
 }

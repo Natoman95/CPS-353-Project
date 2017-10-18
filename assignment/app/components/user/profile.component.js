@@ -19,10 +19,12 @@ var ProfileComponent = (function () {
         this.authService = authService;
         this.router = router;
         this.activatedRoute = activatedRoute;
+        // HTML binding data to display
+        this.user = { id: null, userName: null, password: null, email: null, firstName: null, lastName: null };
     }
     ProfileComponent.prototype.ngOnInit = function () {
         this.authService.currentUser = this.userService.findUserById(this.activatedRoute.snapshot.params['uid']);
-        this.user = this.authService.currentUser;
+        this.user = this.authService.currentUser; // Set HTML data
     };
     ProfileComponent.prototype.update = function (userName, email, firstName, lastName) {
         var user = this.authService.currentUser;
@@ -31,9 +33,12 @@ var ProfileComponent = (function () {
     ProfileComponent.prototype.websites = function () {
         this.router.navigate(["/websites"]);
     };
+    ProfileComponent.prototype.profile = function () {
+        this.router.navigate(["/user", this.user.id]);
+    };
     ProfileComponent.prototype.logout = function () {
         this.authService.logoutUser;
-        this.router.navigate(["/login"]);
+        this.router.navigate(["/user/login"]);
     };
     return ProfileComponent;
 }());

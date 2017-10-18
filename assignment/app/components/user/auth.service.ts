@@ -8,7 +8,8 @@ export class AuthService {
 
   constructor(private userService: UserService) { }
 
-  currentUser: IUser
+  currentUser: IUser;
+
   loginUser(userName: string, password: string) {
     this.currentUser = this.userService.findUserByCredentials(userName, password);
   }

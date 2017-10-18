@@ -1,21 +1,28 @@
 ﻿import { Component } from '@angular/core'
 import { Router } from '@angular/router'
 import { AuthService } from './auth.service'
+import { IUser } from './user.model'
+import { ActivatedRoute } from '@angular/router'
 
 @Component({
-    templateUrl: 'app/components/user/login.component.html'
+  templateUrl: 'app/components/user/login.component.html'
 })
 
 export class LoginComponent {
 
-    constructor(private auth: AuthService, private router: Router) { }
+  // HTML binding data to display
+  user: IUser = { id: 0, userName: null, password: null, email: null, firstName: null, lastName: null };
 
-    login(formValues) {
-        this.auth.loginUser(formValues.userName, formValues.password)
-        this.router.navigate(["/profile"])
-    }
+  constructor(private authService: AuthService, private router: Router,
+    private activatedRoute: ActivatedRoute) { }
 
-    register() {
-        this.router.navigate(["/register"])
-    }
+  login(userName, password) {
+    this.authService.loginUser(userName, password);
+    this.user = this.authService.currentUser; // Set HTML data
+    this.router.navigate(["/user", this.user.id]);
+  }
+
+  register() {
+    this.router.navigate(["/user/register"]);
+  }
 }

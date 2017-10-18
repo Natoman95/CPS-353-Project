@@ -7,16 +7,16 @@
       </header>
 
       <form class="form-group">
-        <input class="form-control form-scale" type="text" placeholder="username">
-        <input class="form-control form-scale" type="password" placeholder="password">
-        <input class="form-control form-scale" type="email" placeholder="email">
+        <input (ngModule)="userName" name="userName" class="form-control form-scale" type="text" placeholder="username" [(ngModel)]="user.userName">
+        <input (ngModule)="password" name="password" class="form-control form-scale" type="password" placeholder="password" [(ngModel)]="user.password">
+        <input (ngModule)="email" name="email" class="form-control form-scale" type="email" placeholder="email" [(ngModel)]="user.email">
       </form>
 
       <div>
-        <a href="profile.html" class="btn btn-primary btn-scale">Register</a>
+        <a [routerLink]="['/user', user.id]" (click)="register(user.userName, user.password)" class="btn btn-primary btn-scale">Register</a>
       </div>
       <div>
-        <a href="/user/login" class="btn btn-warning btn-scale">Cancel</a>
+        <a [routerLink]="['/user/login']" (click)="cancel()" class="btn btn-warning btn-scale">Cancel</a>
       </div>
     </div>
   </div>

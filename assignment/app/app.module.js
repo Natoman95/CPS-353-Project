@@ -26,7 +26,9 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, router_1.RouterModule.forRoot(routes_1.appRoutes), forms_1.FormsModule],
+        imports: [platform_browser_1.BrowserModule,
+            router_1.RouterModule.forRoot(routes_1.appRoutes),
+            forms_1.FormsModule],
         declarations: [websites_app_component_1.WebsitesAppComponent,
             login_component_1.LoginComponent,
             profile_component_1.ProfileComponent,

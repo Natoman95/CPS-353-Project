@@ -24,6 +24,7 @@ var UserService = (function () {
         var id = Math.floor(Math.random() * 900) + 100;
         var user = { id: id, userName: userName, password: password, firstName: null, lastName: null, email: null };
         USERS.push(user);
+        return user;
     };
     // Returns the user in local users array whose id matches the userId parameter
     UserService.prototype.findUserById = function (id) {

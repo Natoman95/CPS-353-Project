@@ -24,6 +24,9 @@ var LoginComponent = (function () {
             this.user = this.authService.currentUser; // Set HTML data
             this.router.navigate(["/user", this.user.id]);
         }
+        else {
+            this.errorMessage = "User not found.";
+        }
     };
     LoginComponent.prototype.register = function () {
         this.router.navigate(["/user/register"]);

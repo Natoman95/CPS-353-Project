@@ -11,6 +11,7 @@ export class LoginComponent {
 
   // HTML binding data to display
   user: IUser = { id: null, userName: null, password: null, email: null, firstName: null, lastName: null };
+  errorMessage: any;
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -19,6 +20,9 @@ export class LoginComponent {
     if (loginSuccessful) {
       this.user = this.authService.currentUser; // Set HTML data
       this.router.navigate(["/user", this.user.id]);
+    }
+    else {
+      this.errorMessage = "User not found."
     }
   }
 

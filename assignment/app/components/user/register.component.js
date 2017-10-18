@@ -31,8 +31,14 @@ var RegisterComponent = (function () {
         if (this.user != null) {
             loginSuccessful = this.authService.loginUser(this.user.userName, this.user.password);
         }
+        else {
+            this.errorMessage = "Unable to create user.";
+        }
         if (loginSuccessful) {
             this.router.navigate(["/user", this.user.id]);
+        }
+        else {
+            this.errorMessage = "Unable to create user.";
         }
     };
     RegisterComponent.prototype.cancel = function () {

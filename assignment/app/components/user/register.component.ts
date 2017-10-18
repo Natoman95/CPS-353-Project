@@ -12,6 +12,7 @@ export class RegisterComponent {
 
   // HTML binding data to display
   user: IUser = { id: null, userName: null, password: null, email: null, firstName: null, lastName: null };
+  errorMessage: any;
 
   constructor(private userService: UserService, private authService: AuthService, private router: Router) { }
 
@@ -27,8 +28,14 @@ export class RegisterComponent {
     if (this.user != null) {
       loginSuccessful = this.authService.loginUser(this.user.userName, this.user.password);
     }
+    else {
+      this.errorMessage = "Unable to create user."
+    }
     if (loginSuccessful) {
       this.router.navigate(["/user", this.user.id]);
+    }
+    else {
+      this.errorMessage = "Unable to create user."
     }
   }
 

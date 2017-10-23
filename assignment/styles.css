@@ -3,6 +3,7 @@
 body {
   /* Used for sticky footer */
   height: 100%;
+  background-color: white;
 }
 
 html {
@@ -151,6 +152,7 @@ iframe {
 
 .container {
   max-width: 100%;
+  padding: 0;
 }
 
 .embed-responsive {
@@ -201,10 +203,12 @@ iframe {
 h1 {
   font-size: 2em;
   word-wrap: break-word;
+  color: black;
 }
 
 h3 {
   font-size: 1.5em;
+  color: black;
 }
 
 

@@ -5,3 +5,4 @@ typings
 .vscode/
 .DS_Store
 /npm-debug.log
+NodeVersion.nvmrc

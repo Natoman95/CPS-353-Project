@@ -10,7 +10,7 @@ namespace WebApi.Controllers
   [Route("api/[controller]")]
   public class UserController : Controller
   {
-    List<IUser> USERS = new List<IUser>
+    public List<IUser> USERS = new List<IUser>
     {
       new IUser(123, "alice", "alice", "Alice", "Wonder", "alice.wonder@gordon.edu"),
       new IUser(234, "bob", "bob", "Bob", "Marley", "bob.marley@gordon.edu"),
@@ -18,70 +18,154 @@ namespace WebApi.Controllers
       new IUser(456, "jannunzi", "jannunzi", "Jose", "Annunzi", "jose.annunzi@gordon.edu")
     };
 
+    public const string SUCCESS = "success";
+    public const string FAILURE = "failure";
+
+    /* -------------------------------------- HTTP Requests -------------------------------------- */
+
     // GET api/user
+    // GET api/user/?username=username
+    // GET api/user/?username=username&password=password
     [HttpGet]
-    public List<IUser> Get()
+    public List<IUser> Get([FromQuery]string username, [FromQuery]string password)
     {
-      return USERS;
+      List<IUser> foundUsers = new List<IUser>();
+      // no username or password
+      if (username == null)
+      {
+        foundUsers = USERS;
+      }
+      // username but no password
+      else if (username != null && password == null)
+      {
+        IUser user = FindUserByUsername(username);
+        if (user != null)
+        {
+          foundUsers.Add(user);
+        }
+        return foundUsers;
+      }
+      // username and password
+      else if (username != null && password != null)
+      {
+        IUser user = FindUserByCredentials(username, password);
+        if (user != null)
+        {
+          foundUsers.Add(user);
+        }
+        return foundUsers;
+      }
+      return foundUsers;
+    }
+
+    // GET api/user/{id}
+    [HttpGet("{id}")]
+    public IUser Get(int id)
+    {
+      return FindUserById(id);
     }
 
     // POST api/user
     [HttpPost]
     public string Post([FromBody]IUser user)
     {
+      string response = FAILURE;
       if (user != null)
       {
         USERS.Add(user);
-        return "success";
+        response = SUCCESS;
       }
-      else
-      {
-        return "failure";
-      }
+      return response;
     }
 
-    // GET api/user/?username=username
-    // Returns user that matches username
-    [HttpGet]
-    public IUser FindUserByUsername(string username)
+    // PUT api/user/{id}
+    [HttpPut("{id}")]
+    public string Put([FromBody]IUser user, int id)
     {
-      IUser user = null;
-      if (username != null)
+      string response = FAILURE;
+      if (user != null)
       {
-        for (int i = 0; i <= USERS.Count; i++)
+        if (DeleteUserById(id))
         {
-          if (USERS[i].UserName == username)
-          {
-            user = USERS[i];
-          }
+          USERS.Add(user);
+          response = SUCCESS;
         }
       }
-      return user;
+      return response;
     }
 
-    // // GET api/values/5
-    // [HttpGet("{id}")]
-    // public string Get(int id)
-    // {
-    //     return "value";
-    // }
+    // DELETE api/user/{id}
+    [HttpDelete("{id}")]
+    public string Put(int id)
+    {
+      string response = FAILURE;
+      if (DeleteUserById(id))
+      {
+        response = SUCCESS;
+      }
+      return response;
+    }
 
-    // // POST api/values
-    // [HttpPost]
-    // public void Post([FromBody]string value)
-    // {
-    // }
+    /* -------------------------------------- Helper Methods -------------------------------------- */
 
-    // // PUT api/values/5
-    // [HttpPut("{id}")]
-    // public void Put(int id, [FromBody]string value)
-    // {
-    // }
+    // Deletes user that matches id
+    public bool DeleteUserById(int id)
+    {
+      IUser userToDelete = null;
+      bool success = false;
+      foreach (IUser user in USERS)
+      {
+        if (user.Id == id)
+        {
+          userToDelete = user;
+          break;
+        }
+      }
+      if (userToDelete != null)
+      {
+        USERS.Remove(userToDelete);
+        success = true;
+      }
+      return success;
+    }
 
-    // // DELETE api/values/5
-    // [HttpDelete("{id}")]
-    // public void Delete(int id)
-    // {
-    // }
+    // Returns user that matches id
+    public IUser FindUserById(int id)
+    {
+      foreach (IUser user in USERS)
+      {
+        if (user.Id == id)
+        {
+          return user;
+        }
+      }
+      return null;
+    }
+
+    // Returns user that matches username
+    public IUser FindUserByUsername(string userName)
+    {
+      foreach (IUser user in USERS)
+      {
+        if (user.UserName == userName)
+        {
+          return user;
+        }
+      }
+      return null;
+    }
+
+    // Returns user that matches username and password
+    public IUser FindUserByCredentials(string userName, string password)
+    {
+      foreach (IUser user in USERS)
+      {
+        if (user.UserName == userName && user.Password == password)
+        {
+          return user;
+        }
+      }
+      return null;
+    }
   }
 }

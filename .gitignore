@@ -8,5 +8,5 @@ typings
 NodeVersion.nvmrc
 Controllers/UserController.cs
 Models/UserModel.cs
-assignment/WebApi/bin/Debug/
-assignment/WebApi/obj/Debug/
+assignment/WebApi/bin/
+assignment/WebApi/obj/

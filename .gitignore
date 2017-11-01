@@ -6,3 +6,7 @@ typings
 .DS_Store
 /npm-debug.log
 NodeVersion.nvmrc
+Controllers/UserController.cs
+Models/UserModel.cs
+assignment/WebApi/bin/Debug/
+assignment/WebApi/obj/Debug/

@@ -40,6 +40,25 @@ namespace WebApi.Controllers
       }
     }
 
+    // GET api/user/?username=username
+    // Returns user that matches username
+    [HttpGet]
+    public IUser FindUserByUsername(string username)
+    {
+      IUser user = null;
+      if (username != null)
+      {
+        for (int i = 0; i <= USERS.Count; i++)
+        {
+          if (USERS[i].UserName == username)
+          {
+            user = USERS[i];
+          }
+        }
+      }
+      return user;
+    }
+
     // // GET api/values/5
     // [HttpGet("{id}")]
     // public string Get(int id)

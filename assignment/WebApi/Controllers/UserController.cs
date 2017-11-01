@@ -10,7 +10,7 @@ namespace WebApi.Controllers
   [Route("api/[controller]")]
   public class UserController : Controller
   {
-    IUser[] USERS = new IUser[]
+    List<IUser> USERS = new List<IUser>
     {
       new IUser(123, "alice", "alice", "Alice", "Wonder", "alice.wonder@gordon.edu"),
       new IUser(234, "bob", "bob", "Bob", "Marley", "bob.marley@gordon.edu"),
@@ -20,9 +20,24 @@ namespace WebApi.Controllers
 
     // GET api/user
     [HttpGet]
-    public IUser[] Get()
+    public List<IUser> Get()
     {
       return USERS;
+    }
+
+    // POST api/user
+    [HttpPost]
+    public string Post([FromBody]IUser user)
+    {
+      if (user != null)
+      {
+        USERS.Add(user);
+        return "success";
+      }
+      else
+      {
+        return "failure";
+      }
     }
 
     // // GET api/values/5

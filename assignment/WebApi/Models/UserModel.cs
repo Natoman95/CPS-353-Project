@@ -7,6 +7,11 @@ namespace WebApi.Models
 {
   public class IUser
   {
+    public IUser()
+    {
+
+    }
+
     public IUser(string UserName, string Password)
     {
       this.Id = GenerateId();

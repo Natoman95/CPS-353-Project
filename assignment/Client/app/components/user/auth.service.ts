@@ -1,26 +1,22 @@
 ﻿import { Injectable } from '@angular/core'
 import { IUser } from './user.model'
 import { UserService } from '../../services/user.service'
-
+import { Router } from '@angular/router'
 
 @Injectable()
 export class AuthService {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   currentUser: IUser;
 
-  loginUser(userName: string, password: string): boolean {
-    var loggedInUser = this.userService.findUserByCredentials(userName, password);
-    var isSuccessful = false;
-    if (loggedInUser != null) {
-      this.currentUser = loggedInUser;
-      isSuccessful = true;
-    }
-    else {
-      isSuccessful = false;
-    }
-    return isSuccessful;
+  loginUser(userName: string, password: string) {
+    this.userService.findUserByCredentials(userName, password)
+      .subscribe((response) => {
+        if (response.json()) {
+          this.router.navigate(['/user', response.json().id]);
+        }
+      });
   }
 
   logoutUser() {

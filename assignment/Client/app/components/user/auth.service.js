@@ -10,21 +10,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var user_service_1 = require("../../services/user.service");
+var router_1 = require("@angular/router");
 var AuthService = (function () {
-    function AuthService(userService) {
+    function AuthService(userService, router) {
         this.userService = userService;
+        this.router = router;
     }
     AuthService.prototype.loginUser = function (userName, password) {
-        var loggedInUser = this.userService.findUserByCredentials(userName, password);
-        var isSuccessful = false;
-        if (loggedInUser != null) {
-            this.currentUser = loggedInUser;
-            isSuccessful = true;
-        }
-        else {
-            isSuccessful = false;
-        }
-        return isSuccessful;
+        var _this = this;
+        this.userService.findUserByCredentials(userName, password)
+            .subscribe(function (response) {
+            if (response.json()) {
+                _this.router.navigate(['/user', response.json().id]);
+            }
+        });
     };
     AuthService.prototype.logoutUser = function () {
         this.currentUser = null;
@@ -39,7 +38,7 @@ var AuthService = (function () {
 }());
 AuthService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [user_service_1.UserService])
+    __metadata("design:paramtypes", [user_service_1.UserService, router_1.Router])
 ], AuthService);
 exports.AuthService = AuthService;
 //# sourceMappingURL=auth.service.js.map

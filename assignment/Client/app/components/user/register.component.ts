@@ -22,21 +22,15 @@ export class RegisterComponent {
 
   register(userName, password, email) {
     var user: IUser = { id: null, userName: userName, password: password, email: email, firstName: null, lastName: null };
-    this.user = this.userService.createUser(user);
-    // authenticate the user just created if it was created successfully
-    var loginSuccessful = false;
-    if (this.user != null) {
-      loginSuccessful = this.authService.loginUser(this.user.userName, this.user.password);
-    }
-    else {
-      this.errorMessage = "Unable to create user."
-    }
-    if (loginSuccessful) {
-      this.router.navigate(["/user", this.user.id]);
-    }
-    else {
-      this.errorMessage = "Unable to create user."
-    }
+    this.userService.createUser(user).subscribe((response) => {
+      // authenticate the user just created if it was created successfully
+      if (response != null) {
+
+      }
+      else {
+
+      }
+    });
   }
 
   cancel() {

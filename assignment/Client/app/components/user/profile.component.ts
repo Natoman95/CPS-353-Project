@@ -18,8 +18,8 @@ export class ProfileComponent {
     private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.authService.currentUser = this.userService.findUserById(this.activatedRoute.snapshot.params['uid'])
-    this.user = this.authService.currentUser; // Set HTML data
+    // this.authService.currentUser = this.userService.findUserById(this.activatedRoute.snapshot.params['uid'])
+    // this.user = this.authService.currentUser; // Set HTML data
   }
 
   update(userName, email, firstName, lastName) {

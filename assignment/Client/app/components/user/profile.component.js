@@ -23,8 +23,8 @@ var ProfileComponent = (function () {
         this.user = { id: null, userName: null, password: null, email: null, firstName: null, lastName: null };
     }
     ProfileComponent.prototype.ngOnInit = function () {
-        this.authService.currentUser = this.userService.findUserById(this.activatedRoute.snapshot.params['uid']);
-        this.user = this.authService.currentUser; // Set HTML data
+        // this.authService.currentUser = this.userService.findUserById(this.activatedRoute.snapshot.params['uid'])
+        // this.user = this.authService.currentUser; // Set HTML data
     };
     ProfileComponent.prototype.update = function (userName, email, firstName, lastName) {
         // Unfortunately right now we have to find some of the current values and combine them with values that

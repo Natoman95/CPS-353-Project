@@ -20,7 +20,7 @@ var ProfileComponent = (function () {
         this.router = router;
         this.activatedRoute = activatedRoute;
         // HTML binding data to display
-        this.user = { id: null, userName: null, password: null, email: null, firstName: null, lastName: null };
+        this.user = { Id: null, UserName: null, Password: null, Email: null, FirstName: null, LastName: null };
     }
     ProfileComponent.prototype.ngOnInit = function () {
         // this.authService.currentUser = this.userService.findUserById(this.activatedRoute.snapshot.params['uid'])
@@ -31,11 +31,11 @@ var ProfileComponent = (function () {
         // have been passed to the function to avoid overwriting some of the values in the user array that
         // shouldn't be overwritten. I believe the userService should be comparing old and new values, but
         // that's a little more complex than this assignment requires.
-        var id = this.authService.currentUser.id;
-        var password = this.authService.currentUser.password;
-        var user = { id: id, userName: userName, password: password, email: email, firstName: firstName, lastName: lastName };
-        this.userService.updateUser(user.id, user);
-        this.router.navigate(["/user", this.user.id]);
+        var id = this.authService.currentUser.Id;
+        var password = this.authService.currentUser.Password;
+        var user = { Id: id, UserName: userName, Password: password, Email: email, FirstName: firstName, LastName: lastName };
+        this.userService.updateUser(user.Id, user);
+        this.router.navigate(["/user", this.user.Id]);
     };
     ProfileComponent.prototype.websites = function () {
         this.router.navigate(["/websites"]);

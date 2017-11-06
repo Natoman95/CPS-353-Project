@@ -11,7 +11,7 @@ import { IUser } from './user.model'
 export class RegisterComponent {
 
   // HTML binding data to display
-  user: IUser = { id: null, userName: null, password: null, email: null, firstName: null, lastName: null };
+  user: IUser = { Id: null, UserName: null, Password: null, Email: null, FirstName: null, LastName: null };
   errorMessage: any;
 
   constructor(private userService: UserService, private authService: AuthService, private router: Router) { }
@@ -21,15 +21,12 @@ export class RegisterComponent {
   }
 
   register(userName, password, email) {
-    var user: IUser = { id: null, userName: userName, password: password, email: email, firstName: null, lastName: null };
+    var user: IUser = { Id: null, UserName: userName, Password: password, Email: email, FirstName: null, LastName: null };
     this.userService.createUser(user).subscribe((response) => {
       // authenticate the user just created if it was created successfully
-      if (response != null) {
-
-      }
-      else {
-
-      }
+      console.log("Success");
+    }, (error) => {
+      console.log("Error: " + JSON.stringify(error));
     });
   }
 

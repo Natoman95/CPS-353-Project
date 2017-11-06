@@ -10,7 +10,7 @@ import { IUser } from './user.model'
 export class LoginComponent {
 
   // HTML binding data to display
-  user: IUser = { id: null, userName: null, password: null, email: null, firstName: null, lastName: null };
+  user: IUser = { Id: null, UserName: null, Password: null, Email: null, FirstName: null, LastName: null };
   errorMessage: any;
 
   constructor(private authService: AuthService, private router: Router) { }
@@ -19,7 +19,7 @@ export class LoginComponent {
     var loginSuccessful = this.authService.loginUser(userName, password);
     if (loginSuccessful) {
       this.user = this.authService.currentUser; // Set HTML data
-      this.router.navigate(["/user", this.user.id]);
+      this.router.navigate(["/user", this.user.Id]);
     }
     else {
       this.errorMessage = "User not found."

@@ -16,13 +16,13 @@ var LoginComponent = (function () {
         this.authService = authService;
         this.router = router;
         // HTML binding data to display
-        this.user = { id: null, userName: null, password: null, email: null, firstName: null, lastName: null };
+        this.user = { Id: null, UserName: null, Password: null, Email: null, FirstName: null, LastName: null };
     }
     LoginComponent.prototype.login = function (userName, password) {
         var loginSuccessful = this.authService.loginUser(userName, password);
         if (loginSuccessful) {
             this.user = this.authService.currentUser; // Set HTML data
-            this.router.navigate(["/user", this.user.id]);
+            this.router.navigate(["/user", this.user.Id]);
         }
         else {
             this.errorMessage = "User not found.";

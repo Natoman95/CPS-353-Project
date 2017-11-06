@@ -18,19 +18,18 @@ var RegisterComponent = (function () {
         this.authService = authService;
         this.router = router;
         // HTML binding data to display
-        this.user = { id: null, userName: null, password: null, email: null, firstName: null, lastName: null };
+        this.user = { Id: null, UserName: null, Password: null, Email: null, FirstName: null, LastName: null };
     }
     RegisterComponent.prototype.verifyPassword = function (password, duplicate) {
         return this.authService.verifyPassword(password, duplicate);
     };
     RegisterComponent.prototype.register = function (userName, password, email) {
-        var user = { id: null, userName: userName, password: password, email: email, firstName: null, lastName: null };
+        var user = { Id: null, UserName: userName, Password: password, Email: email, FirstName: null, LastName: null };
         this.userService.createUser(user).subscribe(function (response) {
             // authenticate the user just created if it was created successfully
-            if (response != null) {
-            }
-            else {
-            }
+            console.log("Success");
+        }, function (error) {
+            console.log("Error: " + JSON.stringify(error));
         });
     };
     RegisterComponent.prototype.cancel = function () {

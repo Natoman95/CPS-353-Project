@@ -8,13 +8,13 @@
       </header>
 
       <form class="form-group">
-        <input name="userName" class="form-control form-scale" type="text" placeholder="username" [(ngModel)]="user.userName">
-        <input name="password" class="form-control form-scale" type="password" placeholder="password" [(ngModel)]="user.password">
-        <input name="email" class="form-control form-scale" type="email" placeholder="email" [(ngModel)]="user.email">
+        <input name="userName" class="form-control form-scale" type="text" placeholder="username" [(ngModel)]="user.UserName">
+        <input name="password" class="form-control form-scale" type="password" placeholder="password" [(ngModel)]="user.Password">
+        <input name="email" class="form-control form-scale" type="email" placeholder="email" [(ngModel)]="user.Email">
       </form>
 
       <div>
-        <a (click)="register(user.userName, user.password, user.email)" class="btn btn-primary btn-scale">Register</a>
+        <a (click)="register(user.UserName, user.Password, user.Email)" class="btn btn-primary btn-scale">Register</a>
       </div>
       <div>
         <a (click)="cancel()" class="btn btn-warning btn-scale">Cancel</a>

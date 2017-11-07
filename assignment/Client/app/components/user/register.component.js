@@ -12,24 +12,34 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var user_service_1 = require("../../services/user.service");
 var auth_service_1 = require("./auth.service");
+require("rxjs/add/operator/map");
 var RegisterComponent = (function () {
     function RegisterComponent(userService, authService, router) {
         this.userService = userService;
         this.authService = authService;
         this.router = router;
         // HTML binding data to display
-        this.user = { Id: null, UserName: null, Password: null, Email: null, FirstName: null, LastName: null };
+        this.user = { Id: 0, UserName: null, Password: null, Email: null, FirstName: null, LastName: null };
     }
     RegisterComponent.prototype.verifyPassword = function (password, duplicate) {
         return this.authService.verifyPassword(password, duplicate);
     };
     RegisterComponent.prototype.register = function (userName, password, email) {
-        var user = { Id: null, UserName: userName, Password: password, Email: email, FirstName: null, LastName: null };
-        this.userService.createUser(user).subscribe(function (response) {
+        var _this = this;
+        var user = { Id: 0, UserName: userName, Password: password, Email: email, FirstName: null, LastName: null };
+        var userWithId = null; // to be returned by the post - just the above user with a generated id
+        this.userService.createUser(user)
+            .map(function (response) {
+            console.log("Authenticating newly registered user");
+            userWithId = response.json();
             // authenticate the user just created if it was created successfully
+            _this.authService.loginNewRegister(userWithId);
+        })
+            .subscribe(function (response) {
             console.log("Success");
+            _this.router.navigate(['/user', userWithId.id]);
         }, function (error) {
-            console.log("Error: " + JSON.stringify(error));
+            console.log("Error: " + error);
         });
     };
     RegisterComponent.prototype.cancel = function () {

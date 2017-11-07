@@ -8,15 +8,16 @@ export class AuthService {
 
   constructor(private userService: UserService, private router: Router) { }
 
-  currentUser: IUser;
+  currentUser;
 
   loginUser(userName: string, password: string) {
-    this.userService.findUserByCredentials(userName, password)
-      .subscribe((response) => {
-        if (response.json()) {
-          this.router.navigate(['/user', response.json().id]);
-        }
-      });
+    return this.userService.findUserByCredentials(userName, password);
+  }
+
+  // If a user has just been registered, there's no need to send another http request to authenticate
+  // Simply set the newly created user to the currentUser
+  loginNewRegister(user: IUser) {
+    this.currentUser = user;
   }
 
   logoutUser() {

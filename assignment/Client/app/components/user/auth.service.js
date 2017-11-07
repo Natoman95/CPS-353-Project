@@ -17,13 +17,12 @@ var AuthService = (function () {
         this.router = router;
     }
     AuthService.prototype.loginUser = function (userName, password) {
-        var _this = this;
-        this.userService.findUserByCredentials(userName, password)
-            .subscribe(function (response) {
-            if (response.json()) {
-                _this.router.navigate(['/user', response.json().id]);
-            }
-        });
+        return this.userService.findUserByCredentials(userName, password);
+    };
+    // If a user has just been registered, there's no need to send another http request to authenticate
+    // Simply set the newly created user to the currentUser
+    AuthService.prototype.loginNewRegister = function (user) {
+        this.currentUser = user;
     };
     AuthService.prototype.logoutUser = function () {
         this.currentUser = null;

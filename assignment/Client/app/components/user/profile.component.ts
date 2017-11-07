@@ -12,26 +12,44 @@ import { IUser } from './user.model'
 export class ProfileComponent {
 
   // HTML binding data to display
-  user: IUser = { Id: null, UserName: null, Password: null, Email: null, FirstName: null, LastName: null };
+  user: IUser = { Id: 0, UserName: null, Password: null, Email: null, FirstName: null, LastName: null };
 
   constructor(private userService: UserService, private authService: AuthService,
     private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    // this.authService.currentUser = this.userService.findUserById(this.activatedRoute.snapshot.params['uid'])
-    // this.user = this.authService.currentUser; // Set HTML data
+    // Get the user id from the url and populate the page with that user
+    // Set the current user
+    this.userService.findUserById(this.activatedRoute.snapshot.params['uid'])
+      .map((response) => {
+        this.authService.currentUser = response.json();
+        this.user = response.json();
+      })
+      .subscribe((response) => {
+        console.log("Success");
+      }, (error) => {
+        console.log("Error: " + error);
+      });
   }
 
   update(userName, email, firstName, lastName) {
     // Unfortunately right now we have to find some of the current values and combine them with values that
     // have been passed to the function to avoid overwriting some of the values in the user array that
-    // shouldn't be overwritten. I believe the userService should be comparing old and new values, but
+    // shouldn't be overwritten. I believe the back end should be comparing old and new values, but
     // that's a little more complex than this assignment requires.
-    var id = this.authService.currentUser.Id;
-    var password = this.authService.currentUser.Password;
-    var user: IUser = { Id: id, UserName: userName, Password: password, Email: email, FirstName: firstName, LastName: lastName };
-    this.userService.updateUser(user.Id, user);
-    this.router.navigate(["/user", this.user.Id]);
+    let id = this.authService.currentUser.id;
+    let password = this.authService.currentUser.Password;
+    let user: IUser = { Id: id, UserName: userName, Password: password, Email: email, FirstName: firstName, LastName: lastName };
+    console.log(user, id);
+
+    this.userService.updateUser(user.Id, user)
+      .subscribe((response) => {
+        console.log("Success");
+        // refresh the page
+        this.router.navigate(["/user", this.user.Id]);
+      }, (error) => {
+        console.log("Error: " + error);
+      });
   }
 
   websites() {

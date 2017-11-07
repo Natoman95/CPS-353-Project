@@ -10,20 +10,27 @@ import { IUser } from './user.model'
 export class LoginComponent {
 
   // HTML binding data to display
-  user: IUser = { Id: null, UserName: null, Password: null, Email: null, FirstName: null, LastName: null };
-  errorMessage: any;
+  user: IUser = { Id: 0, UserName: null, Password: null, Email: null, FirstName: null, LastName: null };
 
   constructor(private authService: AuthService, private router: Router) { }
 
   login(userName, password) {
-    var loginSuccessful = this.authService.loginUser(userName, password);
-    if (loginSuccessful) {
-      this.user = this.authService.currentUser; // Set HTML data
-      this.router.navigate(["/user", this.user.Id]);
-    }
-    else {
-      this.errorMessage = "User not found."
-    }
+    console.log(userName, password);
+    let userArray = null;
+
+    this.authService.loginUser(userName, password)
+      .map((response) => {
+        console.log("Authenticating user");
+        // get requests return an array of users
+        userArray = response.json();
+        this.user = userArray[0];
+      })
+      .subscribe((response) => {
+        console.log("Success");
+        this.router.navigate(['/user', userArray[0].id]);
+      }, (error) => {
+        console.log("Error: " + error);
+      });
   }
 
   register() {

@@ -19,9 +19,7 @@ var UserService = (function () {
     // Adds the user parameter instance to the local users array
     UserService.prototype.createUser = function (user) {
         console.log(user);
-        // The user needs to be converted to JSON attribute by attribute, otherwise the JSON will not be properly formatted
-        var stringUser = JSON.stringify({ Username: user.UserName, Password: user.Password, FirstName: user.FirstName, LastName: user.LastName, Email: user.Email });
-        return this.http.post(this.url, stringUser, { headers: new http_1.Headers({ 'Content-Type': 'application/json' }) });
+        return this.http.post(this.url, this.stringifyUser(user), { headers: new http_1.Headers({ 'Content-Type': 'application/json' }) });
         //return this.http.post(this.url, JSON.stringify({ user }), { headers: new Headers({ 'Content-Type': 'application/json' }) });
     };
     // Returns the user in local users array whose id matches the userId parameter
@@ -47,12 +45,16 @@ var UserService = (function () {
     // updates the user in local users array whose id matches the userId parameter
     UserService.prototype.updateUser = function (id, user) {
         console.log(id, user);
-        return this.http.post(this.url + "/" + id, JSON.stringify(user), { headers: new http_1.Headers({ 'Content-Type': 'application/json' }) });
+        return this.http.put(this.url + "/" + id, this.stringifyUser(user), { headers: new http_1.Headers({ 'Content-Type': 'application/json' }) });
     };
     // removes the user whose id matches the userId parameter
     UserService.prototype.deleteUser = function (id) {
         console.log(id);
         return this.http.get(this.url + "/" + id);
+    };
+    // The user needs to be converted to JSON attribute by attribute, otherwise the JSON will not be properly formatted
+    UserService.prototype.stringifyUser = function (user) {
+        return JSON.stringify({ Id: user.Id, Username: user.UserName, Password: user.Password, FirstName: user.FirstName, LastName: user.LastName, Email: user.Email });
     };
     return UserService;
 }());

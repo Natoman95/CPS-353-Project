@@ -3,6 +3,7 @@ import { Router } from '@angular/router'
 import { UserService } from '../../services/user.service'
 import { AuthService } from './auth.service'
 import { IUser } from './user.model'
+import 'rxjs/add/operator/map'
 
 @Component({
   templateUrl: 'app/components/user/register.component.html'
@@ -11,8 +12,7 @@ import { IUser } from './user.model'
 export class RegisterComponent {
 
   // HTML binding data to display
-  user: IUser = { Id: null, UserName: null, Password: null, Email: null, FirstName: null, LastName: null };
-  errorMessage: any;
+  user: IUser = { Id: 0, UserName: null, Password: null, Email: null, FirstName: null, LastName: null };
 
   constructor(private userService: UserService, private authService: AuthService, private router: Router) { }
 
@@ -21,13 +21,22 @@ export class RegisterComponent {
   }
 
   register(userName, password, email) {
-    var user: IUser = { Id: null, UserName: userName, Password: password, Email: email, FirstName: null, LastName: null };
-    this.userService.createUser(user).subscribe((response) => {
-      // authenticate the user just created if it was created successfully
-      console.log("Success");
-    }, (error) => {
-      console.log("Error: " + JSON.stringify(error));
-    });
+    let user: IUser = { Id: 0, UserName: userName, Password: password, Email: email, FirstName: null, LastName: null };
+    let userWithId = null; // to be returned by the post - just the above user with a generated id
+
+    this.userService.createUser(user)
+      .map((response) => {
+        console.log("Authenticating newly registered user");
+        userWithId = response.json();
+        // authenticate the user just created if it was created successfully
+        this.authService.loginNewRegister(userWithId);
+      })
+      .subscribe((response) => {
+        console.log("Success");
+        this.router.navigate(['/user', userWithId.id]);
+      }, (error) => {
+        console.log("Error: " + error);
+      });
   }
 
   cancel() {

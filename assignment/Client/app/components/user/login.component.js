@@ -16,17 +16,25 @@ var LoginComponent = (function () {
         this.authService = authService;
         this.router = router;
         // HTML binding data to display
-        this.user = { Id: null, UserName: null, Password: null, Email: null, FirstName: null, LastName: null };
+        this.user = { Id: 0, UserName: null, Password: null, Email: null, FirstName: null, LastName: null };
     }
     LoginComponent.prototype.login = function (userName, password) {
-        var loginSuccessful = this.authService.loginUser(userName, password);
-        if (loginSuccessful) {
-            this.user = this.authService.currentUser; // Set HTML data
-            this.router.navigate(["/user", this.user.Id]);
-        }
-        else {
-            this.errorMessage = "User not found.";
-        }
+        var _this = this;
+        console.log(userName, password);
+        var userArray = null;
+        this.authService.loginUser(userName, password)
+            .map(function (response) {
+            console.log("Authenticating user");
+            // get requests return an array of users
+            userArray = response.json();
+            _this.user = userArray[0];
+        })
+            .subscribe(function (response) {
+            console.log("Success");
+            _this.router.navigate(['/user', userArray[0].id]);
+        }, function (error) {
+            console.log("Error: " + error);
+        });
     };
     LoginComponent.prototype.register = function () {
         this.router.navigate(["/user/register"]);

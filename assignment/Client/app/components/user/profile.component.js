@@ -20,22 +20,41 @@ var ProfileComponent = (function () {
         this.router = router;
         this.activatedRoute = activatedRoute;
         // HTML binding data to display
-        this.user = { Id: null, UserName: null, Password: null, Email: null, FirstName: null, LastName: null };
+        this.user = { Id: 0, UserName: null, Password: null, Email: null, FirstName: null, LastName: null };
     }
     ProfileComponent.prototype.ngOnInit = function () {
-        // this.authService.currentUser = this.userService.findUserById(this.activatedRoute.snapshot.params['uid'])
-        // this.user = this.authService.currentUser; // Set HTML data
+        var _this = this;
+        // Get the user id from the url and populate the page with that user
+        // Set the current user
+        this.userService.findUserById(this.activatedRoute.snapshot.params['uid'])
+            .map(function (response) {
+            _this.authService.currentUser = response.json();
+            _this.user = response.json();
+        })
+            .subscribe(function (response) {
+            console.log("Success");
+        }, function (error) {
+            console.log("Error: " + error);
+        });
     };
     ProfileComponent.prototype.update = function (userName, email, firstName, lastName) {
+        var _this = this;
         // Unfortunately right now we have to find some of the current values and combine them with values that
         // have been passed to the function to avoid overwriting some of the values in the user array that
-        // shouldn't be overwritten. I believe the userService should be comparing old and new values, but
+        // shouldn't be overwritten. I believe the back end should be comparing old and new values, but
         // that's a little more complex than this assignment requires.
-        var id = this.authService.currentUser.Id;
+        var id = this.authService.currentUser.id;
         var password = this.authService.currentUser.Password;
         var user = { Id: id, UserName: userName, Password: password, Email: email, FirstName: firstName, LastName: lastName };
-        this.userService.updateUser(user.Id, user);
-        this.router.navigate(["/user", this.user.Id]);
+        console.log(user, id);
+        this.userService.updateUser(user.Id, user)
+            .subscribe(function (response) {
+            console.log("Success");
+            // refresh the page
+            _this.router.navigate(["/user", _this.user.Id]);
+        }, function (error) {
+            console.log("Error: " + error);
+        });
     };
     ProfileComponent.prototype.websites = function () {
         this.router.navigate(["/websites"]);

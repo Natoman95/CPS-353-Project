@@ -10,7 +10,7 @@ namespace WebApi.Controllers
   [Route("api/[controller]")]
   public class UserController : Controller
   {
-    public List<IUser> USERS = new List<IUser>
+    public static List<IUser> USERS = new List<IUser>
     {
       new IUser(123, "alice", "alice", "Alice", "Wonder", "alice.wonder@gordon.edu"),
       new IUser(234, "bob", "bob", "Bob", "Marley", "bob.marley@gordon.edu"),
@@ -67,15 +67,16 @@ namespace WebApi.Controllers
 
     // POST api/user
     [HttpPost]
-    public string Post([FromBody]IUser user)
+    public IUser Post([FromBody]IUser user)
     {
-      string response = FAILURE;
+      IUser userWithId = null;
       if (user != null)
       {
-        USERS.Add(user);
-        response = SUCCESS;
+        // This user will not come in with id information. This needs to be added
+        userWithId = new IUser(user);
+        USERS.Add(userWithId);
       }
-      return response;
+      return userWithId;
     }
 
     // PUT api/user/{id}

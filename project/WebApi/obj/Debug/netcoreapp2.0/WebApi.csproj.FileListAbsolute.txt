@@ -1,0 +1,10 @@
+/Users/Nathan/Dev/CPS-353-Project/assignment/WebApi/bin/Debug/netcoreapp2.0/WebApi.deps.json
+/Users/Nathan/Dev/CPS-353-Project/assignment/WebApi/bin/Debug/netcoreapp2.0/WebApi.runtimeconfig.json
+/Users/Nathan/Dev/CPS-353-Project/assignment/WebApi/bin/Debug/netcoreapp2.0/WebApi.runtimeconfig.dev.json
+/Users/Nathan/Dev/CPS-353-Project/assignment/WebApi/bin/Debug/netcoreapp2.0/WebApi.dll
+/Users/Nathan/Dev/CPS-353-Project/assignment/WebApi/bin/Debug/netcoreapp2.0/WebApi.pdb
+/Users/Nathan/Dev/CPS-353-Project/assignment/WebApi/obj/Debug/netcoreapp2.0/WebApi.csproj.CoreCompileInputs.cache
+/Users/Nathan/Dev/CPS-353-Project/assignment/WebApi/obj/Debug/netcoreapp2.0/WebApi.AssemblyInfoInputs.cache
+/Users/Nathan/Dev/CPS-353-Project/assignment/WebApi/obj/Debug/netcoreapp2.0/WebApi.AssemblyInfo.cs
+/Users/Nathan/Dev/CPS-353-Project/assignment/WebApi/obj/Debug/netcoreapp2.0/WebApi.dll
+/Users/Nathan/Dev/CPS-353-Project/assignment/WebApi/obj/Debug/netcoreapp2.0/WebApi.pdb

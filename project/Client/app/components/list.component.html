@@ -1,0 +1,25 @@
+<div class="file-wrapper">
+
+  <div class="header-body-wrapper">
+    <div class="body-wrapper">
+
+      <header>
+        <h1>Login</h1>
+      </header>
+
+      <form class="form-group">
+        <input name="userName" class="form-control form-scale" type="text" placeholder="username" (ngModel)="user.UserName">
+        <input name="password" class="form-control form-scale" type="password" placeholder="password" (ngModel)="user.Password">
+      </form>
+
+      <div>
+        <a (click)="login(user.UserName, user.Password)" class="btn btn-primary btn-scale">Login</a>
+      </div>
+      <div>
+        <a (click)="register()" class="btn btn-secondary btn-scale">Register</a>
+      </div>
+
+    </div>
+  </div>
+
+</div>

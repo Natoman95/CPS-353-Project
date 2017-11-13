@@ -10,42 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var auth_service_1 = require("./auth.service");
-var LoginComponent = (function () {
-    function LoginComponent(authService, router) {
-        this.authService = authService;
+var ListComponent = (function () {
+    function ListComponent(router) {
         this.router = router;
-        // HTML binding data to display
-        this.user = { Id: 0, UserName: null, Password: null, Email: null, FirstName: null, LastName: null };
     }
-    LoginComponent.prototype.login = function (userName, password) {
-        var _this = this;
-        console.log(userName, password);
-        var userArray = null;
-        this.authService.loginUser(userName, password)
-            .map(function (response) {
-            console.log("Authenticating user");
-            // get requests return an array of users
-            userArray = response.json();
-            _this.user = userArray[0];
-        })
-            .subscribe(function (response) {
-            console.log("Success");
-            _this.router.navigate(['/user', userArray[0].id]);
-        }, function (error) {
-            console.log("Error: " + error);
-        });
-    };
-    LoginComponent.prototype.register = function () {
-        this.router.navigate(["/user/register"]);
-    };
-    return LoginComponent;
+    return ListComponent;
 }());
-LoginComponent = __decorate([
+ListComponent = __decorate([
     core_1.Component({
-        templateUrl: 'app/components/user/login.component.html'
+        templateUrl: 'app/components/list.component.html'
     }),
-    __metadata("design:paramtypes", [auth_service_1.AuthService, router_1.Router])
-], LoginComponent);
-exports.LoginComponent = LoginComponent;
-//# sourceMappingURL=login.component.js.map
+    __metadata("design:paramtypes", [router_1.Router])
+], ListComponent);
+exports.ListComponent = ListComponent;
+//# sourceMappingURL=list.component.js.map

@@ -1,11 +1,9 @@
 "use strict";
-var login_component_1 = require("./components/user/login.component");
-var profile_component_1 = require("./components/user/profile.component");
-var register_component_1 = require("./components/user/register.component");
+var details_component_1 = require("./components/details.component");
+var list_component_1 = require("./components/list.component");
 exports.appRoutes = [
-    { path: 'user/login', component: login_component_1.LoginComponent },
-    { path: 'user/register', component: register_component_1.RegisterComponent },
-    { path: 'user/:uid', component: profile_component_1.ProfileComponent },
-    { path: '', redirectTo: 'user/login', pathMatch: 'full' }
+    { path: 'user/list', component: list_component_1.ListComponent },
+    { path: 'user/details', component: details_component_1.DetailsComponent },
+    { path: '', redirectTo: 'user/list', pathMatch: 'full' }
 ];
 //# sourceMappingURL=routes.js.map

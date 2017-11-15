@@ -10,13 +10,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
+var http_2 = require("@angular/http");
+require("rxjs/add/operator/map");
 var AcademicQueryService = (function () {
     function AcademicQueryService(http) {
         this.http = http;
-        this.url = "";
+        this.url = "http://localhost:5000/microsoft-academic/academicquery";
     }
+    AcademicQueryService.prototype.search = function (query) {
+        console.log("academic-query.service query: " + query);
+        var params = new http_2.URLSearchParams();
+        params.set('query', query);
+        this.http.get(this.url, { search: params, headers: new http_1.Headers({ 'Content-Type': 'application/json' }) })
+            .map(function (response) {
+            console.log("Getting search results from server");
+            // get requests return an array of users
+            AcademicQueryService.searchResults = response.json();
+        })
+            .subscribe(function (response) {
+            console.log("Success");
+        }, function (error) {
+            console.log("Error: " + error);
+        });
+    };
+    AcademicQueryService.prototype.getSearchResults = function () {
+        return AcademicQueryService.searchResults;
+    };
     return AcademicQueryService;
 }());
+AcademicQueryService.searchResults = null;
 AcademicQueryService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [http_1.Http])

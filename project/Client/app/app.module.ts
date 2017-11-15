@@ -1,6 +1,4 @@
-﻿import { AcademicQueryService } from './services/academic-query.service';
-import { DetailsComponent } from './components/details.component';
-import { ListComponent } from './components/list.component';
+﻿import { DetailsComponent } from './components/details.component';
 import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
 import { BrowserModule } from '@angular/platform-browser'
@@ -8,25 +6,18 @@ import { HttpModule } from '@angular/http'
 import { WebsitesAppComponent } from './websites-app.component'
 import { appRoutes } from './routes'
 import { FormsModule } from '@angular/forms'
+import { ListComponent } from './components/list.component';
+import { AcademicQueryService } from './services/academic-query.service';
 
 @NgModule({
-  // Angular imports
-  imports: [
-    BrowserModule,
+  imports: [BrowserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    HttpModule
-  ],
-  // Components
-  declarations: [
-    WebsitesAppComponent,
+    HttpModule],
+  declarations: [WebsitesAppComponent,
     ListComponent,
-    DetailsComponent
-  ],
-  // Services
-  providers: [
-    AcademicQueryService
-  ],
+    DetailsComponent],
+  providers: [AcademicQueryService],
   bootstrap: [WebsitesAppComponent]
 })
 

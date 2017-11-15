@@ -1,6 +1,6 @@
-﻿import { DetailsComponent } from './components/details.component';
-import { Routes } from '@angular/router'
+﻿import { Routes } from '@angular/router'
 import { ListComponent } from './components/list.component';
+import { DetailsComponent } from './components/details.component';
 
 export const appRoutes: Routes = [
   { path: 'user/list', component: ListComponent },

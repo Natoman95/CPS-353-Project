@@ -8,11 +8,11 @@
       </header>
 
       <form class="form-group">
-        <input name="search" class="form-control form-scale" type="text" placeholder="search">
+        <input name="search" class="form-control form-scale" type="text" placeholder="search" [(ngModel)]="query" />
       </form>
 
       <div>
-        <a class="btn btn-primary btn-scale">Search</a>
+        <a class="btn btn-primary btn-scale" (click)="search(query)">Search</a>
       </div>
 
     </div>

@@ -6,7 +6,23 @@
       <header>
         <h1>Details</h1>
       </header>
-      <p>{{getSearchResults()}}</p>
+
+      <table *ngIf="work !== null" class="basic-table">
+        <tbody>
+          <tr class="basic-row">
+            <th class="basic-col">Title</th>
+            <th class="basic-col">Year</th>
+            <th class="basic-col">Author</th>
+            <th class="basic-col">Author ID</th>
+          </tr>
+          <tr class="basic-row">
+            <td class="basic-col">"{{work.title}}"</td>
+            <td class="basic-col">{{work.year}}</td>
+            <td class="basic-col">{{work.author}}</td>
+            <td class="basic-col">{{work.authorId}}</td>
+          </tr>
+        </tbody>
+      </table>
 
     </div>
   </div>

@@ -12,13 +12,25 @@ export class ListComponent {
 
   constructor(private router: Router, private academicSvc: AcademicQueryService) { }
 
+  // Get academic data about the query
   public search(query: string) {
     console.log("list.component query: " + query);
     let searchResults = null;
 
     if (query != null) {
       this.academicSvc.search(query);
-      this.router.navigate(["/user/details"]);
     }
+  }
+
+  // Retrieve the results of that search
+  public getSearchResults() {
+    return this.academicSvc.getSearchResults();
+  }
+
+  // Navigate to the details page upon clicking one item of the search results
+  public getDetails(work) {
+    // Save the details that will be displayed on the details page
+    this.academicSvc.setDetails(work);
+    this.router.navigate(["/user/details"]);
   }
 }

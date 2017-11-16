@@ -9,9 +9,13 @@ import { ActivatedRoute } from '@angular/router'
 
 export class DetailsComponent {
 
+  private work = null;
+
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private academicSvc: AcademicQueryService) { }
 
-  public getSearchResults() {
-    return JSON.stringify(this.academicSvc.getSearchResults());
+  ngOnInit() {
+    // Retrieve stored details from the list of search results
+    this.work = this.academicSvc.getDetails();
+    console.log(this.work);
   }
 }

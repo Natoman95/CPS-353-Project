@@ -37,7 +37,7 @@ namespace WebApi
       }
 
       app.UseCors(
-               options => options.WithOrigins("http://localhost:8808").AllowAnyMethod().AllowAnyHeader()
+               options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
            );
 
       app.UseMvc();

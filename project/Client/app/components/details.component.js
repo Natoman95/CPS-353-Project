@@ -17,9 +17,12 @@ var DetailsComponent = (function () {
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.academicSvc = academicSvc;
+        this.work = null;
     }
-    DetailsComponent.prototype.getSearchResults = function () {
-        return JSON.stringify(this.academicSvc.getSearchResults());
+    DetailsComponent.prototype.ngOnInit = function () {
+        // Retrieve stored details from the list of search results
+        this.work = this.academicSvc.getDetails();
+        console.log(this.work);
     };
     return DetailsComponent;
 }());

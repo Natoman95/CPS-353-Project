@@ -17,6 +17,7 @@ var AcademicQueryService = (function () {
         this.http = http;
         this.url = "http://localhost:5000/microsoft-academic/academicquery";
     }
+    // Takes a user query and searches microsoft academic knowledge for relevant results via another server
     AcademicQueryService.prototype.search = function (query) {
         console.log("academic-query.service query: " + query);
         var params = new http_2.URLSearchParams();
@@ -26,6 +27,7 @@ var AcademicQueryService = (function () {
             console.log("Getting search results from server");
             // get requests return an array of users
             AcademicQueryService.searchResults = response.json();
+            console.log(AcademicQueryService.searchResults);
         })
             .subscribe(function (response) {
             console.log("Success");
@@ -33,12 +35,22 @@ var AcademicQueryService = (function () {
             console.log("Error: " + error);
         });
     };
+    // The results of the search function are stored statically in this class
     AcademicQueryService.prototype.getSearchResults = function () {
         return AcademicQueryService.searchResults;
+    };
+    // This class also stores the details of a particular search result item
+    AcademicQueryService.prototype.getDetails = function () {
+        return AcademicQueryService.details;
+    };
+    // This sets the detailed information for a particular search result item
+    AcademicQueryService.prototype.setDetails = function (work) {
+        AcademicQueryService.details = work;
     };
     return AcademicQueryService;
 }());
 AcademicQueryService.searchResults = null;
+AcademicQueryService.details = null;
 AcademicQueryService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [http_1.Http])

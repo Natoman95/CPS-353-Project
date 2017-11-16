@@ -17,13 +17,23 @@ var ListComponent = (function () {
         this.academicSvc = academicSvc;
         this.query = null;
     }
+    // Get academic data about the query
     ListComponent.prototype.search = function (query) {
         console.log("list.component query: " + query);
         var searchResults = null;
         if (query != null) {
             this.academicSvc.search(query);
-            this.router.navigate(["/user/details"]);
         }
+    };
+    // Retrieve the results of that search
+    ListComponent.prototype.getSearchResults = function () {
+        return this.academicSvc.getSearchResults();
+    };
+    // Navigate to the details page upon clicking one item of the search results
+    ListComponent.prototype.getDetails = function (work) {
+        // Save the details that will be displayed on the details page
+        this.academicSvc.setDetails(work);
+        this.router.navigate(["/user/details"]);
     };
     return ListComponent;
 }());

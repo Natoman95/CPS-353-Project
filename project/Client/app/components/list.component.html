@@ -15,6 +15,17 @@
         <a class="btn btn-primary btn-scale" (click)="search(query)">Search</a>
       </div>
 
+      <table *ngIf="getSearchResults() !== null" class="basic-table">
+        <tbody>
+          <tr class="basic-row">
+            <th class="basic-col">Title</th>
+          </tr>
+          <tr *ngFor="let work of getSearchResults()" class="basic-row">
+            <td class="basic-col link-text" (click)="getDetails(work)">"{{work.title}}"</td>
+          </tr>
+        </tbody>
+      </table>
+
     </div>
   </div>
 

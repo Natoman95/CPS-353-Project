@@ -73,6 +73,31 @@ iframe {
   margin: .25em;
 }
 
+.basic-table {
+  font-size: 1em;
+  margin-right: .5em;
+  margin-left: .5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  color: black;
+  border: 1px solid rgb(189, 189, 189);
+}
+
+.basic-row {
+  padding: .5em;
+  border: 1px solid rgb(189, 189, 189);
+}
+
+.basic-col {
+  padding: .5em;
+  border: 1px solid rgb(189, 189, 189);
+}
+
+.link-text {
+  color: rgb(0, 102, 255);
+  cursor: pointer;
+}
+
 .left-align {
   float: left;
 }

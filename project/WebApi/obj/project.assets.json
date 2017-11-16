@@ -12797,11 +12797,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/Nathan/Dev/CPS-353-Project/project/WebApi/WebApi.csproj",
+      "projectUniqueName": "/Users/Nathan/Dev/CPS-353-Project/POC/WebApi/WebApi.csproj",
       "projectName": "WebApi",
-      "projectPath": "/Users/Nathan/Dev/CPS-353-Project/project/WebApi/WebApi.csproj",
+      "projectPath": "/Users/Nathan/Dev/CPS-353-Project/POC/WebApi/WebApi.csproj",
       "packagesPath": "/Users/Nathan/.nuget/packages/",
-      "outputPath": "/Users/Nathan/Dev/CPS-353-Project/project/WebApi/obj/",
+      "outputPath": "/Users/Nathan/Dev/CPS-353-Project/POC/WebApi/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

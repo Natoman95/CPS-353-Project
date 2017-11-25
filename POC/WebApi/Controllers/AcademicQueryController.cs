@@ -21,15 +21,17 @@ namespace WebApi.Controllers
 
     /* -------------------------------------- HTTP Requests -------------------------------------- */
 
+    // Interpret the user's request and find matching academic works by calling microsoft's api's
+    // and formatting the results
     [HttpGet]
-    public List<ResponseAcademicWork> Get([FromQuery] string query)
+    public List<ApiAcademicWork> Get([FromQuery] string query)
     {
       // Interpret the user's query in a variety of ways
       List<string> queryInterpretations = getQueryInterpretations(query);
       // Take those interpretations and get information on the related scholarly works
       List<dynamic> interpretationEvaluations = getInterpretationEvaluations(queryInterpretations);
       // Convert the resulting data into useful objects
-      List<ResponseAcademicWork> works = createWorkObjects(interpretationEvaluations);
+      List<ApiAcademicWork> works = createWorkObjects(interpretationEvaluations);
 
       return works;
     }
@@ -87,9 +89,9 @@ namespace WebApi.Controllers
       return evaluations;
     }
 
-    private List<ResponseAcademicWork> createWorkObjects(List<dynamic> interpretationEvaluations)
+    private List<ApiAcademicWork> createWorkObjects(List<dynamic> interpretationEvaluations)
     {
-      List<ResponseAcademicWork> worksList = new List<ResponseAcademicWork>();
+      List<ApiAcademicWork> worksList = new List<ApiAcademicWork>();
 
       // convert returned data on scholarly works into more useful objects
       foreach (dynamic evaluation in interpretationEvaluations)
@@ -101,7 +103,7 @@ namespace WebApi.Controllers
         long authorId = (long)evaluation.entities[0].AA[0].AuId;
 
         // add object to a list
-        ResponseAcademicWork respWork = new ResponseAcademicWork(title, year, author, authorId);
+        ApiAcademicWork respWork = new ApiAcademicWork(title, year, author, authorId);
         worksList.Add(respWork);
       }
 

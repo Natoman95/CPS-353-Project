@@ -8,6 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var profile_component_1 = require("./components/user/profile.component");
+var register_component_1 = require("./components/user/register.component");
+var login_component_1 = require("./components/user/login.component");
 var details_component_1 = require("./components/details.component");
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
@@ -31,7 +34,10 @@ AppModule = __decorate([
             http_1.HttpModule],
         declarations: [websites_app_component_1.WebsitesAppComponent,
             list_component_1.ListComponent,
-            details_component_1.DetailsComponent],
+            details_component_1.DetailsComponent,
+            login_component_1.LoginComponent,
+            profile_component_1.ProfileComponent,
+            register_component_1.RegisterComponent],
         providers: [academic_query_service_1.AcademicQueryService],
         bootstrap: [websites_app_component_1.WebsitesAppComponent]
     }),

@@ -15,7 +15,7 @@ var LoginComponent = (function () {
         this.router = router;
     }
     LoginComponent.prototype.login = function (userName, password) {
-        this.router.navigate(['/user']);
+        this.router.navigate(['/user/profile']);
     };
     LoginComponent.prototype.register = function () {
         this.router.navigate(["/user/register"]);

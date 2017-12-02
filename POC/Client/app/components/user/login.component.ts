@@ -10,7 +10,7 @@ export class LoginComponent {
   constructor(private router: Router) { }
 
   login(userName, password) {
-    this.router.navigate(['/user']);
+    this.router.navigate(['/user/profile']);
   }
 
   register() {

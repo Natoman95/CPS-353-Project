@@ -1,4 +1,7 @@
-﻿import { DetailsComponent } from './components/details.component';
+﻿import { ProfileComponent } from './components/user/profile.component';
+import { RegisterComponent } from './components/user/register.component';
+import { LoginComponent } from './components/user/login.component';
+import { DetailsComponent } from './components/details.component';
 import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
 import { BrowserModule } from '@angular/platform-browser'
@@ -16,7 +19,10 @@ import { AcademicQueryService } from './services/academic-query.service';
     HttpModule],
   declarations: [WebsitesAppComponent,
     ListComponent,
-    DetailsComponent],
+    DetailsComponent,
+    LoginComponent,
+    ProfileComponent,
+    RegisterComponent],
   providers: [AcademicQueryService],
   bootstrap: [WebsitesAppComponent]
 })

@@ -15,7 +15,7 @@ export class RegisterComponent {
   }
 
   register(userName, password, email) {
-    this.router.navigate(['/user']);
+    this.router.navigate(['/user/profile']);
   }
 
   cancel() {

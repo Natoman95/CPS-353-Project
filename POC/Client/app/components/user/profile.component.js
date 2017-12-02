@@ -18,9 +18,6 @@ var ProfileComponent = (function () {
     }
     ProfileComponent.prototype.update = function (userName, email, firstName, lastName) {
     };
-    ProfileComponent.prototype.websites = function () {
-        this.router.navigate(["/websites"]);
-    };
     ProfileComponent.prototype.logout = function () {
         this.router.navigate(["/user/login"]);
     };

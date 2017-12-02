@@ -19,6 +19,7 @@ var RegisterComponent = (function () {
         return true;
     };
     RegisterComponent.prototype.register = function (userName, password, email) {
+        this.router.navigate(['/user']);
     };
     RegisterComponent.prototype.cancel = function () {
         this.router.navigate(["/user/login"]);

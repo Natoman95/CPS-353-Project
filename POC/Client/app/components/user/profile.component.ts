@@ -14,10 +14,6 @@ export class ProfileComponent {
 
   }
 
-  websites() {
-    this.router.navigate(["/websites"]);
-  }
-
   logout() {
     this.router.navigate(["/user/login"]);
   }

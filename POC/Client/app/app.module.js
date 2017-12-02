@@ -8,6 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var auth_service_1 = require("./services/auth.service");
+var user_service_1 = require("./services/user.service");
 var profile_component_1 = require("./components/user/profile.component");
 var register_component_1 = require("./components/user/register.component");
 var login_component_1 = require("./components/user/login.component");
@@ -38,7 +40,9 @@ AppModule = __decorate([
             login_component_1.LoginComponent,
             profile_component_1.ProfileComponent,
             register_component_1.RegisterComponent],
-        providers: [academic_query_service_1.AcademicQueryService],
+        providers: [academic_query_service_1.AcademicQueryService,
+            user_service_1.UserService,
+            auth_service_1.AuthService],
         bootstrap: [websites_app_component_1.WebsitesAppComponent]
     }),
     __metadata("design:paramtypes", [])

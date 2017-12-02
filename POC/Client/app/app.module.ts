@@ -1,4 +1,6 @@
-﻿import { ProfileComponent } from './components/user/profile.component';
+﻿import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
+import { ProfileComponent } from './components/user/profile.component';
 import { RegisterComponent } from './components/user/register.component';
 import { LoginComponent } from './components/user/login.component';
 import { DetailsComponent } from './components/details.component';
@@ -23,7 +25,9 @@ import { AcademicQueryService } from './services/academic-query.service';
     LoginComponent,
     ProfileComponent,
     RegisterComponent],
-  providers: [AcademicQueryService],
+  providers: [AcademicQueryService,
+    UserService,
+    AuthService],
   bootstrap: [WebsitesAppComponent]
 })
 

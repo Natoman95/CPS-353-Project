@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using WebApi.Services;
 
 namespace WebApi.Models
 {
@@ -11,6 +12,13 @@ namespace WebApi.Models
     public long Id { get; set; }
 
     private List<Department> departments = new List<Department>();
+
+    public User(string password, string email)
+    {
+      this.Password = password;
+      this.Email = email;
+      this.Id = UserService.GetInstance().GenerateId();
+    }
 
     public List<Department> GetDepartments()
     {

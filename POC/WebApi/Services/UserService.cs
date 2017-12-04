@@ -26,19 +26,45 @@ namespace WebApi.Services
       }
     }
 
+    public long GenerateId()
+    {
+      long id = DBService.CurrentId;
+      DBService.CurrentId = DBService.CurrentId + 1;
+      return id;
+    }
+
     public void AddUser(User user)
     {
-      DBService.AddUser(user);
+      DBService.Users.Add(user);
     }
 
     public bool RemoveUser(long id)
     {
-      return DBService.RemoveUser(id);
+      User userToRemove = FindUserById(id);
+      bool success = false;
+
+      if (userToRemove != null)
+      {
+        DBService.Users.Remove(userToRemove);
+        success = true;
+      }
+
+      return success;
     }
 
-    public long GenerateId()
+    public User FindUserById(long id)
     {
-      return DBService.CurrentId;
+      User foundUser = null;
+
+      foreach (User user in DBService.Users)
+      {
+        if (user.Id == id)
+        {
+          foundUser = user;
+        }
+      }
+
+      return foundUser;
     }
   }
 }

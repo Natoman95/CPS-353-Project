@@ -5,6 +5,7 @@ namespace WebApi.Models
 {
   public abstract class User
   {
+    public string UserName { get; set; }
     public string Password { get; set; }
 
     public string Email { get; set; }
@@ -13,11 +14,12 @@ namespace WebApi.Models
 
     private List<Department> departments = new List<Department>();
 
-    public User(string password, string email)
+    public User(string userName, string password, string email)
     {
+      this.UserName = userName;
       this.Password = password;
       this.Email = email;
-      this.Id = UserService.GetInstance().GenerateId();
+      this.Id = UserService.Instance.GenerateId();
     }
 
     public List<Department> GetDepartments()

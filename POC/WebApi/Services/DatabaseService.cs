@@ -7,16 +7,16 @@ namespace WebApi.Services
   {
     private static DatabaseService theInstance = null;
 
-    private static long currentId = 00000001;
-
-    private static List<User> users = new List<User>()
+    private DatabaseService()
     {
-      new Student("password123", "bob.marley@gordon.edu"),
-      new Scholar("yoyo@97", "joe.bloggs@gordon.edu"),
-      new Institution("livesworthleading1889", "gordon@gordon.edu"),
-    };
-
-    private DatabaseService() { }
+      CurrentId = 00000001;
+      Users = new List<User>()
+      {
+        new Student("BMarl", "password123", "bob.marley@gordon.edu"),
+        new Scholar("Bloggo_doggo", "yoyo@97", "joe.bloggs@gordon.edu"),
+        new Institution("GoCo", "livesworthleading1889", "gordon@gordon.edu"),
+      };
+    }
 
     public static DatabaseService Instance
     {
@@ -30,40 +30,8 @@ namespace WebApi.Services
       }
     }
 
-    public long CurrentId
-    {
-      get
-      {
-        long id = DatabaseService.currentId;
-        long currentId = DatabaseService.currentId + 1;
-        return id;
-      }
-    }
+    public long CurrentId { get; set; }
 
-    public void AddUser(User user)
-    {
-      users.Add(user);
-    }
-
-    public bool RemoveUser(long id)
-    {
-      User userToRemove = null;
-      bool success = false;
-
-      foreach (User user in users)
-      {
-        if (user.Id == id)
-        {
-          userToRemove = user;
-          success = true;
-        }
-      }
-      if (userToRemove != null)
-      {
-        users.Remove(userToRemove);
-      }
-
-      return success;
-    }
+    public List<User> Users { get; set; }
   }
 }

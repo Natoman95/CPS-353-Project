@@ -17,7 +17,7 @@ namespace WebApi.Controllers
   {
     private string interpretUrl = "https://westus.api.cognitive.microsoft.com/academic/v1.0/interpret";
     private string evaluateUrl = "https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate";
-    private ApiModel apiModel = new ApiModel();
+    private ApiData apiData = new ApiData();
 
     /* -------------------------------------- HTTP Requests -------------------------------------- */
 
@@ -41,7 +41,7 @@ namespace WebApi.Controllers
     private List<string> getQueryInterpretations(string query)
     {
       // Perform a web request to interpret the user's query
-      WebRequest request = WebRequest.Create(interpretUrl + "?query=" + query + "&count=10" + "&complete=1" + "&subscription-key=" + apiModel.getMicrosoftKey());
+      WebRequest request = WebRequest.Create(interpretUrl + "?query=" + query + "&count=10" + "&complete=1" + "&subscription-key=" + apiData.getMicrosoftKey());
       request.Method = "GET";
 
       WebResponse response = request.GetResponse();
@@ -72,7 +72,7 @@ namespace WebApi.Controllers
       // scholarly works
       foreach (string interpretation in queryInterpretations)
       {
-        WebRequest request = WebRequest.Create(evaluateUrl + "?count=1" + "&expr=" + interpretation + "&attributes=" + "Ti,Y,CC,AA.AuN,AA.AuId" + "&subscription-key=" + apiModel.getMicrosoftKey());
+        WebRequest request = WebRequest.Create(evaluateUrl + "?count=1" + "&expr=" + interpretation + "&attributes=" + "Ti,Y,CC,AA.AuN,AA.AuId" + "&subscription-key=" + apiData.getMicrosoftKey());
         request.Method = "GET";
 
         WebResponse response = request.GetResponse();

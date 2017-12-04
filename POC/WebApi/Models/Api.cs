@@ -1,6 +1,6 @@
 namespace WebApi.Models
 {
-  public class ApiModel
+  public class ApiData
   {
     public string getMicrosoftKey()
     {

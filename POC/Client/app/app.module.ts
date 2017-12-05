@@ -11,7 +11,7 @@ import { HttpModule } from '@angular/http'
 import { WebsitesAppComponent } from './websites-app.component'
 import { appRoutes } from './routes'
 import { FormsModule } from '@angular/forms'
-import { ListComponent } from './components/list.component';
+import { SearchComponent } from './components/search.component';
 import { AcademicQueryService } from './services/academic-query.service';
 
 @NgModule({
@@ -20,7 +20,7 @@ import { AcademicQueryService } from './services/academic-query.service';
     FormsModule,
     HttpModule],
   declarations: [WebsitesAppComponent,
-    ListComponent,
+    SearchComponent,
     DetailsComponent,
     LoginComponent,
     ProfileComponent,

@@ -6,7 +6,7 @@ import { Router } from '@angular/router'
   templateUrl: 'app/components/list.component.html'
 })
 
-export class ListComponent {
+export class SearchComponent {
 
   public query: string = null;
 

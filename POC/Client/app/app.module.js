@@ -21,7 +21,7 @@ var http_1 = require("@angular/http");
 var websites_app_component_1 = require("./websites-app.component");
 var routes_1 = require("./routes");
 var forms_1 = require("@angular/forms");
-var list_component_1 = require("./components/list.component");
+var search_component_1 = require("./components/search.component");
 var academic_query_service_1 = require("./services/academic-query.service");
 var AppModule = (function () {
     function AppModule() {
@@ -35,7 +35,7 @@ AppModule = __decorate([
             forms_1.FormsModule,
             http_1.HttpModule],
         declarations: [websites_app_component_1.WebsitesAppComponent,
-            list_component_1.ListComponent,
+            search_component_1.SearchComponent,
             details_component_1.DetailsComponent,
             login_component_1.LoginComponent,
             profile_component_1.ProfileComponent,

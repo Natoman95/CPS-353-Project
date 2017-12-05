@@ -12,8 +12,12 @@ namespace WebApi.Controllers
     [HttpGet]
     public User Get([FromQuery] string id)
     {
-      long idLong = Convert.ToInt64(id);
-      User user = UserService.Instance.FindUserById(idLong);
+      User user = null;
+      if (id != null)
+      {
+        long idLong = Convert.ToInt64(id);
+        user = UserService.Instance.FindUserById(idLong);
+      }
 
       return user;
     }

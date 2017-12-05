@@ -12,7 +12,7 @@ namespace WebApi.Controllers
     public User Get([FromQuery] string userName, string password)
     {
       User user = UserService.Instance.FindUserByUserName(userName);
-      if (user.Password == password)
+      if (user != null && user.Password == password)
       {
         return user;
       }

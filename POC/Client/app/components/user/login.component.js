@@ -8,14 +8,32 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var auth_service_1 = require("./../../services/auth.service");
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var LoginComponent = (function () {
-    function LoginComponent(router) {
+    function LoginComponent(router, authService) {
         this.router = router;
+        this.authService = authService;
+        this.userName = null;
+        this.password = null;
     }
     LoginComponent.prototype.login = function (userName, password) {
-        this.router.navigate(['/user/profile']);
+        var _this = this;
+        this.authService.loginUser(userName, password)
+            .map(function (response) {
+            console.log("Getting authentication result from server");
+            var loginSuccessful = response.text();
+            console.log("login result: " + loginSuccessful);
+            if (loginSuccessful === "true") {
+                _this.router.navigate(['/user/profile']);
+            }
+        })
+            .subscribe(function (response) {
+            console.log("Success");
+        }, function (error) {
+            console.log("Error: " + error);
+        });
     };
     LoginComponent.prototype.register = function () {
         this.router.navigate(["/user/register"]);
@@ -26,7 +44,7 @@ LoginComponent = __decorate([
     core_1.Component({
         templateUrl: 'app/components/user/login.component.html'
     }),
-    __metadata("design:paramtypes", [router_1.Router])
+    __metadata("design:paramtypes", [router_1.Router, auth_service_1.AuthService])
 ], LoginComponent);
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map

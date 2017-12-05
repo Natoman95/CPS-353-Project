@@ -7,12 +7,7 @@ namespace WebApi.Services
   {
     private static UserService theInstance = null;
 
-    private DatabaseService DBService = null;
-
-    private UserService()
-    {
-      DBService = DatabaseService.Instance;
-    }
+    private UserService() { }
 
     public static UserService Instance
     {
@@ -28,14 +23,14 @@ namespace WebApi.Services
 
     public long GenerateId()
     {
-      long id = DBService.CurrentId;
-      DBService.CurrentId = DBService.CurrentId + 1;
+      long id = DatabaseService.Instance.CurrentId;
+      DatabaseService.Instance.CurrentId = DatabaseService.Instance.CurrentId + 1;
       return id;
     }
 
     public void AddUser(User user)
     {
-      DBService.Users.Add(user);
+      DatabaseService.Instance.Users.Add(user);
     }
 
     public bool RemoveUser(long id)
@@ -45,7 +40,7 @@ namespace WebApi.Services
 
       if (userToRemove != null)
       {
-        DBService.Users.Remove(userToRemove);
+        DatabaseService.Instance.Users.Remove(userToRemove);
         success = true;
       }
 
@@ -56,9 +51,24 @@ namespace WebApi.Services
     {
       User foundUser = null;
 
-      foreach (User user in DBService.Users)
+      foreach (User user in DatabaseService.Instance.Users)
       {
         if (user.Id == id)
+        {
+          foundUser = user;
+        }
+      }
+
+      return foundUser;
+    }
+
+    public User FindUserByUserName(string userName)
+    {
+      User foundUser = null;
+
+      foreach (User user in DatabaseService.Instance.Users)
+      {
+        if (user.UserName == userName)
         {
           foundUser = user;
         }

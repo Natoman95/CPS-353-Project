@@ -27,7 +27,7 @@ namespace WebApi.Models
       return departments;
     }
 
-    public Department GetDepartment(long id)
+    public Department FindDepartment(long id)
     {
       Department foundDepartment = null;
 
@@ -50,17 +50,9 @@ namespace WebApi.Models
 
     public bool RemoveDepartment(long id)
     {
-      Department departToRemove = null;
+      Department departToRemove = FindDepartment(id);
       bool success = false;
 
-      foreach (Department department in departments)
-      {
-        if (department.Id == id)
-        {
-          departToRemove = department;
-          break;
-        }
-      }
       if (departToRemove != null)
       {
         departments.Remove(departToRemove);

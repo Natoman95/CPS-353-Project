@@ -4,7 +4,7 @@ namespace WebApi.Models
 {
   public class Department
   {
-    public string Name { get; set; }
+    public string Title { get; set; }
 
     public long Id { get; set; }
 
@@ -15,7 +15,7 @@ namespace WebApi.Models
       return topics;
     }
 
-    public Topic GetTopic(long id)
+    public Topic FindTopic(long id)
     {
       Topic foundTopic = null;
 
@@ -38,17 +38,9 @@ namespace WebApi.Models
 
     public bool RemoveTopic(long id)
     {
-      Topic topicToRemove = null;
+      Topic topicToRemove = FindTopic(id);
       bool success = false;
 
-      foreach (Topic topic in topics)
-      {
-        if (topic.Id == id)
-        {
-          topicToRemove = topic;
-          break;
-        }
-      }
       if (topicToRemove != null)
       {
         topics.Remove(topicToRemove);

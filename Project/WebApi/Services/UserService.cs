@@ -23,8 +23,8 @@ namespace WebApi.Services
 
     public long GenerateId()
     {
-      long id = DatabaseService.Instance.CurrentId;
-      DatabaseService.Instance.CurrentId = DatabaseService.Instance.CurrentId + 1;
+      long id = DatabaseService.Instance.CurrentUserId;
+      DatabaseService.Instance.CurrentUserId = DatabaseService.Instance.CurrentUserId + 1;
       return id;
     }
 

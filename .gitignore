@@ -10,5 +10,5 @@ Controllers/UserController.cs
 Models/UserModel.cs
 assignment/WebApi/bin/
 assignment/WebApi/obj/
-POC/WebApi/obj/
-POC/WebApi/bin
+Project/WebApi/obj/
+Project/WebApi/bin

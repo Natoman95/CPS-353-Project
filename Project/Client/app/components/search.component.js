@@ -39,7 +39,7 @@ var SearchComponent = (function () {
 }());
 SearchComponent = __decorate([
     core_1.Component({
-        templateUrl: 'app/components/list.component.html'
+        templateUrl: 'app/components/search.component.html'
     }),
     __metadata("design:paramtypes", [router_1.Router, academic_query_service_1.AcademicQueryService])
 ], SearchComponent);

@@ -3,7 +3,7 @@ import { Component } from '@angular/core'
 import { Router } from '@angular/router'
 
 @Component({
-  templateUrl: 'app/components/list.component.html'
+  templateUrl: 'app/components/search.component.html'
 })
 
 export class SearchComponent {

@@ -1,4 +1,5 @@
-﻿import { AcademicQueryService } from './../services/academic-query.service';
+﻿import { AuthService } from './../services/auth.service';
+import { AcademicQueryService } from './../services/academic-query.service';
 import { Component } from '@angular/core'
 import { Router } from '@angular/router'
 
@@ -10,7 +11,7 @@ export class SearchComponent {
 
   public query: string = null;
 
-  constructor(private router: Router, private academicSvc: AcademicQueryService) { }
+  constructor(private router: Router, private academicSvc: AcademicQueryService, private authService: AuthService) { }
 
   // Get academic data about the query
   public search(query: string) {
@@ -32,5 +33,9 @@ export class SearchComponent {
     // Save the details that will be displayed on the details page
     this.academicSvc.setDetails(work);
     this.router.navigate(["/user/details"]);
+  }
+
+  public profile() {
+    this.router.navigate(["/user/", AuthService.currentUser.id]);
   }
 }

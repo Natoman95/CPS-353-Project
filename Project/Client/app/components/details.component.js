@@ -24,6 +24,9 @@ var DetailsComponent = (function () {
         this.work = this.academicSvc.getDetails();
         console.log(this.work);
     };
+    DetailsComponent.prototype.search = function () {
+        this.router.navigate(["/user/search"]);
+    };
     return DetailsComponent;
 }());
 DetailsComponent = __decorate([

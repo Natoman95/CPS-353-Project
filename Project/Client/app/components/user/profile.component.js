@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var auth_service_1 = require("./../../services/auth.service");
 var user_service_1 = require("./../../services/user.service");
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
@@ -23,20 +24,29 @@ var ProfileComponent = (function () {
         var _this = this;
         // Get the user id from the url and populate the page with that user
         // Set the current user
-        this.userService.findUserById(this.activatedRoute.snapshot.params['uid'])
-            .map(function (response) {
-            _this.user = response.json();
-        })
-            .subscribe(function (response) {
-            console.log("Success");
-        }, function (error) {
-            console.log("Error: " + error);
-        });
+        if (auth_service_1.AuthService.currentUser == null) {
+            this.userService.findUserById(this.activatedRoute.snapshot.params['uid'])
+                .map(function (response) {
+                _this.user = response.json();
+                auth_service_1.AuthService.currentUser = response.json();
+            })
+                .subscribe(function (response) {
+                console.log("Success");
+            }, function (error) {
+                console.log("Error: " + error);
+            });
+        }
+        else {
+            this.user = auth_service_1.AuthService.currentUser;
+        }
     };
     ProfileComponent.prototype.update = function (userName, email, firstName, lastName) {
     };
     ProfileComponent.prototype.logout = function () {
         this.router.navigate(["/user/login"]);
+    };
+    ProfileComponent.prototype.search = function () {
+        this.router.navigate(["/user/search"]);
     };
     return ProfileComponent;
 }());

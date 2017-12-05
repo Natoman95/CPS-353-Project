@@ -18,4 +18,8 @@ export class DetailsComponent {
     this.work = this.academicSvc.getDetails();
     console.log(this.work);
   }
+
+  search() {
+    this.router.navigate(["/user/search"]);
+  }
 }

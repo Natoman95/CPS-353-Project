@@ -16,7 +16,6 @@ var AuthService = (function () {
     function AuthService(http, router) {
         this.http = http;
         this.router = router;
-        this.currentUser = null;
         this.url = null;
         this.url = "http://localhost:5000/auth";
     }
@@ -38,6 +37,7 @@ var AuthService = (function () {
     };
     return AuthService;
 }());
+AuthService.currentUser = null;
 AuthService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [http_1.Http, router_1.Router])

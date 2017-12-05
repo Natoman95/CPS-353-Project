@@ -6,7 +6,7 @@ import { Router } from '@angular/router'
 @Injectable()
 export class AuthService {
 
-  currentUser = null;
+  static currentUser = null;
   url: string = null;
 
   constructor(private http: Http, private router: Router) {

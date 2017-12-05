@@ -11,6 +11,16 @@ export class UserService {
     this.url = "http://localhost:5000/user";
   }
 
+  // Add a new department to a user object
+  public addDepartmentToUser(id, institution, title) {
+    console.log("Adding department: " + institution + " , " + title);
+    let params: URLSearchParams = new URLSearchParams();
+    params.set('institution', institution);
+    params.set('title', title);
+    params.set('id', id);
+    return this.http.put(this.url, { search: params });
+  }
+
   // Adds the user parameter instance to the local users array
   public createUser(user) {
     console.log(user);
@@ -44,10 +54,10 @@ export class UserService {
     return this.http.get(this.url, { search: params });
   }
 
-  // updates the user in local users array whose id matches the userId parameter
-  public updateUser(id, user) {
-    console.log(id, user);
-    return this.http.put(this.url + "/" + id, this.stringifyUser(user), { headers: new Headers({ 'Content-Type': 'application/json' }) });
+  // updates the user
+  public updateUser(user) {
+    console.log(user);
+    //return this.http.put(this.url + "/" + id, this.stringifyUser(user), { headers: new Headers({ 'Content-Type': 'application/json' }) });
   }
 
   // removes the user whose id matches the userId parameter

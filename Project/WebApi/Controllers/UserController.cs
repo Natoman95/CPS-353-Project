@@ -21,5 +21,35 @@ namespace WebApi.Controllers
 
       return user;
     }
+
+    [HttpPut]
+    public User Put([FromQuery] string id, string institution, string title)
+    {
+      User user = null;
+      if (id != null)
+      {
+        long idLong = Convert.ToInt64(id);
+        user = UserService.Instance.FindUserById(idLong);
+      }
+
+      Institution institutionObj = null;
+      if (user != null)
+      {
+        // Find institution by title
+      }
+
+      Department department = null;
+      if (institutionObj != null)
+      {
+        // Find department within institution by title
+      }
+
+      if (department != null)
+      {
+        user.AddDepartment(department);
+      }
+
+      return user;
+    }
   }
 }

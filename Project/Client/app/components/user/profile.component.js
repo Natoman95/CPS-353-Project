@@ -8,17 +8,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var auth_service_1 = require("./../../services/auth.service");
+var user_1 = require("./../../models/user");
 var user_service_1 = require("./../../services/user.service");
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var router_2 = require("@angular/router");
+var auth_service_1 = require("../../services/auth.service");
 var ProfileComponent = (function () {
     function ProfileComponent(router, activatedRoute, userService) {
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.userService = userService;
-        this.user = { id: 0, userName: null, password: null, email: null, firstName: null, lastName: null };
+        this.user = new user_1.User();
+        this.institution = null;
+        this.title = null;
     }
     ProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -40,7 +43,20 @@ var ProfileComponent = (function () {
             this.user = auth_service_1.AuthService.currentUser;
         }
     };
-    ProfileComponent.prototype.update = function (userName, email, firstName, lastName) {
+    ProfileComponent.prototype.update = function (user) {
+    };
+    ProfileComponent.prototype.addDepartment = function (id, institution, title) {
+        var _this = this;
+        console.log("Adding department: " + institution + " , " + title);
+        this.userService.addDepartmentToUser(id, institution, title)
+            .map(function (response) {
+            _this.user = response.json();
+        })
+            .subscribe(function (response) {
+            console.log("Success");
+        }, function (error) {
+            console.log("Error: " + error);
+        });
     };
     ProfileComponent.prototype.logout = function () {
         this.router.navigate(["/user/login"]);

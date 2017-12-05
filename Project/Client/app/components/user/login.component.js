@@ -11,13 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var auth_service_1 = require("./../../services/auth.service");
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
+var user_1 = require("../../models/user");
 var LoginComponent = (function () {
     function LoginComponent(router, authService) {
         this.router = router;
         this.authService = authService;
         this.userName = null;
         this.password = null;
-        this.user = { id: 0, userName: null, password: null, email: null, firstName: null, lastName: null };
+        this.user = new user_1.User();
     }
     LoginComponent.prototype.login = function (userName, password) {
         var _this = this;

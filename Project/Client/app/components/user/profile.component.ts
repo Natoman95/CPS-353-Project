@@ -1,4 +1,4 @@
-﻿import { AuthService } from './../../services/auth.service';
+﻿import { User } from './../../models/user';
 import { UserService } from './../../services/user.service';
 import { Component } from '@angular/core'
 import { Router } from '@angular/router'
@@ -11,7 +11,9 @@ import { AuthService } from '../../services/auth.service';
 
 export class ProfileComponent {
 
-  user = { id: 0, userName: null, password: null, email: null, firstName: null, lastName: null };
+  user: User = new User();
+  institution = null;
+  title = null;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private userService: UserService) { }
 
@@ -35,8 +37,21 @@ export class ProfileComponent {
     }
   }
 
-  update(userName, email, firstName, lastName) {
+  update(user) {
 
+  }
+
+  addDepartment(id, institution, title) {
+    console.log("Adding department: " + institution + " , " + title);
+    this.userService.addDepartmentToUser(id, institution, title)
+      .map((response) => {
+        this.user = response.json();
+      })
+      .subscribe((response) => {
+        console.log("Success");
+      }, (error) => {
+        console.log("Error: " + error);
+      });
   }
 
   logout() {

@@ -14,7 +14,7 @@ namespace WebApi.Services
     {
       new Student("BMarl", "password123", "bob.marley@gordon.edu", "Bob", "Marley"),
       new Scholar("Bloggo_doggo", "yoyo@97", "joe.bloggs@gordon.edu", "Joe", "Bloggs"),
-      new Institution("GoCo", "livesworthleading1889", "gordon@gordon.edu")
+      new Institution("GoCo", "livesworthleading1889", "gordon@gordon.edu", "Gordon College")
     };
 
     private DatabaseService() { }

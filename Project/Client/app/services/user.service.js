@@ -16,6 +16,15 @@ var UserService = (function () {
         this.http = http;
         this.url = "http://localhost:5000/user";
     }
+    // Add a new department to a user object
+    UserService.prototype.addDepartmentToUser = function (id, institution, title) {
+        console.log("Adding department: " + institution + " , " + title);
+        var params = new http_2.URLSearchParams();
+        params.set('institution', institution);
+        params.set('title', title);
+        params.set('id', id);
+        return this.http.put(this.url, { search: params });
+    };
     // Adds the user parameter instance to the local users array
     UserService.prototype.createUser = function (user) {
         console.log(user);
@@ -43,10 +52,10 @@ var UserService = (function () {
         params.set('password', password);
         return this.http.get(this.url, { search: params });
     };
-    // updates the user in local users array whose id matches the userId parameter
-    UserService.prototype.updateUser = function (id, user) {
-        console.log(id, user);
-        return this.http.put(this.url + "/" + id, this.stringifyUser(user), { headers: new http_1.Headers({ 'Content-Type': 'application/json' }) });
+    // updates the user
+    UserService.prototype.updateUser = function (user) {
+        console.log(user);
+        //return this.http.put(this.url + "/" + id, this.stringifyUser(user), { headers: new Headers({ 'Content-Type': 'application/json' }) });
     };
     // removes the user whose id matches the userId parameter
     UserService.prototype.deleteUser = function (id) {

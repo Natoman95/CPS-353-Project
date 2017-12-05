@@ -25,6 +25,30 @@
         <input name="lastName" class="form-control form-scale" type="text" [(ngModel)]="user.lastName">
       </form>
 
+      <table *ngIf="user.departments !== undefined && user.departments !== null" class="basic-table">
+        <tbody>
+          <tr class="basic-row">
+            <th class="basic-col">Institution</th>
+            <th class="basic-col">Department</th>
+          </tr>
+          <tr *ngFor="let department of user.departments" class="basic-row">
+            <td class="basic-col">{{department.Institution.Title}}</td>
+            <td class="basic-col">{{department.Title}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <form class="form-group">
+        <p>Institution</p>
+        <input name="institution" class="form-control form-scale" type="text" [(ngModel)]="institution">
+        <p>Title</p>
+        <input name="title" class="form-control form-scale" type="text" [(ngModel)]="title">
+      </form>
+
+      <div>
+        <a (click)="addDepartment(user.id, institution, title)" class="btn btn-primary btn-scale">Add Department</a>
+      </div>
+
       <div>
         <a (click)="logout()" class="btn btn-warning btn-scale">Logout</a>
       </div>

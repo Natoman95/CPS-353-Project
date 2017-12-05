@@ -19,6 +19,7 @@ namespace WebApi.Models
       this.UserName = userName;
       this.Password = password;
       this.Email = email;
+      this.Departments = new List<Department>();
       this.Id = UserService.Instance.GenerateId();
     }
 
@@ -27,6 +28,10 @@ namespace WebApi.Models
       get
       {
         return departments;
+      }
+      set
+      {
+        departments = value;
       }
     }
 

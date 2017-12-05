@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using WebApi.Services;
 
 namespace WebApi.Models
 {
@@ -6,9 +7,18 @@ namespace WebApi.Models
   {
     public string Title { get; set; }
 
+    public Institution Institution { get; set; }
+
     public long Id { get; set; }
 
     private List<Topic> topics = new List<Topic>();
+
+    public Department(string title, Institution institution)
+    {
+      this.Title = title;
+      this.Institution = institution;
+      this.Id = DepartmentService.Instance.GenerateId();
+    }
 
     public List<Topic> Topics
     {

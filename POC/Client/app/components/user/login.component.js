@@ -17,16 +17,17 @@ var LoginComponent = (function () {
         this.authService = authService;
         this.userName = null;
         this.password = null;
+        this.user = { id: 0, userName: null, password: null, email: null, firstName: null, lastName: null };
     }
     LoginComponent.prototype.login = function (userName, password) {
         var _this = this;
         this.authService.loginUser(userName, password)
             .map(function (response) {
             console.log("Getting authentication result from server");
-            var loginSuccessful = response.text();
-            console.log("login result: " + loginSuccessful);
-            if (loginSuccessful === "true") {
-                _this.router.navigate(['/user/profile']);
+            var user = response.json();
+            console.log("login result: " + user);
+            if (user != null) {
+                _this.router.navigate(['/user', user.id]);
             }
         })
             .subscribe(function (response) {

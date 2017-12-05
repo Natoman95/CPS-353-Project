@@ -20,7 +20,7 @@ export class AuthService {
     params.set('userName', userName);
     params.set('password', password);
 
-    return this.http.get(this.url, { search: params, headers: new Headers({ 'Content-Type': 'text' }) })
+    return this.http.get(this.url, { search: params, headers: new Headers({ 'Content-Type': 'application/json' }) })
   }
 
   loginNewRegister() {

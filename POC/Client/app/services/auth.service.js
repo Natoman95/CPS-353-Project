@@ -25,7 +25,7 @@ var AuthService = (function () {
         var params = new http_2.URLSearchParams();
         params.set('userName', userName);
         params.set('password', password);
-        return this.http.get(this.url, { search: params, headers: new http_1.Headers({ 'Content-Type': 'text' }) });
+        return this.http.get(this.url, { search: params, headers: new http_1.Headers({ 'Content-Type': 'application/json' }) });
     };
     AuthService.prototype.loginNewRegister = function () {
     };

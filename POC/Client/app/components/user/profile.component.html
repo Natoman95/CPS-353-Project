@@ -6,13 +6,13 @@
     <div class="body-wrapper">
       <form class="form-group">
         <h3>Username</h3>
-        <input name="userName" class="form-control form-scale" type="text">
+        <input name="userName" class="form-control form-scale" type="text" [(ngModel)]="user.userName">
         <h3>Email</h3>
-        <input name="email" class="form-control form-scale">
+        <input name="email" class="form-control form-scale" [(ngModel)]="user.email">
         <h3>First Name</h3>
-        <input name="firstName" class="form-control form-scale" type="text">
+        <input name="firstName" class="form-control form-scale" type="text" [(ngModel)]="user.firstName">
         <h3>Last Name</h3>
-        <input name="lastName" class="form-control form-scale" type="text">
+        <input name="lastName" class="form-control form-scale" type="text" [(ngModel)]="user.lastName">
       </form>
 
       <div>

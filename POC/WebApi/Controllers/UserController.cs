@@ -1,22 +1,21 @@
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Services;
 using WebApi.Models;
+using System;
 
 namespace WebApi.Controllers
 {
   [Route("[controller]")]
-  public class AuthController : Controller
+  public class UserController : Controller
   {
     /* -------------------------------------- HTTP Requests -------------------------------------- */
     [HttpGet]
-    public User Get([FromQuery] string userName, string password)
+    public User Get([FromQuery] string id)
     {
-      User user = UserService.Instance.FindUserByUserName(userName);
-      if (user.Password == password)
-      {
-        return user;
-      }
-      return null;
+      long idLong = Convert.ToInt64(id);
+      User user = UserService.Instance.FindUserById(idLong);
+
+      return user;
     }
   }
 }

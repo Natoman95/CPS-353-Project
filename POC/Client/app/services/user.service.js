@@ -14,18 +14,19 @@ var http_2 = require("@angular/http");
 var UserService = (function () {
     function UserService(http) {
         this.http = http;
-        this.url = "";
+        this.url = "http://localhost:5000/user";
     }
     // Adds the user parameter instance to the local users array
     UserService.prototype.createUser = function (user) {
         console.log(user);
         return this.http.post(this.url, this.stringifyUser(user), { headers: new http_1.Headers({ 'Content-Type': 'application/json' }) });
-        //return this.http.post(this.url, JSON.stringify({ user }), { headers: new Headers({ 'Content-Type': 'application/json' }) });
     };
     // Returns the user in local users array whose id matches the userId parameter
     UserService.prototype.findUserById = function (id) {
         console.log(id);
-        return this.http.get(this.url + "/" + id);
+        var params = new http_2.URLSearchParams();
+        params.set('id', id);
+        return this.http.get(this.url, { search: params });
     };
     // Returns the user in local users array whose username matches the parameter username
     UserService.prototype.findUserByUsername = function (userName) {

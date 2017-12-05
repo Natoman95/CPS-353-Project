@@ -10,6 +10,6 @@ export const appRoutes: Routes = [
   { path: 'user/details', component: DetailsComponent },
   { path: 'user/login', component: LoginComponent },
   { path: 'user/register', component: RegisterComponent },
-  { path: 'user/profile', component: ProfileComponent },
+  { path: 'user/:uid', component: ProfileComponent },
   { path: '', redirectTo: 'user/login', pathMatch: 'full' }
 ]

@@ -8,20 +8,21 @@ export class UserService {
   private url: string;
 
   constructor(private http: Http) {
-    this.url = "";
+    this.url = "http://localhost:5000/user";
   }
 
   // Adds the user parameter instance to the local users array
   public createUser(user) {
     console.log(user);
     return this.http.post(this.url, this.stringifyUser(user), { headers: new Headers({ 'Content-Type': 'application/json' }) });
-    //return this.http.post(this.url, JSON.stringify({ user }), { headers: new Headers({ 'Content-Type': 'application/json' }) });
   }
 
   // Returns the user in local users array whose id matches the userId parameter
   public findUserById(id) {
     console.log(id);
-    return this.http.get(this.url + "/" + id);
+    let params: URLSearchParams = new URLSearchParams();
+    params.set('id', id);
+    return this.http.get(this.url, { search: params });
   }
 
   // Returns the user in local users array whose username matches the parameter username

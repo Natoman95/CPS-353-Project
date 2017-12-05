@@ -22,9 +22,12 @@ namespace WebApi.Models
       this.Id = UserService.Instance.GenerateId();
     }
 
-    public List<Department> GetDepartments()
+    public List<Department> Departments
     {
-      return departments;
+      get
+      {
+        return departments;
+      }
     }
 
     public Department FindDepartment(long id)

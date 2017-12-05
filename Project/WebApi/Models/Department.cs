@@ -10,9 +10,12 @@ namespace WebApi.Models
 
     private List<Topic> topics = new List<Topic>();
 
-    public List<Topic> GetTopics()
+    public List<Topic> Topics
     {
-      return topics;
+      get
+      {
+        return topics;
+      }
     }
 
     public Topic FindTopic(long id)

@@ -27,5 +27,20 @@ namespace WebApi.Services
       DatabaseService.Instance.CurrentDepartmentId = DatabaseService.Instance.CurrentDepartmentId + 1;
       return id;
     }
+
+    public Department FindDepartmentByTitle(Institution inst, string title)
+    {
+      Department foundDep = null;
+
+      foreach (Department dep in inst.Departments)
+      {
+        if (dep.Title == title)
+        {
+          foundDep = dep;
+        }
+      }
+
+      return foundDep;
+    }
   }
 }

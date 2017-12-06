@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using WebApi.Services;
 using WebApi.Models;
 using System;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace WebApi.Controllers
 {
@@ -22,34 +24,35 @@ namespace WebApi.Controllers
       return user;
     }
 
-    [HttpPut]
-    public User Put([FromQuery] string id, string institution, string title)
+    [HttpPost]
+    public void Post([FromBody] JObject body)
     {
+      long id = Convert.ToInt64((string)body.SelectToken("id"));
+      string institution = (string)body.SelectToken("institution");
+      string title = (string)body.SelectToken("title");
+
       User user = null;
-      if (id != null)
+      if (id >= 1)
       {
-        long idLong = Convert.ToInt64(id);
-        user = UserService.Instance.FindUserById(idLong);
+        user = UserService.Instance.FindUserById(id);
       }
 
       Institution institutionObj = null;
       if (user != null)
       {
-        // Find institution by title
+        institutionObj = UserService.Instance.FindInstitutionByTitle(institution);
       }
 
       Department department = null;
       if (institutionObj != null)
       {
-        // Find department within institution by title
+        department = DepartmentService.Instance.FindDepartmentByTitle(institutionObj, title);
       }
 
       if (department != null)
       {
         user.AddDepartment(department);
       }
-
-      return user;
     }
   }
 }

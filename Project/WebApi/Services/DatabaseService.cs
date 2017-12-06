@@ -7,15 +7,10 @@ namespace WebApi.Services
   {
     private static DatabaseService theInstance = null;
 
-    private static long currentUserId = 1;
+    private static long currentUserId;
 
-    private static long currentDepartmentId = 1;
-    private static List<User> users = new List<User>()
-    {
-      new Student("BMarl", "password123", "bob.marley@gordon.edu", "Bob", "Marley"),
-      new Scholar("Bloggo_doggo", "yoyo@97", "joe.bloggs@gordon.edu", "Joe", "Bloggs"),
-      new Institution("GoCo", "livesworthleading1889", "gordon@gordon.edu", "Gordon College")
-    };
+    private static long currentDepartmentId;
+    private static List<User> users = new List<User>();
 
     private DatabaseService() { }
 

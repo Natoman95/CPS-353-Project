@@ -53,7 +53,10 @@ namespace WebApi.Models
 
     public void AddDepartment(Department department)
     {
-      departments.Add(department);
+      if (!departments.Contains(department))
+      {
+        departments.Add(department);
+      }
     }
 
     public bool RemoveDepartment(long id)

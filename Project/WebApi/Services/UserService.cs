@@ -76,5 +76,24 @@ namespace WebApi.Services
 
       return foundUser;
     }
+
+    public Institution FindInstitutionByTitle(string title)
+    {
+      Institution foundInst = null;
+
+      foreach (User user in DatabaseService.Instance.Users)
+      {
+        if (user.GetType() == typeof(Institution))
+        {
+          Institution inst = (Institution)user;
+          if (inst.Title == title)
+          {
+            foundInst = inst;
+          }
+        }
+      }
+
+      return foundInst;
+    }
   }
 }

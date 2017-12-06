@@ -93,6 +93,10 @@ iframe {
   border: 1px solid rgb(189, 189, 189);
 }
 
+.vertical-padding {
+  padding: 2em;
+}
+
 .link-text {
   color: rgb(0, 102, 255);
   cursor: pointer;

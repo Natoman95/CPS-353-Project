@@ -25,15 +25,17 @@
         <input name="lastName" class="form-control form-scale" type="text" [(ngModel)]="user.lastName">
       </form>
 
-      <table *ngIf="user.departments !== undefined && user.departments !== null" class="basic-table">
+      <div class="vertical-padding"></div>
+
+      <table *ngIf="user.departments !== undefined && user.departments.length !== 0" class="basic-table">
         <tbody>
           <tr class="basic-row">
             <th class="basic-col">Institution</th>
             <th class="basic-col">Department</th>
           </tr>
           <tr *ngFor="let department of user.departments" class="basic-row">
-            <td class="basic-col">{{department.Institution.Title}}</td>
-            <td class="basic-col">{{department.Title}}</td>
+            <td class="basic-col">{{department.institution.title}}</td>
+            <td class="basic-col">{{department.title}}</td>
           </tr>
         </tbody>
       </table>

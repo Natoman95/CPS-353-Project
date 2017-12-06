@@ -14,11 +14,9 @@ export class UserService {
   // Add a new department to a user object
   public addDepartmentToUser(id, institution, title) {
     console.log("Adding department: " + institution + " , " + title);
-    let params: URLSearchParams = new URLSearchParams();
-    params.set('institution', institution);
-    params.set('title', title);
-    params.set('id', id);
-    return this.http.put(this.url, { search: params });
+
+    return this.http.post(this.url, JSON.stringify({ id: id, institution: institution, title: title }),
+      { headers: new Headers({ 'Content-Type': 'application/json' }) });
   }
 
   // Adds the user parameter instance to the local users array
@@ -32,6 +30,7 @@ export class UserService {
     console.log(id);
     let params: URLSearchParams = new URLSearchParams();
     params.set('id', id);
+
     return this.http.get(this.url, { search: params });
   }
 
@@ -57,12 +56,14 @@ export class UserService {
   // updates the user
   public updateUser(user) {
     console.log(user);
+
     //return this.http.put(this.url + "/" + id, this.stringifyUser(user), { headers: new Headers({ 'Content-Type': 'application/json' }) });
   }
 
   // removes the user whose id matches the userId parameter
   public deleteUser(id) {
     console.log(id);
+
     return this.http.get(this.url + "/" + id);
   }
 

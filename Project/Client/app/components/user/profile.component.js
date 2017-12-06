@@ -14,6 +14,7 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var router_2 = require("@angular/router");
 var auth_service_1 = require("../../services/auth.service");
+require("rxjs/add/operator/switchMap");
 var ProfileComponent = (function () {
     function ProfileComponent(router, activatedRoute, userService) {
         this.router = router;
@@ -31,6 +32,7 @@ var ProfileComponent = (function () {
             this.userService.findUserById(this.activatedRoute.snapshot.params['uid'])
                 .map(function (response) {
                 _this.user = response.json();
+                console.log(_this.user);
                 auth_service_1.AuthService.currentUser = response.json();
             })
                 .subscribe(function (response) {
@@ -49,8 +51,9 @@ var ProfileComponent = (function () {
         var _this = this;
         console.log("Adding department: " + institution + " , " + title);
         this.userService.addDepartmentToUser(id, institution, title)
-            .map(function (response) {
-            _this.user = response.json();
+            .switchMap(function (value) {
+            _this.refreshUserData();
+            return "test";
         })
             .subscribe(function (response) {
             console.log("Success");
@@ -63,6 +66,22 @@ var ProfileComponent = (function () {
     };
     ProfileComponent.prototype.search = function () {
         this.router.navigate(["/user/search"]);
+    };
+    ProfileComponent.prototype.refreshUserData = function () {
+        var _this = this;
+        // Get the user id from the url and populate the page with that user
+        // Set the current user
+        return this.userService.findUserById(this.user.id)
+            .map(function (response) {
+            _this.user = response.json();
+            console.log(_this.user);
+            auth_service_1.AuthService.currentUser = response.json();
+        })
+            .subscribe(function (response) {
+            console.log("Success");
+        }, function (error) {
+            console.log("Error: " + error);
+        });
     };
     return ProfileComponent;
 }());

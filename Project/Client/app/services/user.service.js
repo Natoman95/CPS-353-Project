@@ -19,11 +19,7 @@ var UserService = (function () {
     // Add a new department to a user object
     UserService.prototype.addDepartmentToUser = function (id, institution, title) {
         console.log("Adding department: " + institution + " , " + title);
-        var params = new http_2.URLSearchParams();
-        params.set('institution', institution);
-        params.set('title', title);
-        params.set('id', id);
-        return this.http.put(this.url, { search: params });
+        return this.http.post(this.url, JSON.stringify({ id: id, institution: institution, title: title }), { headers: new http_1.Headers({ 'Content-Type': 'application/json' }) });
     };
     // Adds the user parameter instance to the local users array
     UserService.prototype.createUser = function (user) {

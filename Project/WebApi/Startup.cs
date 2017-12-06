@@ -47,14 +47,15 @@ namespace WebApi
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddMvc()
+        // These options allow JSON objects that are self-referential to be serialized
         .AddJsonOptions(
           options => options.SerializerSettings.ReferenceLoopHandling =
           Newtonsoft.Json.ReferenceLoopHandling.Serialize
-      )
-      .AddJsonOptions(
-        options => options.SerializerSettings.PreserveReferencesHandling =
-          Newtonsoft.Json.PreserveReferencesHandling.Objects
-      );
+        )
+        .AddJsonOptions(
+          options => options.SerializerSettings.PreserveReferencesHandling =
+            Newtonsoft.Json.PreserveReferencesHandling.Objects
+        );
       services.AddCors();
     }
 

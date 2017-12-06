@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var http_2 = require("@angular/http");
+// Makes requests that have to do with user CRUD operations
 var UserService = (function () {
     function UserService(http) {
         this.http = http;
@@ -21,7 +22,7 @@ var UserService = (function () {
         console.log("Adding department: " + institution + " , " + title);
         return this.http.post(this.url, JSON.stringify({ id: id, institution: institution, title: title }), { headers: new http_1.Headers({ 'Content-Type': 'application/json' }) });
     };
-    // Adds the user parameter instance to the local users array
+    // Create a new user
     UserService.prototype.createUser = function (user) {
         console.log(user);
         return this.http.post(this.url, this.stringifyUser(user), { headers: new http_1.Headers({ 'Content-Type': 'application/json' }) });

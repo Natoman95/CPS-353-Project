@@ -20,6 +20,7 @@ var LoginComponent = (function () {
         this.password = null;
         this.user = new user_1.User();
     }
+    // Send a login request to the user and add user to the authservice if one is returned
     LoginComponent.prototype.login = function (userName, password) {
         var _this = this;
         this.authService.loginUser(userName, password)

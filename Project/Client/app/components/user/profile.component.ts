@@ -44,10 +44,12 @@ export class ProfileComponent {
 
   }
 
+  // Sends a request to the server to add a department to the user's list
   addDepartment(id, institution, title) {
     console.log("Adding department: " + institution + " , " + title);
     this.userService.addDepartmentToUser(id, institution, title)
       .switchMap((value) => {
+        // Once the call is complete, immediately refresh user data
         this.refreshUserData();
         return "test";
       })
@@ -66,6 +68,7 @@ export class ProfileComponent {
     this.router.navigate(["/user/search"]);
   }
 
+  // Fetch user data from the server to refresh the page
   refreshUserData() {
     // Get the user id from the url and populate the page with that user
     // Set the current user

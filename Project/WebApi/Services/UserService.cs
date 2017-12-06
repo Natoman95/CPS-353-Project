@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace WebApi.Services
 {
+  // Performs actions having to do with users, such as creation, deletion, accessing
   public class UserService
   {
     private static UserService theInstance = null;
@@ -21,6 +22,7 @@ namespace WebApi.Services
       }
     }
 
+    // Gets the current user id from the Database and indexes it by 1
     public long GenerateId()
     {
       long id = DatabaseService.Instance.CurrentUserId;
@@ -77,6 +79,8 @@ namespace WebApi.Services
       return foundUser;
     }
 
+    // Since the database has just one list of all users, institutions have to be
+    // filtered out from the rest
     public Institution FindInstitutionByTitle(string title)
     {
       Institution foundInst = null;

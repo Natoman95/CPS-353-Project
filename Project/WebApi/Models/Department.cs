@@ -3,14 +3,17 @@ using WebApi.Services;
 
 namespace WebApi.Models
 {
+  // A department for an institution (biology, chemistry, etc.)
   public class Department
   {
     public string Title { get; set; }
 
+    // The institution the department belongs to
     public Institution Institution { get; set; }
 
     public long Id { get; set; }
 
+    // Wiki topics that fall within the department's perview
     private List<Topic> topics = new List<Topic>();
 
     public Department(string title, Institution institution)

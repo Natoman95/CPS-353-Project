@@ -12,6 +12,7 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var http_2 = require("@angular/http");
 var router_1 = require("@angular/router");
+// Logs in a user and keeps track of the currently authenticated user
 var AuthService = (function () {
     function AuthService(http, router) {
         this.http = http;
@@ -19,12 +20,24 @@ var AuthService = (function () {
         this.url = null;
         this.url = "http://localhost:5000/auth";
     }
+    // Sends a request to the server to see if a username and password match
+    // Just returns a subscription but all
     AuthService.prototype.loginUser = function (userName, password) {
         console.log("auth.service username: " + userName + ", password: " + password);
         var params = new http_2.URLSearchParams();
         params.set('userName', userName);
         params.set('password', password);
-        return this.http.get(this.url, { search: params, headers: new http_1.Headers({ 'Content-Type': 'application/json' }) });
+        var request = this.http.get(this.url, { search: params, headers: new http_1.Headers({ 'Content-Type': 'application/json' }) });
+        request
+            .map(function (response) {
+            AuthService.currentUser = response.json();
+        })
+            .subscribe(function (response) {
+            console.log("Success");
+        }, function (error) {
+            console.log("Error: " + error);
+        });
+        return request;
     };
     AuthService.prototype.loginNewRegister = function () {
     };

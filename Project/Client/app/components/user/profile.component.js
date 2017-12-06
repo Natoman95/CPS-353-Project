@@ -47,11 +47,13 @@ var ProfileComponent = (function () {
     };
     ProfileComponent.prototype.update = function (user) {
     };
+    // Sends a request to the server to add a department to the user's list
     ProfileComponent.prototype.addDepartment = function (id, institution, title) {
         var _this = this;
         console.log("Adding department: " + institution + " , " + title);
         this.userService.addDepartmentToUser(id, institution, title)
             .switchMap(function (value) {
+            // Once the call is complete, immediately refresh user data
             _this.refreshUserData();
             return "test";
         })
@@ -67,6 +69,7 @@ var ProfileComponent = (function () {
     ProfileComponent.prototype.search = function () {
         this.router.navigate(["/user/search"]);
     };
+    // Fetch user data from the server to refresh the page
     ProfileComponent.prototype.refreshUserData = function () {
         var _this = this;
         // Get the user id from the url and populate the page with that user

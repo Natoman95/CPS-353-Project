@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace WebApi.Services
 {
+  // Contains functions that have to do with getting, creating departments
   public class DepartmentService
   {
     private static DepartmentService theInstance = null;
@@ -21,6 +22,7 @@ namespace WebApi.Services
       }
     }
 
+    // Gets the current department id from the Database and indexes it by 1
     public long GenerateId()
     {
       long id = DatabaseService.Instance.CurrentDepartmentId;
@@ -28,6 +30,7 @@ namespace WebApi.Services
       return id;
     }
 
+    // From within an institution object, find a particular department
     public Department FindDepartmentByTitle(Institution inst, string title)
     {
       Department foundDep = null;

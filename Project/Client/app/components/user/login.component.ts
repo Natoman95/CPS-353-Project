@@ -15,6 +15,7 @@ export class LoginComponent {
 
   constructor(private router: Router, private authService: AuthService) { }
 
+  // Send a login request to the user and add user to the authservice if one is returned
   login(userName, password) {
     this.authService.loginUser(userName, password)
       .map((response) => {

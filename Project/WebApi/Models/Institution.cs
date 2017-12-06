@@ -1,5 +1,6 @@
 namespace WebApi.Models
 {
+  // A user that is an institution like a college
   public class Institution : User
   {
     public string Title { get; set; }

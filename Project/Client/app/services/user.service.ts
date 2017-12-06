@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 import { Http, Headers } from '@angular/http'
 import { URLSearchParams } from '@angular/http'
 
+// Makes requests that have to do with user CRUD operations
 @Injectable()
 export class UserService {
 
@@ -19,7 +20,7 @@ export class UserService {
       { headers: new Headers({ 'Content-Type': 'application/json' }) });
   }
 
-  // Adds the user parameter instance to the local users array
+  // Create a new user
   public createUser(user) {
     console.log(user);
     return this.http.post(this.url, this.stringifyUser(user), { headers: new Headers({ 'Content-Type': 'application/json' }) });

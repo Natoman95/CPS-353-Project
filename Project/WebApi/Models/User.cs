@@ -3,6 +3,7 @@ using WebApi.Services;
 
 namespace WebApi.Models
 {
+  // A user that can navigate the site, record favorite departments, etc.
   public abstract class User
   {
     public string UserName { get; set; }

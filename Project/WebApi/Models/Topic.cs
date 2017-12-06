@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 namespace WebApi.Models
 {
+  // A wiki topic that belongs to a department - may also be a subtopic of another topic
   public class Topic
   {
     public long Id { get; set; }

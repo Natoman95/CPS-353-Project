@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 namespace WebApi.Services
 {
+  // Imitates a database - stores a global list of users and the current ids for users and departments
+  // Ids are always generated based on these numbers so that they are guaranteed to be unique
   public class DatabaseService
   {
     private static DatabaseService theInstance = null;

@@ -24,26 +24,26 @@ var UserService = (function () {
     };
     // Create a new user
     UserService.prototype.createUser = function (user) {
-        console.log(user);
+        console.log("Creating user: " + user);
         return this.http.post(this.url, this.stringifyUser(user), { headers: new http_1.Headers({ 'Content-Type': 'application/json' }) });
     };
     // Returns the user in local users array whose id matches the userId parameter
     UserService.prototype.findUserById = function (id) {
-        console.log(id);
+        console.log("Searching for user with id: " + id);
         var params = new http_2.URLSearchParams();
         params.set('id', id);
         return this.http.get(this.url, { search: params });
     };
     // Returns the user in local users array whose username matches the parameter username
     UserService.prototype.findUserByUsername = function (userName) {
-        console.log(userName);
+        console.log("Searching for user with username: " + userName);
         var params = new http_2.URLSearchParams();
         params.set('userName', userName);
         this.http.get(this.url, { search: params });
     };
     // returns the user whose username and password match the username and password parameters
     UserService.prototype.findUserByCredentials = function (userName, password) {
-        console.log(userName, password);
+        console.log("Searching for user with username and password: " + userName, password);
         var params = new http_2.URLSearchParams();
         params.set('userName', userName);
         params.set('password', password);
@@ -51,17 +51,22 @@ var UserService = (function () {
     };
     // updates the user
     UserService.prototype.updateUser = function (user) {
-        console.log(user);
-        //return this.http.put(this.url + "/" + id, this.stringifyUser(user), { headers: new Headers({ 'Content-Type': 'application/json' }) });
+        console.log("Updating user: " + user);
+        return this.http.put(this.url, this.stringifyUser(user), { headers: new http_1.Headers({ 'Content-Type': 'application/json' }) });
     };
     // removes the user whose id matches the userId parameter
     UserService.prototype.deleteUser = function (id) {
-        console.log(id);
+        console.log("Deleting user with id: " + id);
         return this.http.get(this.url + "/" + id);
     };
-    // The user needs to be converted to JSON attribute by attribute, otherwise the JSON will not be properly formatted
+    // The user needs to be converted to JSON attribute by attribute, otherwise the JSON will
+    // not be properly formatted
     UserService.prototype.stringifyUser = function (user) {
-        return JSON.stringify({ Id: user.Id, Username: user.UserName, Password: user.Password, FirstName: user.FirstName, LastName: user.LastName, Email: user.Email });
+        return JSON.stringify({
+            id: user.id, userName: user.userName, password: user.password,
+            email: user.email, departments: user.departments,
+            firstName: user.firstName, lastName: user.lastName
+        });
     };
     return UserService;
 }());

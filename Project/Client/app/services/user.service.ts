@@ -22,13 +22,13 @@ export class UserService {
 
   // Create a new user
   public createUser(user) {
-    console.log(user);
+    console.log("Creating user: " + user);
     return this.http.post(this.url, this.stringifyUser(user), { headers: new Headers({ 'Content-Type': 'application/json' }) });
   }
 
   // Returns the user in local users array whose id matches the userId parameter
   public findUserById(id) {
-    console.log(id);
+    console.log("Searching for user with id: " + id);
     let params: URLSearchParams = new URLSearchParams();
     params.set('id', id);
 
@@ -37,7 +37,7 @@ export class UserService {
 
   // Returns the user in local users array whose username matches the parameter username
   public findUserByUsername(userName) {
-    console.log(userName);
+    console.log("Searching for user with username: " + userName);
     let params: URLSearchParams = new URLSearchParams();
     params.set('userName', userName);
 
@@ -46,7 +46,8 @@ export class UserService {
 
   // returns the user whose username and password match the username and password parameters
   public findUserByCredentials(userName, password) {
-    console.log(userName, password);
+    console.log("Searching for user with username and password: " + userName, password);
+
     let params: URLSearchParams = new URLSearchParams();
     params.set('userName', userName);
     params.set('password', password);
@@ -56,20 +57,26 @@ export class UserService {
 
   // updates the user
   public updateUser(user) {
-    console.log(user);
+    console.log("Updating user: " + user);
 
-    //return this.http.put(this.url + "/" + id, this.stringifyUser(user), { headers: new Headers({ 'Content-Type': 'application/json' }) });
+    return this.http.put(this.url, this.stringifyUser(user),
+      { headers: new Headers({ 'Content-Type': 'application/json' }) });
   }
 
   // removes the user whose id matches the userId parameter
   public deleteUser(id) {
-    console.log(id);
+    console.log("Deleting user with id: " + id);
 
     return this.http.get(this.url + "/" + id);
   }
 
-  // The user needs to be converted to JSON attribute by attribute, otherwise the JSON will not be properly formatted
+  // The user needs to be converted to JSON attribute by attribute, otherwise the JSON will
+  // not be properly formatted
   private stringifyUser(user) {
-    return JSON.stringify({ Id: user.Id, Username: user.UserName, Password: user.Password, FirstName: user.FirstName, LastName: user.LastName, Email: user.Email });
+    return JSON.stringify({
+      id: user.id, userName: user.userName, password: user.password,
+      email: user.email, departments: user.departments,
+      firstName: user.firstName, lastName: user.lastName
+    });
   }
 }    

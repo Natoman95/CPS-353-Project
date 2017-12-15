@@ -40,18 +40,28 @@ export class ProfileComponent {
     }
   }
 
-  update(user) {
-
+  // Sends a request to the server to update a user
+  updateUser(user) {
+    this.userService.updateUser(user)
+      .switchMap((value) => {
+        // Once the call is complete, immediately refresh user data
+        this.refreshUserData();
+        return "complete";
+      })
+      .subscribe((response) => {
+        console.log("Success");
+      }, (error) => {
+        console.log("Error: " + error);
+      });
   }
 
   // Sends a request to the server to add a department to the user's list
   addDepartment(id, institution, title) {
-    console.log("Adding department: " + institution + " , " + title);
     this.userService.addDepartmentToUser(id, institution, title)
       .switchMap((value) => {
         // Once the call is complete, immediately refresh user data
         this.refreshUserData();
-        return "test";
+        return "complete";
       })
       .subscribe((response) => {
         console.log("Success");

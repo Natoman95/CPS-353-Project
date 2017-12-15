@@ -45,17 +45,29 @@ var ProfileComponent = (function () {
             this.user = auth_service_1.AuthService.currentUser;
         }
     };
-    ProfileComponent.prototype.update = function (user) {
+    // Sends a request to the server to update a user
+    ProfileComponent.prototype.updateUser = function (user) {
+        var _this = this;
+        this.userService.updateUser(user)
+            .switchMap(function (value) {
+            // Once the call is complete, immediately refresh user data
+            _this.refreshUserData();
+            return "complete";
+        })
+            .subscribe(function (response) {
+            console.log("Success");
+        }, function (error) {
+            console.log("Error: " + error);
+        });
     };
     // Sends a request to the server to add a department to the user's list
     ProfileComponent.prototype.addDepartment = function (id, institution, title) {
         var _this = this;
-        console.log("Adding department: " + institution + " , " + title);
         this.userService.addDepartmentToUser(id, institution, title)
             .switchMap(function (value) {
             // Once the call is complete, immediately refresh user data
             _this.refreshUserData();
-            return "test";
+            return "complete";
         })
             .subscribe(function (response) {
             console.log("Success");

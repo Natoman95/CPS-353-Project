@@ -27,6 +27,54 @@ namespace WebApi.Controllers
       return user;
     }
 
+    // Updates a user
+    [HttpPut]
+    public void Put([FromBody] JObject body)
+    {
+      // For finding the user to update
+      long id = Convert.ToInt64((string)body.SelectToken("id"));
+
+      // Find user
+      User user = null;
+      if (id >= 1)
+      {
+        user = UserService.Instance.FindUserById(id);
+      }
+
+      // Update the user's data, including names if an individual
+      if (user != null)
+      {
+        string userName = (string)body.SelectToken("userName");
+        string email = (string)body.SelectToken("email");
+
+        if (userName != null)
+        {
+          user.UserName = userName;
+        }
+        if (email != null)
+        {
+          user.Email = email;
+        }
+
+        if (user is Individual)
+        {
+          Individual individual = (Individual)user;
+
+          string firstName = (string)body.SelectToken("firstName");
+          string lastName = (string)body.SelectToken("lastName");
+
+          if (firstName != null)
+          {
+            individual.FirstName = firstName;
+          }
+          if (lastName != null)
+          {
+            individual.LastName = lastName;
+          }
+        }
+      }
+    }
+
     // Adds a department to a user's list of departments
     [HttpPost]
     public void Post([FromBody] JObject body)

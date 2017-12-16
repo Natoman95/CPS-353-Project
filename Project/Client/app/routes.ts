@@ -7,7 +7,7 @@ import { DetailsComponent } from './components/details.component';
 
 export const appRoutes: Routes = [
   { path: 'user/search', component: SearchComponent },
-  { path: 'user/details', component: DetailsComponent },
+  { path: 'user/details/:type', component: DetailsComponent },
   { path: 'user/login', component: LoginComponent },
   { path: 'user/register', component: RegisterComponent },
   { path: 'user/:uid', component: ProfileComponent },

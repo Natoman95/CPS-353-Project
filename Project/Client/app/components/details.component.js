@@ -25,12 +25,19 @@ var DetailsComponent = (function () {
     }
     DetailsComponent.prototype.ngOnInit = function () {
         // Retrieve stored details from the list of search results
-        this.work = this.academicSvc.getDetails();
-        this.topic = this.topicSvc.getDetails();
-        // subtopics need to be organized into one string
-        this.subTopics = this.concatenateSubTopics(this.topic);
-        console.log(this.work);
+        var detailType = this.activatedRoute.snapshot.params['type'];
+        if (detailType === "academic") {
+            this.work = this.academicSvc.getDetails();
+            console.log(this.work);
+        }
+        if (detailType === "topic") {
+            this.topic = this.topicSvc.getDetails();
+            console.log(this.topic);
+            // subtopics need to be organized into one string
+            this.subTopics = this.concatenateSubTopics(this.topic);
+        }
     };
+    // Combines the subtopics of a topic into one string to display in a list
     DetailsComponent.prototype.concatenateSubTopics = function (topic) {
         var subTopicsString = null;
         if (topic.subTopics !== undefined) {

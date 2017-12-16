@@ -35,7 +35,7 @@ export class SearchComponent {
   public getAcademicDetails(work) {
     // Save the details that will be displayed on the details page
     this.academicSvc.setDetails(work);
-    this.router.navigate(["/user/details"]);
+    this.router.navigate(["/user/details", "academic"]);
   }
 
   // Get wiki pages related to the query
@@ -57,7 +57,7 @@ export class SearchComponent {
   public getWikiDetails(topic) {
     // Save the details that will be displayed on the details page
     this.topicSvc.setDetails(topic);
-    this.router.navigate(["/user/details"]);
+    this.router.navigate(["/user/details", "topic"]);
   }
 
   public profile() {

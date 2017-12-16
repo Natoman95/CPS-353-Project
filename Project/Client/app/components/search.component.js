@@ -38,7 +38,7 @@ var SearchComponent = (function () {
     SearchComponent.prototype.getAcademicDetails = function (work) {
         // Save the details that will be displayed on the details page
         this.academicSvc.setDetails(work);
-        this.router.navigate(["/user/details"]);
+        this.router.navigate(["/user/details", "academic"]);
     };
     // Get wiki pages related to the query
     SearchComponent.prototype.wikiSearch = function (query) {
@@ -56,7 +56,7 @@ var SearchComponent = (function () {
     SearchComponent.prototype.getWikiDetails = function (topic) {
         // Save the details that will be displayed on the details page
         this.topicSvc.setDetails(topic);
-        this.router.navigate(["/user/details"]);
+        this.router.navigate(["/user/details", "topic"]);
     };
     SearchComponent.prototype.profile = function () {
         if (auth_service_1.AuthService.currentUser !== null && auth_service_1.AuthService.currentUser !== undefined) {

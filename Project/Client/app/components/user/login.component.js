@@ -42,6 +42,9 @@ var LoginComponent = (function () {
     LoginComponent.prototype.register = function () {
         this.router.navigate(["/user/register"]);
     };
+    LoginComponent.prototype.search = function () {
+        this.router.navigate(["/user/search"]);
+    };
     return LoginComponent;
 }());
 LoginComponent = __decorate([

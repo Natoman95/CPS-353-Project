@@ -1,9 +1,9 @@
-﻿import { User } from './../../models/user';
+﻿import { AuthService } from './../../services/auth.service';
+import { User } from './../../models/user';
 import { UserService } from './../../services/user.service';
 import { Component } from '@angular/core'
 import { Router } from '@angular/router'
 import { ActivatedRoute } from '@angular/router'
-import { AuthService } from '../../services/auth.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 
@@ -71,6 +71,7 @@ export class ProfileComponent {
   }
 
   logout() {
+    AuthService.currentUser = null;
     this.router.navigate(["/user/login"]);
   }
 

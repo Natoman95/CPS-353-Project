@@ -43,6 +43,9 @@ var RegisterComponent = (function () {
     RegisterComponent.prototype.cancel = function () {
         this.router.navigate(["/user/login"]);
     };
+    RegisterComponent.prototype.search = function () {
+        this.router.navigate(["/user/search"]);
+    };
     return RegisterComponent;
 }());
 RegisterComponent = __decorate([

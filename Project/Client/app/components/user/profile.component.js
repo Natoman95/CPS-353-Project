@@ -8,12 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var auth_service_1 = require("./../../services/auth.service");
 var user_1 = require("./../../models/user");
 var user_service_1 = require("./../../services/user.service");
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var router_2 = require("@angular/router");
-var auth_service_1 = require("../../services/auth.service");
 require("rxjs/add/operator/switchMap");
 var ProfileComponent = (function () {
     function ProfileComponent(router, activatedRoute, userService) {
@@ -76,6 +76,7 @@ var ProfileComponent = (function () {
         });
     };
     ProfileComponent.prototype.logout = function () {
+        auth_service_1.AuthService.currentUser = null;
         this.router.navigate(["/user/login"]);
     };
     ProfileComponent.prototype.search = function () {

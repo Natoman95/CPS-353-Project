@@ -37,4 +37,8 @@ export class LoginComponent {
   register() {
     this.router.navigate(["/user/register"]);
   }
+
+  search() {
+    this.router.navigate(["/user/search"]);
+  }
 }

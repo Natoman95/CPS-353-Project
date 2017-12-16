@@ -59,7 +59,12 @@ var SearchComponent = (function () {
         this.router.navigate(["/user/details"]);
     };
     SearchComponent.prototype.profile = function () {
-        this.router.navigate(["/user/", auth_service_1.AuthService.currentUser.id]);
+        if (auth_service_1.AuthService.currentUser !== null && auth_service_1.AuthService.currentUser !== undefined) {
+            this.router.navigate(["/user/", auth_service_1.AuthService.currentUser.id]);
+        }
+        else {
+            this.router.navigate(["/user/login"]);
+        }
     };
     return SearchComponent;
 }());

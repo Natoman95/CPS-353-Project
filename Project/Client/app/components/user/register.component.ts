@@ -39,4 +39,8 @@ export class RegisterComponent {
   cancel() {
     this.router.navigate(["/user/login"]);
   }
+
+  search() {
+    this.router.navigate(["/user/search"]);
+  }
 }

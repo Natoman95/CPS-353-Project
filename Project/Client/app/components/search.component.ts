@@ -61,6 +61,11 @@ export class SearchComponent {
   }
 
   public profile() {
-    this.router.navigate(["/user/", AuthService.currentUser.id]);
+    if (AuthService.currentUser !== null && AuthService.currentUser !== undefined) {
+      this.router.navigate(["/user/", AuthService.currentUser.id]);
+    }
+    else {
+      this.router.navigate(["/user/login"]);
+    }
   }
 }

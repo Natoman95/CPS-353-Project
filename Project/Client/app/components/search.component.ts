@@ -1,4 +1,5 @@
-﻿import { AuthService } from './../services/auth.service';
+﻿import { TopicQueryService } from './../services/topic-query.service';
+import { AuthService } from './../services/auth.service';
 import { AcademicQueryService } from './../services/academic-query.service';
 import { Component } from '@angular/core'
 import { Router } from '@angular/router'
@@ -9,13 +10,15 @@ import { Router } from '@angular/router'
 
 export class SearchComponent {
 
-  public query: string = null;
+  public academicQuery: string = null;
+  public wikiQuery: string = null;
 
-  constructor(private router: Router, private academicSvc: AcademicQueryService, private authService: AuthService) { }
+  constructor(private router: Router, private academicSvc: AcademicQueryService, private authService: AuthService,
+    private topicSvc: TopicQueryService) { }
 
   // Get academic data about the query
-  public search(query: string) {
-    console.log("list.component query: " + query);
+  public academicSearch(query: string) {
+    console.log("query: " + query);
     let searchResults = null;
 
     if (query != null) {
@@ -24,14 +27,36 @@ export class SearchComponent {
   }
 
   // Retrieve the results of that search
-  public getSearchResults() {
+  public getAcademicSearchResults() {
     return this.academicSvc.getSearchResults();
   }
 
   // Navigate to the details page upon clicking one item of the search results
-  public getDetails(work) {
+  public getAcademicDetails(work) {
     // Save the details that will be displayed on the details page
     this.academicSvc.setDetails(work);
+    this.router.navigate(["/user/details"]);
+  }
+
+  // Get wiki pages related to the query
+  public wikiSearch(query: string) {
+    console.log("query: " + query);
+    let searchResults = null;
+
+    if (query != null) {
+      this.topicSvc.search(query);
+    }
+  }
+
+  // Retrieve the results of that search
+  public getWikiSearchResults() {
+    return this.topicSvc.getSearchResults();
+  }
+
+  // Navigate to the details page upon clicking one item of the search results
+  public getWikiDetails(topic) {
+    // Save the details that will be displayed on the details page
+    this.topicSvc.setDetails(topic);
     this.router.navigate(["/user/details"]);
   }
 

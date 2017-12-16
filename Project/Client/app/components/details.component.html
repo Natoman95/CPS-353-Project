@@ -34,6 +34,23 @@
         </tbody>
       </table>
 
+      <table *ngIf="topic !== null" class="basic-table">
+        <tbody>
+          <tr class="basic-row">
+            <th class="basic-col">Title</th>
+            <th class="basic-col">Body</th>
+            <th *ngIf="topic.subtopics !== undefined" class="basic-col">Subtopics</th>
+            <th class="basic-col">Department</th>
+          </tr>
+          <tr class="basic-row">
+            <td class="basic-col">{{topic.title}}</td>
+            <td class="basic-col">{{topic.body}}</td>
+            <td *ngIf="topic.subtopics !== undefined" class="basic-col">{{subTopics}}</td>
+            <td class="basic-col">{{topic.department.title}}</td>
+          </tr>
+        </tbody>
+      </table>
+
     </div>
   </div>
 

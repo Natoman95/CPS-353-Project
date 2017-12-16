@@ -4,17 +4,17 @@ import { URLSearchParams } from '@angular/http'
 import 'rxjs/add/operator/map'
 
 @Injectable()
-export class AcademicQueryService {
+export class TopicQueryService {
 
   private url: string;
   private static searchResults = null;
   private static details = null;
 
   constructor(private http: Http) {
-    this.url = "http://localhost:5000/microsoft-academic/academicquery";
+    this.url = "http://localhost:5000/topic";
   }
 
-  // Takes a user query and searches microsoft academic knowledge for relevant results via another server
+  // Takes a user query and send it to the server to find related topics
   public search(query: string) {
     console.log("query: " + query);
 
@@ -25,8 +25,8 @@ export class AcademicQueryService {
       .map((response) => {
         console.log("Getting search results from server");
         // get requests return an array of users
-        AcademicQueryService.searchResults = response.json();
-        console.log(AcademicQueryService.searchResults);
+        TopicQueryService.searchResults = response.json();
+        console.log(TopicQueryService.searchResults);
       })
       .subscribe((response) => {
         console.log("Success");
@@ -37,16 +37,16 @@ export class AcademicQueryService {
 
   // The results of the search function are stored statically in this class
   public getSearchResults() {
-    return AcademicQueryService.searchResults;
+    return TopicQueryService.searchResults;
   }
 
   // This class also stores the details of a particular search result item
   public getDetails() {
-    return AcademicQueryService.details;
+    return TopicQueryService.details;
   }
 
   // This sets the detailed information for a particular search result item
-  public setDetails(work) {
-    AcademicQueryService.details = work;
+  public setDetails(topic) {
+    TopicQueryService.details = topic;
   }
-}    
+}

@@ -12,13 +12,13 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var http_2 = require("@angular/http");
 require("rxjs/add/operator/map");
-var AcademicQueryService = (function () {
-    function AcademicQueryService(http) {
+var TopicQueryService = (function () {
+    function TopicQueryService(http) {
         this.http = http;
-        this.url = "http://localhost:5000/microsoft-academic/academicquery";
+        this.url = "http://localhost:5000/topic";
     }
-    // Takes a user query and searches microsoft academic knowledge for relevant results via another server
-    AcademicQueryService.prototype.search = function (query) {
+    // Takes a user query and send it to the server to find related topics
+    TopicQueryService.prototype.search = function (query) {
         console.log("query: " + query);
         var params = new http_2.URLSearchParams();
         params.set('query', query);
@@ -26,8 +26,8 @@ var AcademicQueryService = (function () {
             .map(function (response) {
             console.log("Getting search results from server");
             // get requests return an array of users
-            AcademicQueryService.searchResults = response.json();
-            console.log(AcademicQueryService.searchResults);
+            TopicQueryService.searchResults = response.json();
+            console.log(TopicQueryService.searchResults);
         })
             .subscribe(function (response) {
             console.log("Success");
@@ -36,24 +36,24 @@ var AcademicQueryService = (function () {
         });
     };
     // The results of the search function are stored statically in this class
-    AcademicQueryService.prototype.getSearchResults = function () {
-        return AcademicQueryService.searchResults;
+    TopicQueryService.prototype.getSearchResults = function () {
+        return TopicQueryService.searchResults;
     };
     // This class also stores the details of a particular search result item
-    AcademicQueryService.prototype.getDetails = function () {
-        return AcademicQueryService.details;
+    TopicQueryService.prototype.getDetails = function () {
+        return TopicQueryService.details;
     };
     // This sets the detailed information for a particular search result item
-    AcademicQueryService.prototype.setDetails = function (work) {
-        AcademicQueryService.details = work;
+    TopicQueryService.prototype.setDetails = function (topic) {
+        TopicQueryService.details = topic;
     };
-    return AcademicQueryService;
+    return TopicQueryService;
 }());
-AcademicQueryService.searchResults = null;
-AcademicQueryService.details = null;
-AcademicQueryService = __decorate([
+TopicQueryService.searchResults = null;
+TopicQueryService.details = null;
+TopicQueryService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [http_1.Http])
-], AcademicQueryService);
-exports.AcademicQueryService = AcademicQueryService;
-//# sourceMappingURL=academic-query.service.js.map
+], TopicQueryService);
+exports.TopicQueryService = TopicQueryService;
+//# sourceMappingURL=topic-query.service.js.map

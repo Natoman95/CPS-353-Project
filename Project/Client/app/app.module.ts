@@ -1,4 +1,5 @@
-﻿import { AuthService } from './services/auth.service';
+﻿import { TopicQueryService } from './services/topic-query.service';
+import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { ProfileComponent } from './components/user/profile.component';
 import { RegisterComponent } from './components/user/register.component';
@@ -27,7 +28,8 @@ import { AcademicQueryService } from './services/academic-query.service';
     RegisterComponent],
   providers: [AcademicQueryService,
     UserService,
-    AuthService],
+    AuthService,
+    TopicQueryService],
   bootstrap: [WebsitesAppComponent]
 })
 

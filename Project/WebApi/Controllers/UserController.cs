@@ -158,11 +158,13 @@ namespace WebApi.Controllers
           user = student;
           UserService.Instance.AddUser(student);
           break;
+
         case "scholar":
           Scholar scholar = new Scholar(firstName, lastName, userName, password, email);
           user = scholar;
           UserService.Instance.AddUser(scholar);
           break;
+
         case "institution":
           Institution institution = new Institution(title, userName, password, email);
           user = institution;

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using WebApi.Services;
 
 namespace WebApi.Models
 {
@@ -7,7 +8,27 @@ namespace WebApi.Models
   {
     public long Id { get; set; }
 
+    public bool IsRootTopic { get; set; }
+
+    public Topic SuperTopic { get; set; }
+
+    public string Title { get; set; }
+
+    public string Body { get; set; }
+
+    public Department Department { get; set; }
+
     private List<Topic> subTopics = new List<Topic>();
+
+    public Topic(string title, string body, Department department, bool isRootTopic, Topic superTopic)
+    {
+      this.Title = title;
+      this.Body = body;
+      this.Department = department;
+      this.IsRootTopic = isRootTopic;
+      this.SuperTopic = superTopic;
+      this.Id = TopicService.Instance.GenerateId();
+    }
 
     public List<Topic> GetSubTopics()
     {

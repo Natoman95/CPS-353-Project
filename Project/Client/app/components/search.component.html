@@ -15,24 +15,49 @@
     <div class="body-wrapper">
 
       <header>
-        <h1>Search</h1>
+        <h1>Academic Works</h1>
       </header>
 
       <form class="form-group">
-        <input name="search" class="form-control form-scale" type="text" placeholder="search" [(ngModel)]="query" />
+        <input name="search" class="form-control form-scale" type="text" placeholder="search" [(ngModel)]="academicQuery" />
       </form>
 
       <div>
-        <a class="btn btn-primary btn-scale" (click)="search(query)">Search</a>
+        <a class="btn btn-primary btn-scale" (click)="academicSearch(academicQuery)">Search</a>
       </div>
 
-      <table *ngIf="getSearchResults() !== null" class="basic-table">
+      <table *ngIf="getAcademicSearchResults() !== null" class="basic-table">
         <tbody>
           <tr class="basic-row">
             <th class="basic-col">Title</th>
           </tr>
-          <tr *ngFor="let work of getSearchResults()" class="basic-row">
-            <td class="basic-col link-text" (click)="getDetails(work)">"{{work.title}}"</td>
+          <tr *ngFor="let work of getAcademicSearchResults()" class="basic-row">
+            <td class="basic-col link-text" (click)="getAcademicDetails(work)">"{{work.title}}"</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <header>
+        <h1>Wikis</h1>
+      </header>
+
+      <form class="form-group">
+        <input name="search" class="form-control form-scale" type="text" placeholder="search" [(ngModel)]="wikiQuery" />
+      </form>
+
+      <div>
+        <a class="btn btn-primary btn-scale" (click)="wikiSearch(wikiQuery)">Search</a>
+      </div>
+
+      <table *ngIf="(getWikiSearchResults() !== null) && (getWikiSearchResults().length !== 0)" class="basic-table">
+        <tbody>
+          <tr class="basic-row">
+            <th class="basic-col">Title</th>
+            <th class="basic-col">Institution</th>
+          </tr>
+          <tr *ngFor="let topic of getWikiSearchResults()" class="basic-row">
+            <td *ngIf="(topic.title !== undefined)" class="basic-col link-text" (click)="getWikiDetails(topic)">{{topic.title}}</td>
+            <td *ngIf="(topic.department !== undefined)" class="basic-col">{{topic.department.institution.title}}</td>
           </tr>
         </tbody>
       </table>

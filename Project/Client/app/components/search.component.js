@@ -8,33 +8,54 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var topic_query_service_1 = require("./../services/topic-query.service");
 var auth_service_1 = require("./../services/auth.service");
 var academic_query_service_1 = require("./../services/academic-query.service");
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var SearchComponent = (function () {
-    function SearchComponent(router, academicSvc, authService) {
+    function SearchComponent(router, academicSvc, authService, topicSvc) {
         this.router = router;
         this.academicSvc = academicSvc;
         this.authService = authService;
-        this.query = null;
+        this.topicSvc = topicSvc;
+        this.academicQuery = null;
+        this.wikiQuery = null;
     }
     // Get academic data about the query
-    SearchComponent.prototype.search = function (query) {
-        console.log("list.component query: " + query);
+    SearchComponent.prototype.academicSearch = function (query) {
+        console.log("query: " + query);
         var searchResults = null;
         if (query != null) {
             this.academicSvc.search(query);
         }
     };
     // Retrieve the results of that search
-    SearchComponent.prototype.getSearchResults = function () {
+    SearchComponent.prototype.getAcademicSearchResults = function () {
         return this.academicSvc.getSearchResults();
     };
     // Navigate to the details page upon clicking one item of the search results
-    SearchComponent.prototype.getDetails = function (work) {
+    SearchComponent.prototype.getAcademicDetails = function (work) {
         // Save the details that will be displayed on the details page
         this.academicSvc.setDetails(work);
+        this.router.navigate(["/user/details"]);
+    };
+    // Get wiki pages related to the query
+    SearchComponent.prototype.wikiSearch = function (query) {
+        console.log("query: " + query);
+        var searchResults = null;
+        if (query != null) {
+            this.topicSvc.search(query);
+        }
+    };
+    // Retrieve the results of that search
+    SearchComponent.prototype.getWikiSearchResults = function () {
+        return this.topicSvc.getSearchResults();
+    };
+    // Navigate to the details page upon clicking one item of the search results
+    SearchComponent.prototype.getWikiDetails = function (topic) {
+        // Save the details that will be displayed on the details page
+        this.topicSvc.setDetails(topic);
         this.router.navigate(["/user/details"]);
     };
     SearchComponent.prototype.profile = function () {
@@ -46,7 +67,8 @@ SearchComponent = __decorate([
     core_1.Component({
         templateUrl: 'app/components/search.component.html'
     }),
-    __metadata("design:paramtypes", [router_1.Router, academic_query_service_1.AcademicQueryService, auth_service_1.AuthService])
+    __metadata("design:paramtypes", [router_1.Router, academic_query_service_1.AcademicQueryService, auth_service_1.AuthService,
+        topic_query_service_1.TopicQueryService])
 ], SearchComponent);
 exports.SearchComponent = SearchComponent;
 //# sourceMappingURL=search.component.js.map

@@ -52,6 +52,9 @@ var DetailsComponent = (function () {
     DetailsComponent.prototype.search = function () {
         this.router.navigate(["/user/search"]);
     };
+    DetailsComponent.prototype.home = function () {
+        this.router.navigate(["/user/home"]);
+    };
     return DetailsComponent;
 }());
 DetailsComponent = __decorate([

@@ -17,21 +17,21 @@
 
     <div class="body-wrapper">
 
-      <header>
-        <h1>Login</h1>
+      <header class="center-text">
+        <h1>Welcome To Gray Industries Academic Search!</h1>
       </header>
 
-      <form class="form-group">
-        <input name="userName" class="form-control form-scale" type="text" placeholder="username" [(ngModel)]="userName">
-        <input name="password" class="form-control form-scale" type="password" placeholder="password" [(ngModel)]="password">
-      </form>
+      <div class="vertical-padding"></div>
+
+      <p>Create a profile, follow institutions and other academics, read up on classic topics or gain access to the latest articles.</p>
 
       <div>
         <a (click)="login(userName, password)" class="btn btn-primary btn-scale">Login</a>
       </div>
-      <div>
-        <a (click)="register()" class="btn btn-secondary btn-scale">Register</a>
-      </div>
+
+      <div class="vertical-padding"></div>
+
+      <img class="img-responsive" src="./app/resources/salisbury.jpg">
 
     </div>
   </div>

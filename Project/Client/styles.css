@@ -114,6 +114,9 @@ iframe {
   float: right;
 }
 
+.center-text {
+  text-align: center;
+}
 
 /* Wrappers used for sticky footer */
 

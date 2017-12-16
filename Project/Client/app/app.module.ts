@@ -1,4 +1,5 @@
-﻿import { TopicQueryService } from './services/topic-query.service';
+﻿import { HomeComponent } from './components/home.component';
+import { TopicQueryService } from './services/topic-query.service';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { ProfileComponent } from './components/user/profile.component';
@@ -25,7 +26,8 @@ import { AcademicQueryService } from './services/academic-query.service';
     DetailsComponent,
     LoginComponent,
     ProfileComponent,
-    RegisterComponent],
+    RegisterComponent,
+    HomeComponent],
   providers: [AcademicQueryService,
     UserService,
     AuthService,

@@ -95,4 +95,8 @@ export class ProfileComponent {
         console.log("Error: " + error);
       });
   }
+
+  public home() {
+    this.router.navigate(["/user/home"]);
+  }
 }

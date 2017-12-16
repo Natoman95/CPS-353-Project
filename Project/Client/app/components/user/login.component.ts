@@ -41,4 +41,8 @@ export class LoginComponent {
   search() {
     this.router.navigate(["/user/search"]);
   }
+
+  public home() {
+    this.router.navigate(["/user/home"]);
+  }
 }

@@ -99,6 +99,9 @@ var ProfileComponent = (function () {
             console.log("Error: " + error);
         });
     };
+    ProfileComponent.prototype.home = function () {
+        this.router.navigate(["/user/home"]);
+    };
     return ProfileComponent;
 }());
 ProfileComponent = __decorate([

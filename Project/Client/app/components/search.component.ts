@@ -68,4 +68,8 @@ export class SearchComponent {
       this.router.navigate(["/user/login"]);
     }
   }
+
+  public home() {
+    this.router.navigate(["/user/home"]);
+  }
 }

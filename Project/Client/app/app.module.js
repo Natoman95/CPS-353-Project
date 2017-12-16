@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var home_component_1 = require("./components/home.component");
 var topic_query_service_1 = require("./services/topic-query.service");
 var auth_service_1 = require("./services/auth.service");
 var user_service_1 = require("./services/user.service");
@@ -40,7 +41,8 @@ AppModule = __decorate([
             details_component_1.DetailsComponent,
             login_component_1.LoginComponent,
             profile_component_1.ProfileComponent,
-            register_component_1.RegisterComponent],
+            register_component_1.RegisterComponent,
+            home_component_1.HomeComponent],
         providers: [academic_query_service_1.AcademicQueryService,
             user_service_1.UserService,
             auth_service_1.AuthService,

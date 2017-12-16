@@ -66,6 +66,9 @@ var SearchComponent = (function () {
             this.router.navigate(["/user/login"]);
         }
     };
+    SearchComponent.prototype.home = function () {
+        this.router.navigate(["/user/home"]);
+    };
     return SearchComponent;
 }());
 SearchComponent = __decorate([

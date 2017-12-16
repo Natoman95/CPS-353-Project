@@ -45,6 +45,9 @@ var LoginComponent = (function () {
     LoginComponent.prototype.search = function () {
         this.router.navigate(["/user/search"]);
     };
+    LoginComponent.prototype.home = function () {
+        this.router.navigate(["/user/home"]);
+    };
     return LoginComponent;
 }());
 LoginComponent = __decorate([

@@ -46,6 +46,9 @@ var RegisterComponent = (function () {
     RegisterComponent.prototype.search = function () {
         this.router.navigate(["/user/search"]);
     };
+    RegisterComponent.prototype.home = function () {
+        this.router.navigate(["/user/home"]);
+    };
     return RegisterComponent;
 }());
 RegisterComponent = __decorate([

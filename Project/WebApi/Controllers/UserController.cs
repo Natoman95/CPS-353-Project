@@ -76,16 +76,45 @@ namespace WebApi.Controllers
     }
 
     // Adds a department to a user's list of departments
+    // Creates a new user
     [HttpPost]
-    public void Post([FromBody] JObject body)
+    public User Post([FromBody] JObject body)
     {
-      // For finding the user to update
-      long id = Convert.ToInt64((string)body.SelectToken("id"));
-
-      // For finding the institution and department to add
+      // To determine if the post is adding a department or creating a user
       string institution = (string)body.SelectToken("institution");
-      string title = (string)body.SelectToken("title");
 
+      User user = null;
+      if (institution != null)
+      {
+        // For finding the user to update
+        long id = Convert.ToInt64((string)body.SelectToken("id"));
+
+        // For finding the institution and department to add
+        string title = (string)body.SelectToken("title");
+        user = addDepartmentToUser(id, institution, title);
+      }
+      else
+      {
+        // Get data required to make a new user
+        string firstName = (string)body.SelectToken("firstName");
+        string lastName = (string)body.SelectToken("lastName");
+        string title = (string)body.SelectToken("title");
+        string userName = (string)body.SelectToken("userName");
+        string password = (string)body.SelectToken("password");
+        string email = (string)body.SelectToken("email");
+        string userType = (string)body.SelectToken("userType");
+
+        user = createUser(firstName, lastName, title, userName, password, email, userType);
+      }
+
+      return user;
+    }
+
+    /* -------------------------------------- Helper Functions -------------------------------------- */
+
+    // Adds an institution's department to a user
+    private User addDepartmentToUser(long id, string institution, string title)
+    {
       // Find user
       User user = null;
       if (id >= 1)
@@ -112,6 +141,36 @@ namespace WebApi.Controllers
       {
         user.AddDepartment(department);
       }
+
+      return user;
+    }
+
+    // Creates a new user
+    private User createUser(string firstName, string lastName, string title, string userName,
+                            string password, string email, string userType)
+    {
+      User user = null;
+
+      switch (userType)
+      {
+        case "student":
+          Student student = new Student(firstName, lastName, userName, password, email);
+          user = student;
+          UserService.Instance.AddUser(student);
+          break;
+        case "scholar":
+          Scholar scholar = new Scholar(firstName, lastName, userName, password, email);
+          user = scholar;
+          UserService.Instance.AddUser(scholar);
+          break;
+        case "institution":
+          Institution institution = new Institution(title, userName, password, email);
+          user = institution;
+          UserService.Instance.AddUser(institution);
+          break;
+      }
+
+      return user;
     }
   }
 }

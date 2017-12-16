@@ -21,9 +21,14 @@ export class UserService {
   }
 
   // Create a new user
-  public createUser(user) {
-    console.log("Creating user: " + user);
-    return this.http.post(this.url, this.stringifyUser(user), { headers: new Headers({ 'Content-Type': 'application/json' }) });
+  public createUser(firstName, lastName, title, userName, password, email, userType) {
+    console.log("Creating user: " + userName, password, email, userType);
+
+    return this.http.post(this.url, JSON.stringify({
+      firstName: firstName, lastName: lastName,
+      title: title, userName: userName, password: password, email: email, userType: userType
+    }),
+      { headers: new Headers({ 'Content-Type': 'application/json' }) });
   }
 
   // Returns the user in local users array whose id matches the userId parameter

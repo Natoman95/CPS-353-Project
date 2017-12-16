@@ -73,6 +73,10 @@ iframe {
   margin: .25em;
 }
 
+.basic-radio {
+  padding: .5em;
+}
+
 .basic-table {
   font-size: 1em;
   margin-right: .5em;
@@ -162,6 +166,11 @@ iframe {
 
 
 /* -------------- Overridden Bootstrap classes -------------- */
+
+.radio-inline {
+  color: black;
+  font-size: 1em;
+}
 
 .form-control {
   margin-bottom: .5em;

@@ -1,5 +1,8 @@
-﻿import { Component } from '@angular/core'
+﻿import { UserService } from './../../services/user.service';
+import { Component } from '@angular/core'
 import { Router } from '@angular/router'
+import { AuthService } from '../../services/auth.service';
+import { User } from '../../models/user';
 import 'rxjs/add/operator/map'
 
 @Component({
@@ -8,18 +11,32 @@ import 'rxjs/add/operator/map'
 
 export class RegisterComponent {
 
-  constructor(private router: Router) { }
+  user: User = new User();
+  userType = "student";
+
+  constructor(private router: Router, private userService: UserService) { }
 
   verifyPassword(password, duplicate): boolean {
     return true;
   }
 
-  register(userName, password, email) {
-    this.router.navigate(['/user/profile']);
+  // Makes a server call to create a new user and navigates to
+  // the newly created profile page
+  register(firstName, lastName, title, userName, password, email, userType) {
+    this.userService.createUser(firstName, lastName, title, userName, password, email, userType)
+      .map((response) => {
+        this.user = response.json();
+        AuthService.currentUser = response.json();
+        this.router.navigate(['/user', this.user.id]);
+      })
+      .subscribe((response) => {
+        console.log("Success");
+      }, (error) => {
+        console.log("Error: " + error);
+      });
   }
 
   cancel() {
     this.router.navigate(["/user/login"]);
   }
-
 }

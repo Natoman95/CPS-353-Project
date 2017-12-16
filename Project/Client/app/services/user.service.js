@@ -23,9 +23,12 @@ var UserService = (function () {
         return this.http.post(this.url, JSON.stringify({ id: id, institution: institution, title: title }), { headers: new http_1.Headers({ 'Content-Type': 'application/json' }) });
     };
     // Create a new user
-    UserService.prototype.createUser = function (user) {
-        console.log("Creating user: " + user);
-        return this.http.post(this.url, this.stringifyUser(user), { headers: new http_1.Headers({ 'Content-Type': 'application/json' }) });
+    UserService.prototype.createUser = function (firstName, lastName, title, userName, password, email, userType) {
+        console.log("Creating user: " + userName, password, email, userType);
+        return this.http.post(this.url, JSON.stringify({
+            firstName: firstName, lastName: lastName,
+            title: title, userName: userName, password: password, email: email, userType: userType
+        }), { headers: new http_1.Headers({ 'Content-Type': 'application/json' }) });
     };
     // Returns the user in local users array whose id matches the userId parameter
     UserService.prototype.findUserById = function (id) {

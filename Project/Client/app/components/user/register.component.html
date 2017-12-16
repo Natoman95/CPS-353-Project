@@ -8,13 +8,30 @@
       </header>
 
       <form class="form-group">
-        <input name="userName" class="form-control form-scale" type="text" placeholder="username">
-        <input name="password" class="form-control form-scale" type="password" placeholder="password">
-        <input name="email" class="form-control form-scale" type="email" placeholder="email">
+        <div class="basic-radio">
+          <label class="radio-inline">
+            <input type="radio" name="optradio" value="student" checked="checked" [(ngModel)]="userType">Student</label>
+          <label class="radio-inline">
+            <input type="radio" name="optradio" value="scholar" [(ngModel)]="userType">Scholar</label>
+          <label class="radio-inline">
+            <input type="radio" name="optradio" value="institution" [(ngModel)]="userType">Institution</label>
+        </div>
+      </form>
+
+      <form class="form-group">
+        <input *ngIf="(userType === 'student') || (userType === 'scholar')" name="firstName" class="form-control form-scale" type="text"
+          placeholder="first name" [(ngModel)]="user.firstName">
+        <input *ngIf="(userType === 'student') || (userType === 'scholar')" name="lastName" class="form-control form-scale" type="text"
+          placeholder="last name" [(ngModel)]="user.lastName">
+        <input *ngIf="(userType === 'institution')" name="title" class="form-control form-scale" type="text" placeholder="title"
+          [(ngModel)]="user.title">
+        <input name="userName" class="form-control form-scale" type="text" placeholder="username" [(ngModel)]="user.userName">
+        <input name="password" class="form-control form-scale" type="password" placeholder="password" [(ngModel)]="user.password">
+        <input name="email" class="form-control form-scale" type="email" placeholder="email" [(ngModel)]="user.email">
       </form>
 
       <div>
-        <a (click)="register(null, null, null)" class="btn btn-primary btn-scale">Register</a>
+        <a (click)="register(user.firstName, user.lastName, user.title, user.userName, user.password, user.email, userType)" class="btn btn-primary btn-scale">Register</a>
       </div>
       <div>
         <a (click)="cancel()" class="btn btn-warning btn-scale">Cancel</a>

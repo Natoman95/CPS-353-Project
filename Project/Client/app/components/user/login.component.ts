@@ -21,6 +21,7 @@ export class LoginComponent {
       .map((response) => {
         console.log("Getting authentication result from server");
         let user = response.json();
+        AuthService.currentUser = response.json();
         console.log("login result: " + user);
         if (user != null) {
           this.router.navigate(['/user', user.id]);

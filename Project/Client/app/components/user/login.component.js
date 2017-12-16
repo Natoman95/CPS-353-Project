@@ -27,6 +27,7 @@ var LoginComponent = (function () {
             .map(function (response) {
             console.log("Getting authentication result from server");
             var user = response.json();
+            auth_service_1.AuthService.currentUser = response.json();
             console.log("login result: " + user);
             if (user != null) {
                 _this.router.navigate(['/user', user.id]);
